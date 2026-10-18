@@ -1,0 +1,1714 @@
+{
+ "fu.f1.core.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S.n": {
+  "value": 519,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.Sp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.Sp.n": {
+  "value": 519,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.Sp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.Sp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S2.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S2.n": {
+  "value": 519,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S2.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.core.S2.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.eq.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.eq.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.eq.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.eq.pairs": {
+  "value": 519,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.a_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.Sp": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.Sp.k": {
+  "value": 42,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.Sp.n": {
+  "value": 42,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.Sp.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.Sp.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.S.n": {
+  "value": 42,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.red.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.b_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.diff": {
+  "value": 0.09523809523809523,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.pairs": {
+  "value": 42,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.Sp_only": {
+  "value": 4,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.S_only": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.p": {
+  "value": 0.125,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.c_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.S": {
+  "value": 0.4523809523809524,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.Sp": {
+  "value": 0.5476190476190477,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lt.S2": {
+  "value": 0.4523809523809524,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lat.diff": {
+  "value": -3.003757877280262,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lat.lo": {
+  "value": -3.2578217826766847,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f1.lat.hi": {
+  "value": -2.70392216427201,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.inc": {
+  "value": 0.28205128205128205,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.inc.k": {
+  "value": 11,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.inc.n": {
+  "value": 39,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.inc.lo": {
+  "value": 0.23076923076923078,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.inc.hi": {
+  "value": 0.3076923076923077,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.over": {
+  "value": 0.15384615384615385,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.over.k": {
+  "value": 6,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.over.n": {
+  "value": 39,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.over.lo": {
+  "value": 0.15384615384615385,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S.over.hi": {
+  "value": 0.15384615384615385,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.inc": {
+  "value": 0.28205128205128205,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.inc.k": {
+  "value": 11,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.inc.n": {
+  "value": 39,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.inc.lo": {
+  "value": 0.23076923076923078,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.inc.hi": {
+  "value": 0.3076923076923077,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.over": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.over.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.over.n": {
+  "value": 39,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.over.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.S2.over.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.inc": {
+  "value": 0.28205128205128205,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.inc.k": {
+  "value": 11,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.inc.n": {
+  "value": 39,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.inc.lo": {
+  "value": 0.23076923076923078,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.inc.hi": {
+  "value": 0.3076923076923077,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.over": {
+  "value": 0.23076923076923078,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.over.k": {
+  "value": 9,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.over.n": {
+  "value": 39,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.over.lo": {
+  "value": 0.23076923076923078,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.Sp.over.hi": {
+  "value": 0.23076923076923078,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f2.verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.free_time": {
+  "value": 19.786310344827577,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.free_time.lo": {
+  "value": 19.61791711012312,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f3.free_time.hi": {
+  "value": 19.942932303215077,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.C0": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.C0.k": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.C0.n": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.C0.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.C0.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Gw": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Gw.k": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Gw.n": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Gw.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Gw.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S.k": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S.n": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Sp": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Sp.k": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Sp.n": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Sp.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.Sp.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S2.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S2.n": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S2.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.S2.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.O": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.O.k": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.O.n": {
+  "value": 51,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.O.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.reversible.O.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.C0": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.C0.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.C0.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.C0.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.C0.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Gw": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Gw.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Gw.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Gw.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Gw.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Sp": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Sp.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Sp.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Sp.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.Sp.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S2": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S2.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S2.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S2.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.S2.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.O": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.O.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.O.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.O.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible.O.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.C0": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.C0.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.C0.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.C0.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.C0.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Gw": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Gw.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Gw.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Gw.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Gw.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Sp": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Sp.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Sp.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Sp.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.Sp.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S2.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S2.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S2.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.S2.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.O": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.O.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.O.n": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.O.lo": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.irreversible_overclaim.O.hi": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.C0": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.C0.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.C0.n": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.C0.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.C0.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Gw": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Gw.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Gw.n": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Gw.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Gw.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S.n": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Sp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Sp.n": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Sp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.Sp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S2.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S2.n": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S2.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.S2.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.O": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.O.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.O.n": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.O.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.keyed.O.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.a_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.b_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f4.c_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5": {
+  "value": 0.6428571428571429,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5.k": {
+  "value": 54,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5.lo": {
+  "value": 0.5833333333333334,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5.hi": {
+  "value": 0.6875,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5a": {
+  "value": 0.25,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5a.k": {
+  "value": 21,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5a.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5a.lo": {
+  "value": 0.25,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.C5a.hi": {
+  "value": 0.25,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gw": {
+  "value": 0.6428571428571429,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gw.k": {
+  "value": 54,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gw.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gw.lo": {
+  "value": 0.5833333333333334,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gw.hi": {
+  "value": 0.6875,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gwa": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gwa.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gwa.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gwa.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Gwa.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Sp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Sp.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Sp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.Sp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S2.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S2.n": {
+  "value": 84,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S2.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.S2.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.C5": {
+  "value": 0.2857142857142857,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.C5a": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.Gw": {
+  "value": 0.2857142857142857,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.Gwa": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.late.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.C5": {
+  "value": 0.2857142857142857,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.C5a": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.Gw": {
+  "value": 0.2857142857142857,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.Gwa": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.lost_ack.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.C5": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.C5a": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.Gw": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.Gwa": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_err.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.C5": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.C5a": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.Gw": {
+  "value": 1.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.Gwa": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.Sp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.mode.not_exec_to.S2": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.ni.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.ni.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.a_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.b_verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.C5": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.C5a": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.Gw": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.Gwa": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.S": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.Sp": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f5.coll.S2": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.S": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.S.k": {
+  "value": 4,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.S.n": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.S.lo": {
+  "value": 0.016666666666666666,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.S.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.Snp": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.Snp.k": {
+  "value": 4,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.Snp.n": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.Snp.lo": {
+  "value": 0.015625,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.Snp.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.hard.disc": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.S.n": {
+  "value": 45,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.Snp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.Snp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.Snp.n": {
+  "value": 45,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.Snp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.Snp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.easy.disc": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-4.1-mini.nfail": {
+  "value": 6,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.S": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.S.k": {
+  "value": 8,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.S.n": {
+  "value": 134,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.S.lo": {
+  "value": 0.016666666666666666,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.S.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.Snp": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.Snp.k": {
+  "value": 8,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.Snp.n": {
+  "value": 134,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.Snp.lo": {
+  "value": 0.015625,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.Snp.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.hard.disc": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.S.n": {
+  "value": 90,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.Snp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.Snp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.Snp.n": {
+  "value": 90,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.Snp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.Snp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.easy.disc": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.6-luna.nfail": {
+  "value": 12,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.S": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.S.k": {
+  "value": 4,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.S.n": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.S.lo": {
+  "value": 0.016666666666666666,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.S.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.Snp": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.Snp.k": {
+  "value": 4,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.Snp.n": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.Snp.lo": {
+  "value": 0.015625,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.Snp.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.hard.disc": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.S": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.S.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.S.n": {
+  "value": 45,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.S.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.S.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.Snp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.Snp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.Snp.n": {
+  "value": 45,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.Snp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.Snp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.diff": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.easy.disc": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f6.gpt-5.4-nano.nfail": {
+  "value": 6,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.C0": {
+  "value": 0.5223880597014925,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.C0.k": {
+  "value": 35,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.C0.n": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.C0.lo": {
+  "value": 0.41818181818181815,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.C0.hi": {
+  "value": 0.5797101449275363,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.Snp": {
+  "value": 0.05970149253731343,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.Snp.k": {
+  "value": 4,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.Snp.n": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.Snp.lo": {
+  "value": 0.015625,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.Snp.hi": {
+  "value": 0.10909090909090909,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.diff": {
+  "value": -0.4626865671641791,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.lo": {
+  "value": -0.5348837209302325,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.hi": {
+  "value": -0.3541666666666667,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.p": {
+  "value": 3.6729034036397934e-08,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.hard.pairs": {
+  "value": 67,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.C0": {
+  "value": 0.06666666666666667,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.C0.k": {
+  "value": 3,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.C0.n": {
+  "value": 45,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.C0.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.C0.hi": {
+  "value": 0.15555555555555556,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.Snp": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.Snp.k": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.Snp.n": {
+  "value": 45,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.Snp.lo": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.easy.Snp.hi": {
+  "value": 0.0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.usd.C0": {
+  "value": 0.022332298507462687,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.usd.Snp": {
+  "value": 0.019688029850746275,
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.verdict": {
+  "value": "confirmed",
+  "source": "results_followup/followup.json"
+ },
+ "fu.f7.cell.lookalike": {
+  "value": 0.7407407407407407,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.lookalike.n": {
+  "value": 27,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.crash_after": {
+  "value": 0.5625,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.crash_after.n": {
+  "value": 16,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.late_tail": {
+  "value": 0.26666666666666666,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.late_tail.n": {
+  "value": 15,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.lost_ack": {
+  "value": 0.0,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.cell.lost_ack.n": {
+  "value": 15,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.f7.usd.total": {
+  "value": 5.630724000000004,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.rq1.n": {
+  "value": 102,
+  "source": "results_followup/llm_behaviour.jsonl"
+ },
+ "fu.rq1.reissue": {
+  "value": 0.1568627450980392,
+  "source": "results_followup/llm_behaviour.jsonl"
+ },
+ "fu.rq1.check": {
+  "value": 0.7745098039215687,
+  "source": "results_followup/llm_behaviour.jsonl"
+ },
+ "fu.rq1.listed_uncertain": {
+  "value": 0.1568627450980392,
+  "source": "results_followup/llm_behaviour.jsonl"
+ },
+ "fu.rq1.claimed_completed": {
+  "value": 0.8137254901960784,
+  "source": "results_followup/llm_behaviour.jsonl"
+ },
+ "fu.h1.Sp": {
+  "value": 0.1077943615257048,
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.h1.Sp.k": {
+  "value": 65,
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.h1.Sp.n": {
+  "value": 603,
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.h1.S2": {
+  "value": 0.03150912106135987,
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.h1.S2.k": {
+  "value": 19,
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.h1.S2.n": {
+  "value": 603,
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.f1.lt.Sp_fail_delays": {
+  "value": [
+   20.97,
+   21.56,
+   21.75,
+   25.14,
+   25.6,
+   26.06,
+   28.73,
+   30.56,
+   33.6,
+   34.72,
+   35.53,
+   35.71,
+   38.19,
+   63.76,
+   75.08,
+   84.33,
+   86.31,
+   95.86,
+   98.7,
+   106.07,
+   111.42,
+   112.48,
+   119.61
+  ],
+  "source": "runs/followup_a/episodes.jsonl"
+ },
+ "fu.n.scripted": {
+  "value": 3468,
+  "source": "runs/followup_*/episodes.jsonl"
+ },
+ "fu.n.np": {
+  "value": 536,
+  "source": "runs/followup_llm_np_*"
+ },
+ "fu.n.sol": {
+  "value": 268,
+  "source": "runs/followup_llm_frontier_sol/episodes.jsonl"
+ },
+ "fu.n.all": {
+  "value": 4272,
+  "source": "runs/followup_*"
+ },
+ "fu.n.a": {
+  "value": 2376,
+  "source": "runs/followup_a"
+ },
+ "fu.n.b": {
+  "value": 504,
+  "source": "runs/followup_b"
+ },
+ "fu.n.c": {
+  "value": 588,
+  "source": "runs/followup_c"
+ },
+ "fu.excluded": {
+  "value": 0,
+  "source": "results_followup/followup.json"
+ },
+ "fu.usd.new": {
+  "value": 6.087,
+  "source": "runs/FOLLOWUP_STATUS.txt: total new spending"
+ },
+ "fu.usd.ledger": {
+  "value": 9.4853,
+  "source": "runs/FOLLOWUP_STATUS.txt: ledger after the frontier grid"
+ },
+ "fu.usd.np": {
+  "value": 0.4562,
+  "source": "runs/FOLLOWUP_STATUS.txt: plan-free Settle grids"
+ }
+}

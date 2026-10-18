@@ -1,0 +1,38 @@
+{
+  "docker_version": {
+    "client": "29.1.3",
+    "server": "29.1.3",
+    "server_os_arch": "linux/amd64",
+    "api": "1.52"
+  },
+  "compose_version": "Docker Compose version v2.40.3-desktop.1",
+  "docker_info": {
+    "OperatingSystem": "Docker Desktop",
+    "OSType": "linux",
+    "KernelVersion": "6.6.87.2-microsoft-standard-WSL2",
+    "NCPU": 16,
+    "MemTotal": 8162308096,
+    "Driver": "overlayfs",
+    "CgroupVersion": "2",
+    "CgroupDriver": "cgroupfs",
+    "ServerVersion": "29.1.3",
+    "Name": "<host-vm>",
+    "MemTotal_GB": 7.6,
+    "backend": "WSL2"
+  },
+  "hello_world": {
+    "ok": true,
+    "elapsed_s": 5.094,
+    "error": null
+  },
+  "system_df": [
+    "TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE",
+    "Images          8         5         61.67GB   45.95GB (74%)",
+    "Containers      5         0         4.579GB   4.579GB (100%)",
+    "Local Volumes   4         3         1.267GB   1.219GB (96%)",
+    "Build Cache     32        0         30.72GB   2.023GB"
+  ],
+  "ports_checked": "1025,3000,3001,3002,5432,6379,7233,8025,8233,8333,8474,9000,9001,26000-26099",
+  "ports_taken": {},
+  "ports_free_count": 113
+}

@@ -1,0 +1,70 @@
+{
+  "os": {
+    "Caption": "Microsoft Windows 11 Pro",
+    "Version": "10.0.26200",
+    "BuildNumber": "26200",
+    "OSArchitecture": "64-bit"
+  },
+  "os_display_version": "25H2",
+  "cpu": {
+    "Name": "13th Gen Intel(R) Core(TM) i7-1360P",
+    "NumberOfCores": 12,
+    "NumberOfLogicalProcessors": 16
+  },
+  "ram_gb": {
+    "total": 15.69,
+    "free": 1.72
+  },
+  "disk_root_drive": {
+    "drive": "C:",
+    "total_gb": 997.9,
+    "free_gb": 516.6
+  },
+  "gpu": [
+    {
+      "name": "NVIDIA GeForce RTX 2050",
+      "vram": "4096 MiB",
+      "driver": "610.60"
+    }
+  ],
+  "gpu_wmi": [
+    {
+      "Name": "USB Mobile Monitor Virtual Display",
+      "DriverVersion": "2.0.0.1"
+    },
+    {
+      "Name": "NVIDIA GeForce RTX 2050",
+      "DriverVersion": "32.0.16.1060"
+    },
+    {
+      "Name": "Intel(R) Iris(R) Xe Graphics",
+      "DriverVersion": "32.0.101.7085"
+    }
+  ],
+  "wsl_status": {
+    "rc": 0,
+    "out": "Default Distribution: docker-desktop\n\nDefault Version: 2\n\n",
+    "err": "",
+    "elapsed_s": 0.139
+  },
+  "wsl_list": {
+    "rc": 0,
+    "out": " NAME              STATE           VERSION\n\n* docker-desktop    Running         2\n\n",
+    "err": "",
+    "elapsed_s": 0.086
+  },
+  "wsl_version": {
+    "rc": 0,
+    "out": "WSL version: 2.6.3.0\n\nKernel version: 6.6.87.2-1\n\nWSLg version: 1.0.71\n\nMSRDC version: 1.2.6353\n\nDirect3D version: 1.611.1-81528511\n\nDXCore version: 10.0.26100.1-240331-1435.ge-release\n\nWindows version: 10.0.26200.9550\n\n",
+    "err": "",
+    "elapsed_s": 0.089
+  },
+  "onedrive": {
+    "onedrive_env_vars_set": [
+      "ONEDRIVE"
+    ],
+    "root_inside_onedrive": false,
+    "documents_folder": "~\\Documents",
+    "root": "~\\Documents\\action-recovery"
+  }
+}

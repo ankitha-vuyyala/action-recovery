@@ -1,0 +1,47 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+
+# Third-party code cloned for reference (not redistributed)
+external/
+
+# Docker volumes and scratch
+docker/data/
+runs/tmp/
+*.log.tmp
+
+# Local service tokens created by the stack bootstrap
+runs/.secrets/
+
+# Raw per-episode folders and the model response cache (about 200,000 small files).
+# Published as release archives instead: see scripts/pack_raw_runs.py and the README.
+runs/*/episodes/
+runs/cache/
+release/
+
+# Paper build output and an old copy of the sources (the final files are in paper/final/)
+paper/build/
+paper/src_v1_*/
+
+# Internal working notes (kept locally, not published)
+docs/FOLLOWUP_RUN_PROMPT.md
+paper/checks/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Office lock files
+~$*

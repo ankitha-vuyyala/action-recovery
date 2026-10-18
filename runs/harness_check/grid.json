@@ -1,0 +1,9 @@
+{
+ "n_total": 372,
+ "n_todo": 372,
+ "started": "2026-10-01 18:02:48",
+ "preset": "harness_check",
+ "driver": "scripted",
+ "repeats": 1,
+ "freeze_digest": null
+}

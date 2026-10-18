@@ -1,0 +1,9 @@
+{
+ "n_total": 8,
+ "n_todo": 8,
+ "started": "2026-10-01 16:17:12",
+ "preset": "llm_models",
+ "driver": "llm:gpt-5.4-nano",
+ "repeats": 1,
+ "freeze_digest": null
+}

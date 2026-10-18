@@ -1,0 +1,206 @@
+[
+  {
+    "api": "Stripe - Create a PaymentIntent (POST /v1/payment_intents)",
+    "native_key": "yes - Idempotency-Key header (up to 255 chars); all POST requests accept it; the server saves the status code and body of the first request and replays them, and returns an error if the parameters differ. Retention: keys may be pruned once they are at least 24 hours old.",
+    "tag_field": "metadata (up to 50 keys; values up to 500 chars)",
+    "tag_visible_to_end_users": "no",
+    "exact_lookup": "search - GET /v1/payment_intents/search with metadata[\"key\"]:\"value\" (token type, case-insensitive exact match). The docs say search is not for read-after-write: data is normally searchable in under 1 minute and can take longer during an outage. Search is not available to businesses in India.",
+    "reversible": "yes",
+    "class": "K",
+    "notes": "A PaymentIntent can be canceled in requires_payment_method/requires_capture/requires_confirmation/requires_action (and rarely processing); once it succeeds, undo is a refund. The description field, unlike metadata, may appear in Stripe email receipts.",
+    "sources": [
+      "https://docs.stripe.com/api/idempotent_requests",
+      "https://docs.stripe.com/api/metadata",
+      "https://docs.stripe.com/search",
+      "https://docs.stripe.com/api/payment_intents/cancel"
+    ]
+  },
+  {
+    "api": "PayPal Orders v2 - Create order (POST /v2/checkout/orders)",
+    "native_key": "yes - PayPal-Request-Id header (1-108 chars). The spec says \"The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager.\" It is mandatory for single-step create-order calls that include a payment_source (card, vault_id, billing_agreement_id, etc.) and optional otherwise.",
+    "tag_field": "purchase_units[].custom_id (alternatives: invoice_id, reference_id)",
+    "tag_visible_to_end_users": "no",
+    "exact_lookup": "list_only - the Orders API has no list or search endpoint (only GET by order id). The Transaction Search API (GET /v1/reporting/transactions) filters only by transaction_id/type/status/amount/currency/date range/instrument/store/terminal, so you have to scan a date window. It covers executed transactions only, and the docs say these can take up to 3 hours to appear.",
+    "reversible": "partial",
+    "class": "K",
+    "notes": "custom_id is documented as \"not visible to the payer\", while invoice_id appears in the payer's history and emails and must be unique per merchant by default. The Orders API has no cancel or void for an order itself; undo goes through Payments v2 (void an authorization, refund a capture).",
+    "sources": [
+      "https://developer.paypal.com/docs/api/orders/v2/",
+      "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/checkout_orders_v2.json",
+      "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/reporting_transactions_v1.json",
+      "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/payments_payment_v2.json"
+    ]
+  },
+  {
+    "api": "Adyen Checkout - Start a transaction (POST /v71/payments)",
+    "native_key": "yes - Idempotency-Key header (max 64 chars), supported on all POST requests; resubmitting returns the first response. Keys are \"valid for a period of 7 to 14 days after first submission\" and are stored per company account; they are not checked across regions, and concurrent duplicates get a transient error.",
+    "tag_field": "reference (required merchant reference, max 80 chars; Adyen strongly recommends a unique value); metadata (up to 20 key-value pairs, values up to 80 chars) is the hidden-style alternative",
+    "tag_visible_to_end_users": "unclear - the docs describe reference as used in Adyen's communication with the merchant and do not say whether reference or metadata is shown to the shopper (shopperStatement is the field documented as shopper-facing)",
+    "exact_lookup": "none - the Checkout API has no endpoint that retrieves or lists payments by reference or metadata (the GETs are only for payment links, sessions and stored payment methods). The only reference-keyed call is POST /cancels, which cancels by merchant reference.",
+    "reversible": "yes",
+    "class": "K",
+    "notes": "Undo is via /payments/{pspReference}/reversals (cancels if uncaptured, refunds if captured), /cancels, /refunds, or POST /cancels by merchant reference; reversals are not allowed with multiple partial captures or split data.",
+    "sources": [
+      "https://docs.adyen.com/development-resources/api-idempotency",
+      "https://raw.githubusercontent.com/Adyen/adyen-openapi/main/json/CheckoutService-v71.json",
+      "https://docs.adyen.com/online-payments/reversal"
+    ]
+  },
+  {
+    "api": "Square Payments API - CreatePayment (POST /v2/payments)",
+    "native_key": "yes - idempotency_key is a required body field (1-45 chars). Reusing a key with a changed request returns an error. The retention window is not documented.",
+    "tag_field": "reference_id (max 40 chars; \"ID that associates the payment with an entity in another system\"); note (max 500 chars) is an alternative. The Payment object has no metadata map.",
+    "tag_visible_to_end_users": "unclear - the docs do not say whether reference_id or note appears on buyer receipts (only statement_description_identifier is documented as buyer-facing)",
+    "exact_lookup": "list_only - ListPayments filters only by time range, location, total, last_4, card_brand, offline flags and updated_at; there is no filter on reference_id or note and no SearchPayments endpoint",
+    "reversible": "yes",
+    "class": "K",
+    "notes": "CancelPaymentByIdempotencyKey (POST /v2/payments/cancel) can void a payment using only the idempotency key when the outcome of CreatePayment is unknown. CancelPayment voids APPROVED (delayed-capture) payments, and RefundPayment refunds completed ones (with age/dispute limits).",
+    "sources": [
+      "https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency",
+      "https://developer.squareup.com/reference/square/payments-api/create-payment",
+      "https://developer.squareup.com/reference/square/objects/Payment",
+      "https://developer.squareup.com/reference/square/payments-api/list-payments",
+      "https://developer.squareup.com/reference/square/payments-api/cancel-payment-by-idempotency-key",
+      "https://developer.squareup.com/reference/square/refunds-api/refund-payment"
+    ]
+  },
+  {
+    "api": "Braintree - Transaction.sale (server SDK; GraphQL chargePaymentMethod equivalent)",
+    "native_key": "partial - there is no idempotency-key or request-id parameter (the GraphQL extensions.requestId is for support only). Gateway duplicate-transaction checking is on by default with a 30-second window, configurable. It rejects a new transaction whose amount, order ID (if collected) and payment-method identity match a prior successful one. It rejects rather than replays the original result, and only within the window.",
+    "tag_field": "order_id (max 255 chars; 127 for PayPal). Store-and-pass-back custom_fields are an alternative but must be pre-configured in the Control Panel.",
+    "tag_visible_to_end_users": "unclear - for PayPal transactions order_id maps to the PayPal invoice number, which PayPal documents as appearing in the payer's history and emails; for card transactions the docs do not say",
+    "exact_lookup": "exact - Transaction.search on the order_id text field with the `is` operator (e.g. search.order_id.is \"myorder\"). Search-index freshness is not documented, and searching custom fields through the API is not documented.",
+    "reversible": "yes",
+    "class": "A",
+    "notes": "Void works for authorized / submitted_for_settlement (and PayPal settlement_pending) transactions; refund works for settled or settling ones. Duplicate checking keys partly on order_id, so a stable order_id plus search gives at-most-once only inside the 30s window.",
+    "sources": [
+      "https://developer.paypal.com/braintree/docs/reference/request/transaction/sale",
+      "https://developer.paypal.com/braintree/docs/reference/request/transaction/search/ruby",
+      "https://developer.paypal.com/braintree/docs/reference/general/searching/search-fields",
+      "https://developer.paypal.com/braintree/articles/control-panel/transactions/duplicate-checking",
+      "https://developer.paypal.com/braintree/articles/control-panel/custom-fields",
+      "https://developer.paypal.com/braintree/graphql/guides/making_api_calls/",
+      "https://developer.paypal.com/braintree/docs/reference/request/transaction/void",
+      "https://developer.paypal.com/braintree/docs/reference/request/transaction/refund"
+    ]
+  },
+  {
+    "api": "Shopify Admin GraphQL - orderCreate (also checked draftOrderCreate; REST POST /orders.json is legacy)",
+    "native_key": "no - the orderCreate and draftOrderCreate descriptions do not mention @idempotent or an idempotency key. Shopify's idempotency guide limits keys to payment, billing-attempt and revenue mutations (e.g. refundCreate, which has had an optional @idempotent directive since 2026-01 and a required one since 2026-04). The REST order resource documents no key.",
+    "tag_field": "metafields (alternatives: sourceIdentifier, poNumber, tags, customAttributes)",
+    "tag_visible_to_end_users": "no - metafields are hidden from the Storefront API and the Customer Accounts API by default, though they are always readable in Liquid themes (customAttributes appear in the admin 'Additional details' section)",
+    "exact_lookup": "exact - the orders query `query` argument supports metafields.{namespace}.{key}:value (text exact match). This requires a metafield definition with the admin-filterable capability, which ORDER owners support. source_identifier, po_number and tag are also documented filters. Indexing lag is not documented.",
+    "reversible": "yes",
+    "class": "A",
+    "notes": "orderCancel (asynchronous; voids authorizations, optional refund and restock) and orderDelete (only some order types, irreversible) undo the order. The REST doc says only the last 60 days of orders are accessible by default unless the app has the read_all_orders scope.",
+    "sources": [
+      "https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderCreate",
+      "https://shopify.dev/docs/api/admin-graphql/latest/mutations/draftOrderCreate",
+      "https://shopify.dev/docs/api/admin-graphql/latest/input-objects/OrderCreateOrderInput",
+      "https://shopify.dev/docs/api/usage/idempotent-requests",
+      "https://shopify.dev/docs/api/admin-graphql/latest/mutations/refundCreate",
+      "https://shopify.dev/docs/api/admin-graphql/latest/queries/orders",
+      "https://shopify.dev/docs/apps/build/metafields/query-using-metafields",
+      "https://shopify.dev/docs/apps/build/metafields/use-metafield-capabilities",
+      "https://shopify.dev/docs/apps/build/metafields",
+      "https://shopify.dev/docs/api/usage/search-syntax",
+      "https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderCancel",
+      "https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderDelete",
+      "https://shopify.dev/docs/api/admin-rest/latest/resources/order"
+    ]
+  },
+  {
+    "api": "WooCommerce REST API v3 - Create an order (POST /wp-json/wc/v3/orders)",
+    "native_key": "no - the REST API docs do not mention an idempotency key or request id",
+    "tag_field": "meta_data (array of {key, value}); transaction_id is an alternative (described as \"Unique transaction ID\", but uniqueness enforcement is not documented)",
+    "tag_visible_to_end_users": "unclear - the REST docs describe meta_data only as \"Meta data\" and say nothing about display to customers",
+    "exact_lookup": "list_only - GET /orders has no meta_data filter. The only free-text option is `search` (\"Limit results to those matching a string\"), and the docs do not say it covers meta_data.",
+    "reversible": "yes",
+    "class": "A-",
+    "notes": "DELETE /orders/{id} moves the order to trash by default, or deletes it permanently with force=true; the REST docs say nothing about consistency of list results.",
+    "sources": [
+      "https://woocommerce.github.io/woocommerce-rest-api-docs/#create-an-order",
+      "https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-orders",
+      "https://woocommerce.github.io/woocommerce-rest-api-docs/#delete-an-order"
+    ]
+  },
+  {
+    "api": "Razorpay - Create an Order (POST /v1/orders)",
+    "native_key": "partial - there is no idempotency header for Orders (Razorpay documents idempotency headers only for other products such as RazorpayX payouts and Route transfers). However, the Create Order page says receipt (max 40 chars) \"has to be unique\" and is \"treated as an idempotency key, so a second create call with the same value is rejected\" with a 'Duplicate request' error. The server rejects the duplicate rather than replaying the original order, and no retention window is documented.",
+    "tag_field": "receipt (max 40 chars; alternative: notes, up to 15 key-value pairs of 256 chars)",
+    "tag_visible_to_end_users": "unclear - receipt is described as \"set for your internal reference\", but the docs do not say whether Checkout shows it to customers",
+    "exact_lookup": "exact - GET /v1/orders?receipt=<value> (\"Retrieves the orders that contain the provided value for receipt\")",
+    "reversible": "no",
+    "class": "A",
+    "notes": "The Orders API lists only create, fetch, fetch payments and update; there is no cancel or delete for an order, so undo exists only at the payment level (refunds). With receipt uniqueness plus the exact receipt filter this works almost like a native key, but the docs give no replay semantics or retention.",
+    "sources": [
+      "https://razorpay.com/docs/api/orders/create/",
+      "https://razorpay.com/docs/api/orders/fetch-all/",
+      "https://razorpay.com/docs/build/llm-docs/payments/orders/apis.md",
+      "https://razorpay.com/docs/us/api/x/payout-idempotency/make-request"
+    ]
+  },
+  {
+    "api": "Wise - Create a transfer (POST /v1/transfers)",
+    "native_key": "yes - customerTransactionId (UUID, required) is \"Required to perform idempotency check to avoid duplicate transfers in case of network failures or timeouts\". Retries that reuse it are treated as repeat messages and do not create a new transfer. The retention window is not documented.",
+    "tag_field": "details.reference (\"Payment reference text\"); customerTransactionId is itself stored on the transfer",
+    "tag_visible_to_end_users": "yes - the legacy official Wise API docs say \"Recipient will see this reference text in their bank statement\"; the current reference page does not say",
+    "exact_lookup": "list_only - GET /v1/transfers filters only by profile, status, sourceCurrency, targetCurrency, createdDateStart/End, limit and offset; there is no filter on customerTransactionId or reference",
+    "reversible": "partial",
+    "class": "K",
+    "notes": "Cancel (PUT /v1/transfers/{id}/cancel) works only in incoming_payment_waiting, i.e. not funded. It is refused once funds_converted or during a compliance hold, and cancellation is final.",
+    "sources": [
+      "https://docs.wise.com/api-reference/standard-transfer/transfercreate",
+      "https://docs.wise.com/api-reference/transfer/transfer",
+      "https://docs.wise.com/api-reference/standard-transfer/transferlist",
+      "https://docs.wise.com/api-reference/transfer/transfercancel",
+      "https://github.com/transferwise/api-docs/blob/master/source/includes/reference/_transfers.md"
+    ]
+  },
+  {
+    "api": "Checkout.com - Request a payment or payout (POST /payments)",
+    "native_key": "yes - Cko-Idempotency-Key header, supported on /payments, /payment-contexts, captures, refunds, voids, cancellations, authorizations and /transfers. Keys expire after 72 hours by default (sandbox and production). Only successful responses are replayed, and a concurrent request with the same key gets 409.",
+    "tag_field": "reference (e.g. order number; length limits vary by scheme, e.g. Amex 30); metadata (up to 20 fields, 255 chars each, \"for reporting purposes\") is the hidden-style alternative",
+    "tag_visible_to_end_users": "unclear - the docs do not say whether reference or metadata is shown to the cardholder",
+    "exact_lookup": "exact - GET /payments?reference=<value> (\"Get payment lists\") returns payments with that reference, newest first, but only for payments initiated from June 2022 onward. There is no documented lookup by metadata.",
+    "reversible": "yes",
+    "class": "K",
+    "notes": "Undo is through the /payments/{id}/voids, /cancellations and /refunds endpoints (all listed as idempotency-key enabled). The docs do not say what happens if a key is reused with a different body.",
+    "sources": [
+      "https://www.checkout.com/docs/developer-resources/api/idempotency",
+      "https://api-reference.checkout.com/tag/Payments"
+    ]
+  },
+  {
+    "api": "Mollie - Create payment (POST /v2/payments)",
+    "native_key": "yes - Idempotency-Key header; all POST endpoints accept it, and a replay returns the cached response with the Idempotent-Replayed: true header. Retention: \"Keys older than 1 hour will be removed from our cache\", and after that the same key counts as a new request.",
+    "tag_field": "metadata (any string or JSON, up to about 1 kB)",
+    "tag_visible_to_end_users": "unclear - the docs do not explicitly say metadata is hidden (they only say it is saved alongside the entity), whereas description is explicitly shown on the customer's card or bank statement",
+    "exact_lookup": "list_only - List payments accepts only from, limit, sort, profileId and testmode; there is no filter on metadata or description",
+    "reversible": "yes",
+    "class": "K",
+    "notes": "Cancel works only while isCancelable is true (usually while the payment is open or until the next business day, depending on method); paid payments are undone through Create payment refund. Note the very short 1-hour key retention.",
+    "sources": [
+      "https://docs.mollie.com/reference/api-idempotency",
+      "https://docs.mollie.com/reference/create-payment",
+      "https://docs.mollie.com/reference/list-payments",
+      "https://docs.mollie.com/reference/cancel-payment",
+      "https://docs.mollie.com/reference/create-refund"
+    ]
+  },
+  {
+    "api": "GoCardless - Create a payment (POST /payments)",
+    "native_key": "yes - Idempotency-Key header on resource creation. Keys are \"honoured for at least 30 days\", and reuse after success returns 409 idempotent_creation_conflict with links.conflicting_resource_id pointing to the existing payment.",
+    "tag_field": "metadata (up to 3 keys; key names up to 50 chars, values up to 500 chars)",
+    "tag_visible_to_end_users": "unclear - the docs do not say metadata is hidden, but reference is explicitly on the customer's bank statement and description is in GoCardless customer notification emails, so metadata is the only field not documented as customer-facing",
+    "exact_lookup": "list_only - List payments filters by created_at, currency, charge_date, customer, creditor, subscription, mandate, status, scheme and sort fields; there is no filter on metadata or reference",
+    "reversible": "partial",
+    "class": "K",
+    "notes": "Cancel works only while status is pending_submission. Refunds are disabled by default (they must be enabled in the Dashboard), are allowed only after the 7-day safer-refund period, and need sufficient balance. The 409 conflict response reveals the existing payment id directly.",
+    "sources": [
+      "https://docs.gocardless.com/docs/api-reference/limits",
+      "https://docs.gocardless.com/docs/api-reference/payment",
+      "https://docs.gocardless.com/docs/api-reference/refund"
+    ]
+  }
+]

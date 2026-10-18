@@ -1,0 +1,164 @@
+{
+  "version": "{\"version\": \"2.12.0\"}",
+  "proxies_created": {
+    "pg": 201,
+    "gitea": 201
+  },
+  "baseline": {
+    "pg_direct": {
+      "n": 20,
+      "median_ms": 0.817,
+      "min_ms": 0.652,
+      "max_ms": 4.085
+    },
+    "pg_via_proxy": {
+      "n": 20,
+      "median_ms": 1.672,
+      "min_ms": 1.39,
+      "max_ms": 4.321
+    },
+    "gitea_direct": {
+      "n": 20,
+      "median_ms": 2.682,
+      "min_ms": 1.541,
+      "max_ms": 8.154
+    },
+    "gitea_via_proxy": {
+      "n": 20,
+      "median_ms": 1.705,
+      "min_ms": 1.157,
+      "max_ms": 7.766
+    }
+  },
+  "toxics": [
+    {
+      "toxic": "latency_5s_downstream",
+      "spec": {
+        "type": "latency",
+        "stream": "downstream",
+        "attributes": {
+          "latency": 5000,
+          "jitter": 0
+        }
+      },
+      "postgres": {
+        "outcome": "success",
+        "exception": null,
+        "elapsed_s": 5.011,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": false,
+        "toxic_add_status": 200
+      },
+      "gitea": {
+        "outcome": "success",
+        "exception": null,
+        "elapsed_s": 5.635,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": false,
+        "toxic_add_status": 200
+      }
+    },
+    {
+      "toxic": "timeout_0_downstream",
+      "spec": {
+        "type": "timeout",
+        "stream": "downstream",
+        "attributes": {
+          "timeout": 0
+        }
+      },
+      "postgres": {
+        "outcome": "no response within client deadline 15s",
+        "exception": null,
+        "elapsed_s": 15.006,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": true,
+        "toxic_add_status": 200
+      },
+      "gitea": {
+        "outcome": "error",
+        "exception": {
+          "type": "httpx.ReadTimeout",
+          "message": "timed out"
+        },
+        "elapsed_s": 14.479,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": true,
+        "toxic_add_status": 200
+      }
+    },
+    {
+      "toxic": "reset_peer_downstream",
+      "spec": {
+        "type": "reset_peer",
+        "stream": "downstream",
+        "attributes": {
+          "timeout": 0
+        }
+      },
+      "postgres": {
+        "outcome": "error",
+        "exception": {
+          "type": "psycopg.OperationalError",
+          "message": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+        },
+        "elapsed_s": 0.007,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": true,
+        "toxic_add_status": 200
+      },
+      "gitea": {
+        "outcome": "error",
+        "exception": {
+          "type": "httpx.RemoteProtocolError",
+          "message": "Server disconnected without sending a response."
+        },
+        "elapsed_s": 0.478,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": true,
+        "toxic_add_status": 200
+      }
+    },
+    {
+      "toxic": "limit_data_downstream_16B",
+      "spec": {
+        "type": "limit_data",
+        "stream": "downstream",
+        "attributes": {
+          "bytes": 16
+        }
+      },
+      "postgres": {
+        "outcome": "error",
+        "exception": {
+          "type": "psycopg.OperationalError",
+          "message": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+        },
+        "elapsed_s": 0.008,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": true,
+        "toxic_add_status": 200
+      },
+      "gitea": {
+        "outcome": "error",
+        "exception": {
+          "type": "httpx.RemoteProtocolError",
+          "message": "Server disconnected without sending a response."
+        },
+        "elapsed_s": 0.458,
+        "write_reached_upstream": true,
+        "committed_but_response_lost": true,
+        "toxic_add_status": 200
+      }
+    }
+  ],
+  "toxics_producing_committed_but_response_lost": [
+    "limit_data_downstream_16B:gitea",
+    "limit_data_downstream_16B:postgres",
+    "reset_peer_downstream:gitea",
+    "reset_peer_downstream:postgres",
+    "timeout_0_downstream:gitea",
+    "timeout_0_downstream:postgres"
+  ],
+  "toxics_where_write_never_reached_upstream": []
+}

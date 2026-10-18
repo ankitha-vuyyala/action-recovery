@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+type: software
+title: "Did the Action Already Happen? Reliable Recovery for AI Agents Under Ambiguous Tool Outcomes"
+version: "1.0"
+authors:
+  - given-names: Ankitha
+    family-names: Vuyyala
+    affiliation: "Independent Researcher, Louisville, Kentucky, USA"
+    email: ankithavuyyala08@gmail.com
+    orcid: "https://orcid.org/0009-0004-1916-8070"
+repository-code: "https://github.com/ankitha-vuyyala/action-recovery"
+keywords:
+  - LLM agents
+  - tool use
+  - exactly-once
+  - idempotency
+  - fault tolerance
+  - reproducible research

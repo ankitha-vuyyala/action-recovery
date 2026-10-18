@@ -1,0 +1,53 @@
+domain,api,operation,class,key,key_retention,tag_field,lookup,hidden_tag,reversible,source
+payments,Stripe,create PaymentIntent,K,native,24 h,metadata,search (<1 min lag),yes,yes,https://docs.stripe.com/api/idempotent_requests
+payments,PayPal Orders v2,create order,K,native,6 h,purchase_units.custom_id,list scan,yes,partial,https://developer.paypal.com/docs/api/orders/v2/
+payments,Adyen Checkout,/payments,K,native,7-14 d,reference / metadata,none,unclear,yes,https://docs.adyen.com/development-resources/api-idempotency
+payments,Square,CreatePayment,K,native,undocumented,reference_id,list scan,unclear,yes,https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency
+payments,Braintree,transaction sale,A,partial (30 s duplicate check),30 s,order_id,exact,unclear,yes,https://developer.paypal.com/braintree/docs/reference/request/transaction/search/ruby
+payments,Shopify Admin,orderCreate,A,none,,metafields,exact,yes,yes,https://shopify.dev/docs/api/admin-graphql/latest/queries/orders
+payments,WooCommerce,create order,A-,none,,meta_data,list scan,unclear,yes,https://woocommerce.github.io/woocommerce-rest-api-docs/#list-all-orders
+payments,Razorpay,create order,A,partial (unique receipt rejected),undocumented,receipt,exact,unclear,no,https://razorpay.com/docs/api/orders/create/
+payments,Wise,create transfer,K,native,undocumented,customerTransactionId,list scan,no,partial,https://docs.wise.com/api-reference/standard-transfer/transfercreate
+payments,Checkout.com,request payment,K,native,72 h,reference / metadata,exact,unclear,yes,https://www.checkout.com/docs/developer-resources/api/idempotency
+payments,Mollie,create payment,K,native,1 h,metadata,list scan,unclear,yes,https://docs.mollie.com/reference/api-idempotency
+payments,GoCardless,create payment,K,native,>=30 d,metadata,list scan,unclear,partial,https://docs.gocardless.com/docs/api-reference/limits
+devtools,GitHub,create issue,A,none,,label (exact) / body (search only),exact,no,partial,https://docs.github.com/en/rest/issues/issues
+devtools,GitLab,create issue,A,none,,labels,exact,no,yes,https://docs.gitlab.com/api/issues/
+devtools,Jira Cloud,create issue,A-,none,,issue property / labels,search (index lag),yes,yes,https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/
+devtools,Linear,issueCreate,A,partial (client-chosen id),undocumented,id (UUID),exact,unclear,yes,https://linear.app/developers/graphql
+devtools,Asana,create task,A,none,,external.gid,exact,yes,yes,https://developers.asana.com/docs/custom-external-data
+devtools,Trello,create card,A-,none,,desc,search,no,yes,https://developer.atlassian.com/cloud/trello/rest/api-group-cards/
+devtools,Notion,create page in database,A,none,,text property,exact,no,partial,https://developers.notion.com/reference/query-a-data-source
+devtools,Confluence Cloud,create page,A,partial (unique title per space),,title,exact,no,yes,https://developer.atlassian.com/cloud/confluence/advanced-searching-using-cql/
+devtools,Bitbucket Cloud,create PR comment,A,none,,content.raw,exact,no,yes,https://developer.atlassian.com/cloud/bitbucket/rest/intro/#filtering
+devtools,Azure DevOps,create work item,A,none,,hidden custom field,exact,yes,yes,https://learn.microsoft.com/en-us/azure/devops/boards/queries/wiql-syntax
+devtools,monday.com,create_item,A,none,,text column,exact,no,yes,https://developer.monday.com/api-reference/reference/items-page-by-column-values
+devtools,ClickUp,create task,A,none,,text custom field,exact,no,yes,https://developer.clickup.com/docs/taskfilters
+messaging,Slack,chat.postMessage,A-,none,,metadata,list scan,unclear,yes,https://docs.slack.dev/reference/methods/chat.postMessage
+messaging,Discord,create message,A-,partial (nonce for minutes),minutes,nonce,list scan,unclear,yes,https://docs.discord.com/developers/resources/message
+messaging,Microsoft Graph mail,sendMail,A,none,,extended property,exact,unclear,no,https://learn.microsoft.com/en-us/graph/api/resources/extended-properties-overview
+messaging,Microsoft Teams (Graph),channel message,C,none,,none,list scan,n/a,partial,https://learn.microsoft.com/en-us/graph/api/channel-post-messages
+messaging,Gmail,messages.send,A-,none,,custom header,search,yes,no,https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list
+messaging,SendGrid,mail send,A,none,,custom_args,exact (paid add-on),yes,no,https://www.twilio.com/docs/sendgrid/api-reference/email-activity/filter-all-messages
+messaging,Mailgun,send message,A,none,,o:tag,exact (events),unclear,no,https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/events
+messaging,Twilio SMS,create message,C,none,,none,list scan,n/a,no,https://www.twilio.com/docs/messaging/api/message-resource
+messaging,Postmark,send email,A,none,,Metadata,exact,yes,no,https://postmarkapp.com/developer/api/messages-api
+messaging,Amazon SES v2,SendEmail,A-,none,,EmailTags,list scan (sampled),yes,no,https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html
+messaging,Telegram Bot,sendMessage,C,none,,none,none,n/a,partial,https://core.telegram.org/bots/api
+messaging,WhatsApp Cloud,send message,C,none,,biz_opaque_callback_data (webhook only),none,yes,no,https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages
+messaging,Intercom,create message,C,none,,none,search (content),n/a,partial,https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/searchconversations
+crmdata,Salesforce,create record,A,partial (upsert by external id),,External ID field,exact,unclear,yes,https://developer.salesforce.com/docs/platform/api-rest/guide/dome-upsert.html
+crmdata,HubSpot,create contact,A,partial (unique property),,unique property,exact,unclear,yes,https://developers.hubspot.com/docs/api-reference/crm-properties-v3/guide
+crmdata,Zendesk,create ticket,K,native,2 h,external_id,exact,unclear,yes,https://developer.zendesk.com/api-reference/ticketing/introduction/
+crmdata,Freshdesk,create ticket,A-,none,,custom field / tag,search (minutes lag),unclear,yes,https://developers.freshdesk.com/api/
+crmdata,Google Calendar,events.insert,A,partial (client id; collisions not guaranteed),,extendedProperties.private / id,exact,unclear,yes,https://developers.google.com/workspace/calendar/api/v3/reference/events
+crmdata,Microsoft Graph calendar,create event,K,native,undocumented,extended property,exact,unclear,partial,https://learn.microsoft.com/en-us/graph/api/resources/event
+crmdata,Airtable,create records,A,partial (upsert on merge fields),,text field,exact,no,yes,https://airtable.com/developers/web/api/update-multiple-records
+crmdata,Google Sheets,values.append,A-,none,,cell value,list scan,no,partial,https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets.values/append
+crmdata,Amazon S3,PutObject (If-None-Match),K,conditional create,no expiry,object key,exact,yes,yes,https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html
+crmdata,Amazon DynamoDB,PutItem (attribute_not_exists),K,conditional create,no expiry,primary key,exact,yes,yes,https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html
+crmdata,Google Cloud Pub/Sub,publish,C,none,,attributes (no lookup),none,yes,no,https://docs.cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish
+crmdata,Apache Kafka,producer send,A-,partial (producer session only),session,record header,list scan,yes,no,https://kafka.apache.org/41/configuration/producer-configs/
+crmdata,Elasticsearch,index (op_type=create),K,conditional create,no expiry,_id,exact,yes,yes,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-index
+crmdata,PagerDuty Events v2,trigger,K,native,while alert open,dedup_key,exact,unclear,partial,https://docs.pagerduty.com/developer/send-alert-event
+crmdata,Amazon SQS,SendMessage,C,partial (FIFO 5 min),5 min,attributes (no lookup),none,yes,partial,https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html

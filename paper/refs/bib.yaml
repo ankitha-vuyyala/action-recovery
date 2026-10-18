@@ -1,0 +1,307 @@
+# Bibliography. Every entry was checked against its primary source on 2026-10-01 (see refs_verified.json,
+# produced by an independent verification pass). Fields are rendered in IEEE style by paper/build.py.
+# type: article | inproceedings | preprint | book-chapter | software | online
+li2026limbo:
+  type: preprint
+  authors: [J. Li]
+  title: "Where does exactly-once live? Model, harness, and tool-contract effects on duplicate side effects in LLM agents"
+  arxiv: "2609.29095"
+  year: 2026
+sun2026didithappen:
+  type: preprint
+  authors: [S. Sun]
+  title: "Did it happen? Counterfactual evaluation of LLM agent recovery from ambiguous tool outcomes"
+  venue: "Research Square preprint"
+  doi: "10.21203/rs.3.rs-10730245/v1"
+  year: 2026
+trofimov2026anomalies:
+  type: preprint
+  authors: [A. Trofimov, B. Novikov]
+  title: "When tool calls succeed but workflows fail: Anomalies at the agent-tool boundary"
+  arxiv: "2609.15397"
+  year: 2026
+mansoor2026verified:
+  type: preprint
+  authors: [I. K. Mansoor, A. Phadke, P. Rana]
+  title: "Verified tool calls improve LLM agent reliability under non-atomic failures"
+  arxiv: "2608.02645"
+  year: 2026
+gopnal2026idempotencybench:
+  type: software
+  authors: [S. Gopnal Swamy]
+  title: "IdempotencyBench: Do LLM agents act exactly once? Measuring idempotency violations under retries"
+  url: "https://github.com/gssanjana4/idempotencybench"
+  year: 2026
+mohammadi2026atomix:
+  type: preprint
+  authors: [B. Mohammadi, N. Potamitis, L. Klein, A. Arora, L. Bindschaedler]
+  title: "Atomix: Timely, transactional tool use for reliable agentic workflows"
+  arxiv: "2602.14849"
+  year: 2026
+chen2026cordon:
+  type: preprint
+  authors: [Z. Chen, H. Liu, D. Xu, D. Dong, J. Li, B. Pu, J. Zhai]
+  title: "Cordon: Semantic transactions for tool-using LLM agents"
+  arxiv: "2606.17573"
+  year: 2026
+sun2026agentictx:
+  type: preprint
+  authors: [Z. Sun, X. Wang, G. Li]
+  title: "Agentic transaction: Towards ACID-compliant agent systems"
+  arxiv: "2608.13900"
+  year: 2026
+chang2025sagallm:
+  type: article
+  authors: [E. Y. Chang, L. Geng]
+  title: "SagaLLM: Context management, validation, and transaction guarantees for multi-agent LLM planning"
+  venue: "Proc. VLDB Endow."
+  volume: "18"
+  number: "12"
+  pages: "4874--4886"
+  doi: "10.14778/3750601.3750611"
+  year: 2025
+perera2026rac:
+  type: inproceedings
+  authors: [S. Perera, K. Hapuarachchi, F. Leymann, R. Khalaf]
+  title: "Robust agent compensation (RAC): Teaching AI agents to compensate"
+  venue: "Proc. ACM Conf. AI and Agentic Systems (CAIS)"
+  pages: "253--262"
+  doi: "10.1145/3786335.3813141"
+  year: 2026
+zhuang2026agentrewind:
+  type: preprint
+  authors: [Y. Zhuang, K. Chen, Y. Duan, S. Zheng, J. Li, X.-Y. Zhang]
+  title: "AgentRewind: Recoverable execution for long-horizon LLM agents"
+  arxiv: "2608.14380"
+  year: 2026
+zheng2026acrfence:
+  type: preprint
+  authors: [Y. Zheng, Y. Yang, W. Zhang, A. Quinn]
+  title: "ACRFence: Preventing semantic rollback attacks in agent checkpoint-restore"
+  arxiv: "2603.20625"
+  year: 2026
+xu2026caplease:
+  type: preprint
+  authors: [J. Xu, L. Fan, Z. Wang, X. Li, H. Liu]
+  title: "Beyond single-use tokens: Durable authorization state for replay-resistant LLM agent actions"
+  arxiv: "2608.01710"
+  year: 2026
+advani2026falsesuccess:
+  type: preprint
+  authors: [L. Advani]
+  title: "From confident closing to silent failure: Characterizing false success in LLM agents"
+  arxiv: "2606.09863"
+  year: 2026
+wang2026callability:
+  type: preprint
+  authors: [Z. Wang]
+  title: "Callability is not operability: Controlled interface interventions for LLM agents"
+  arxiv: "2608.23628"
+  year: 2026
+zheng2026stale:
+  type: preprint
+  authors: [Z. Zheng, J. Long, B. Li, J. Yao]
+  title: "Stale does not mean unsafe: Guard precision for tool-using LLM agents under infrastructure state races"
+  arxiv: "2609.29522"
+  year: 2026
+yang2026dart:
+  type: preprint
+  authors: [K. Yang, P. Li, Z. Wu, K. Xu, H. Huang, X. Huang]
+  title: "DART: Semantic recoverability for structured tool agents"
+  arxiv: "2605.23311"
+  year: 2026
+gupta2026reliabilitybench:
+  type: preprint
+  authors: [A. Gupta]
+  title: "ReliabilityBench: Evaluating LLM agent reliability under production-like stress conditions"
+  arxiv: "2601.06112"
+  year: 2026
+sigdel2026toolmisuse:
+  type: preprint
+  authors: [A. Sigdel, R. Baral]
+  title: "ToolMisuseBench: An offline deterministic benchmark for tool misuse and recovery in agentic systems"
+  arxiv: "2604.01508"
+  year: 2026
+tan2026agentchaos:
+  type: preprint
+  authors: [G. Tan, Z. Sun, J. Shi, T. Zhang, Z. He, Q. Wu, S. Liang, W. Sun, J. He, P. Chen, others]
+  title: "AgentChaos: Chaos engineering for agent systems via programmatic fault injection"
+  arxiv: "2608.06790"
+  note: "to appear at ASE 2026"
+  year: 2026
+zhu2026whentoolsfail:
+  type: preprint
+  authors: [D. Zhu, X. Ma, Y. Shen, X. Li, Y. Zhao, S. Wang, L. Yan, D. Yin]
+  title: "When tools fail: Benchmarking dynamic replanning and anomaly recovery in LLM agents"
+  arxiv: "2606.05806"
+  year: 2026
+zhai2026revisable:
+  type: preprint
+  authors: [Z. Zhai, M. Li, X. Wang]
+  title: "Revisable by design: A theory of streaming LLM agent execution"
+  arxiv: "2604.23283"
+  year: 2026
+garciamolina1987sagas:
+  type: inproceedings
+  authors: [H. Garcia-Molina, K. Salem]
+  title: "Sagas"
+  venue: "Proc. ACM SIGMOD Int. Conf. Management of Data"
+  pages: "249--259"
+  doi: "10.1145/38713.38742"
+  year: 1987
+korth1990compensating:
+  type: inproceedings
+  authors: [H. F. Korth, E. Levy, A. Silberschatz]
+  title: "A formal approach to recovery by compensating transactions"
+  venue: "Proc. 16th Int. Conf. Very Large Data Bases (VLDB)"
+  pages: "95--106"
+  year: 1990
+helland2012idempotence:
+  type: article
+  authors: [P. Helland]
+  title: "Idempotence is not a medical condition: An essential property for reliable systems"
+  venue: "ACM Queue"
+  volume: "10"
+  number: "4"
+  pages: "30--46"
+  doi: "10.1145/2181796.2187821"
+  year: 2012
+lee2015rifl:
+  type: inproceedings
+  authors: [C. Lee, S. J. Park, A. Kejriwal, S. Matsushita, J. Ousterhout]
+  title: "Implementing linearizability at large scale and low latency"
+  venue: "Proc. 25th ACM Symp. Operating Systems Principles (SOSP)"
+  pages: "71--86"
+  doi: "10.1145/2815400.2815416"
+  year: 2015
+zhang2020beldi:
+  type: inproceedings
+  authors: [H. Zhang, A. Cardoza, P. B. Chen, S. Angel, V. Liu]
+  title: "Fault-tolerant and transactional stateful serverless workflows"
+  venue: "Proc. 14th USENIX Symp. Operating Systems Design and Implementation (OSDI)"
+  pages: "1187--1204"
+  year: 2020
+wang2021kafka:
+  type: inproceedings
+  authors: [G. Wang, L. Chen, A. Dikshit, J. Gustafson, B. Chen, M. J. Sax, J. Roesler, S. Blee-Goldman, B. Cadonna, A. Mehta, V. Madan, J. Rao]
+  title: "Consistency and completeness: Rethinking distributed stream processing in Apache Kafka"
+  venue: "Proc. ACM SIGMOD Int. Conf. Management of Data"
+  pages: "2602--2613"
+  doi: "10.1145/3448016.3457556"
+  year: 2021
+akkoyunlu1975:
+  type: inproceedings
+  authors: [E. A. Akkoyunlu, K. Ekanadham, R. V. Huber]
+  title: "Some constraints and tradeoffs in the design of network communications"
+  venue: "Proc. 5th ACM Symp. Operating Systems Principles (SOSP)"
+  pages: "67--74"
+  doi: "10.1145/800213.806523"
+  year: 1975
+gray1978notes:
+  type: book-chapter
+  authors: [J. N. Gray]
+  title: "Notes on data base operating systems"
+  venue: "Operating Systems: An Advanced Course, ser. Lecture Notes in Computer Science, vol. 60, R. Bayer, R. M. Graham, and G. Seegmüller, Eds. Berlin, Germany: Springer"
+  pages: "393--481"
+  doi: "10.1007/3-540-08755-9_9"
+  year: 1978
+shinn2023reflexion:
+  type: inproceedings
+  authors: [N. Shinn, F. Cassano, A. Gopinath, K. Narasimhan, S. Yao]
+  title: "Reflexion: Language agents with verbal reinforcement learning"
+  venue: "Advances in Neural Information Processing Systems (NeurIPS)"
+  volume: "36"
+  pages: "8634--8652"
+  year: 2023
+yao2023react:
+  type: inproceedings
+  authors: [S. Yao, J. Zhao, D. Yu, N. Du, I. Shafran, K. Narasimhan, Y. Cao]
+  title: "ReAct: Synergizing reasoning and acting in language models"
+  venue: "Proc. Int. Conf. Learning Representations (ICLR)"
+  year: 2023
+yao2025taubench:
+  type: inproceedings
+  authors: [S. Yao, N. Shinn, P. Razavi, K. Narasimhan]
+  title: "τ-bench: A benchmark for tool-agent-user interaction in real-world domains"
+  venue: "Proc. Int. Conf. Learning Representations (ICLR)"
+  year: 2025
+doc_stripe:
+  type: online
+  authors: [Stripe]
+  title: "Idempotent requests"
+  venue: "Stripe API Reference"
+  url: "https://docs.stripe.com/api/idempotent_requests"
+  accessed: "Oct. 1, 2026"
+  year: 2026
+doc_temporal:
+  type: online
+  authors: [Temporal Technologies]
+  title: "Activity definition"
+  venue: "Temporal Documentation"
+  url: "https://docs.temporal.io/activity-definition"
+  accessed: "Oct. 1, 2026"
+  year: 2026
+doc_dbos:
+  type: online
+  authors: [DBOS]
+  title: "Workflows"
+  venue: "DBOS Docs"
+  url: "https://docs.dbos.dev/python/tutorials/workflow-tutorial"
+  accessed: "Oct. 1, 2026"
+  year: 2026
+doc_openai_responses:
+  type: online
+  authors: [OpenAI]
+  title: "Create a model response"
+  venue: "OpenAI API Reference"
+  url: "https://developers.openai.com/api/reference/resources/responses/methods/create"
+  accessed: "Oct. 1, 2026"
+  year: 2026
+doc_mcp:
+  type: online
+  authors: [Model Context Protocol]
+  title: "Specification 2025-06-18: Schema reference (ToolAnnotations)"
+  venue: "Model Context Protocol website"
+  url: "https://modelcontextprotocol.io/specification/2025-06-18/schema"
+  accessed: "Oct. 1, 2026"
+  year: 2025
+sw_toxiproxy:
+  type: software
+  authors: [Shopify]
+  title: "Toxiproxy: A TCP proxy to simulate network and system conditions for chaos and resiliency testing"
+  url: "https://github.com/Shopify/toxiproxy"
+  year: 2026
+doc_tigerbeetle:
+  type: online
+  authors: [TigerBeetle]
+  title: "Reliable transaction submission"
+  venue: "TigerBeetle Docs"
+  url: "https://docs.tigerbeetle.com/coding/reliable-transaction-submission/"
+  accessed: "Oct. 1, 2026"
+  year: 2026
+sw_gitea:
+  type: software
+  authors: [The Gitea Authors]
+  title: "Gitea: Git with a cup of tea"
+  url: "https://github.com/go-gitea/gitea"
+  year: 2026
+sw_mailpit:
+  type: software
+  authors: [Mailpit contributors]
+  title: "Mailpit: An email and SMTP testing tool and API for developers"
+  url: "https://github.com/axllent/mailpit"
+  year: 2026
+sw_seaweedfs:
+  type: software
+  authors: [SeaweedFS contributors]
+  title: "SeaweedFS: Distributed storage system for object storage (S3), file systems, and Iceberg tables"
+  url: "https://github.com/seaweedfs/seaweedfs"
+  year: 2026
+doc_redis_streams:
+  type: online
+  authors: [Redis]
+  title: "Redis Streams"
+  venue: "Redis Documentation"
+  url: "https://redis.io/docs/latest/develop/data-types/streams/"
+  accessed: "Oct. 1, 2026"
+  year: 2026

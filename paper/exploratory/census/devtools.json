@@ -1,0 +1,180 @@
+[
+  {
+    "api": "GitHub REST - Create an issue (POST /repos/{owner}/{repo}/issues)",
+    "native_key": "no",
+    "tag_field": "labels (array of label names); alternatives: body (markdown text), issue_field_values (org-owned repos with issue fields enabled only)",
+    "tag_visible_to_end_users": "yes (labels and body are shown on the issue; no hidden metadata field exists on issues)",
+    "exact_lookup": "exact (List repository issues takes a 'labels' filter of comma-separated label names; issue_field_values also has a field_slug:value filter. Body text can only be found through Search issues, which is keyword search)",
+    "reversible": "partial (REST can only close an issue: PATCH state=closed, state_reason=not_planned/duplicate. Deleting needs the GraphQL deleteIssue mutation)",
+    "class": "A",
+    "notes": "Labels are silently dropped unless the caller has push access. The docs do not say whether a label name that does not exist yet gets created, so create the label first with POST /repos/{owner}/{repo}/labels. One label per operation also fills up the repo's label list.",
+    "sources": [
+      "https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28",
+      "https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28",
+      "https://docs.github.com/en/graphql/reference/issues",
+      "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.json (official OpenAPI: POST/GET /repos/{owner}/{repo}/issues, GET /search/issues, PATCH issue)"
+    ]
+  },
+  {
+    "api": "GitLab REST - New issue (POST /projects/:id/issues)",
+    "native_key": "no",
+    "tag_field": "labels (comma-separated names; the docs say new labels are created if needed); alternative: description",
+    "tag_visible_to_end_users": "yes",
+    "exact_lookup": "exact (List project issues 'labels' filter: issues must have all the given labels to be returned. The 'search' parameter over title/description is keyword search)",
+    "reversible": "yes (DELETE /projects/:id/issues/:issue_iid; Planner/Owner roles can delete any issue, other members only issues they authored)",
+    "class": "A",
+    "notes": "The docs say no labels are needed up front because labels are created on create. The created_at override needs admin or owner rights, and no idempotency key is documented.",
+    "sources": [
+      "https://docs.gitlab.com/api/issues/"
+    ]
+  },
+  {
+    "api": "Jira Cloud REST v3 - Create issue (POST /rest/api/3/issue)",
+    "native_key": "no",
+    "tag_field": "properties (issue entity properties set atomically at create through the IssueUpdateDetails 'properties' array, key/value, max 32768 bytes). Visible alternatives: labels or a custom text field in 'fields'",
+    "tag_visible_to_end_users": "no for issue properties (an API-only store; the docs do not describe any UI display). Yes for labels and custom fields",
+    "exact_lookup": "search (JQL has exact operators such as labels = x or a custom field, but /rest/api/3/search/jql says 'Recent updates might not be immediately visible'. reconcileIssues only gives read-after-write for issue ids you already know, max 50. Issue properties are JQL-searchable only when a Connect jiraEntityProperties or Forge jira:entityProperty module indexes them. No lag figure is stated)",
+    "reversible": "yes (DELETE /rest/api/3/issue/{issueIdOrKey}, needs the Delete issues permission; deleteSubtasks for issues with subtasks)",
+    "class": "A-",
+    "notes": "The best hidden tag is an issue property written in the same create call. A plain REST client can't look it up without an app-defined index, and labels and custom fields depend on the eventually consistent JQL search.",
+    "sources": [
+      "https://dac-static.atlassian.com/cloud/jira/platform/swagger-v3.v3.json (official v3 OpenAPI: POST /rest/api/3/issue, IssueUpdateDetails, DELETE /rest/api/3/issue/{issueIdOrKey}, GET /rest/api/3/search/jql)",
+      "https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/",
+      "https://developer.atlassian.com/cloud/jira/platform/jira-entity-properties/"
+    ]
+  },
+  {
+    "api": "Linear GraphQL - issueCreate(input: IssueCreateInput!)",
+    "native_key": "partial (IssueCreateInput.id: 'The identifier in UUID v4 format. If none is provided, the backend will generate one.' The client can pick the primary key, but the docs do not say what a retry with the same id does, such as an error versus returning the existing issue. There is no idempotency key or retention window for issues; idempotencyKey exists only for OAuth application creation)",
+    "tag_field": "id (client-supplied UUID v4 primary key). Alternatives: description, labelIds",
+    "tag_visible_to_end_users": "unclear (the docs do not say whether the UUID appears in the UI; users normally see team identifiers such as 'LIN-123')",
+    "exact_lookup": "exact (query issue(id: String!) 'looked up by its unique identifier'; IssueFilter also has an id comparator)",
+    "reversible": "yes (issueDelete trashes the issue with a 30-day grace period, with permanentlyDelete for admins only; issueArchive)",
+    "class": "A",
+    "notes": "This is the closest to a native key in the set, since a client-chosen UUID makes a retry detectable through issue(id:). Server-side dedup of a duplicate create is not documented, so it stays out of class K.",
+    "sources": [
+      "https://linear.app/developers/graphql",
+      "https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql (official Linear SDK schema: IssueCreateInput, issueCreate, issue, issueDelete, issueArchive)"
+    ]
+  },
+  {
+    "api": "Asana - Create a task (POST /tasks)",
+    "native_key": "no",
+    "tag_field": "external.gid (plus external.data). App-specific custom external data accepted in the TaskCreateRequest body; gid up to 1,024 chars, data up to 32,768 chars",
+    "tag_visible_to_end_users": "no ('These fields are not visible in the UI'; only the same OAuth app can see them)",
+    "exact_lookup": "exact (after setting an external gid, 'external:custom_gid' can be used anywhere an object gid is accepted, e.g. GET /tasks/external:<gid>)",
+    "reversible": "yes (DELETE /tasks/{task_gid} moves the task to the requester's trash, recoverable for 30 days)",
+    "class": "A",
+    "notes": "external needs OAuth because it is app-specific, so it is unavailable with a personal access token. The docs do not state whether external gids must be unique.",
+    "sources": [
+      "https://github.com/Asana/openapi/blob/master/defs/asana_oas.yaml (official Asana OpenAPI: POST /tasks TaskCreateRequest incl. 'external', DELETE /tasks/{task_gid})",
+      "https://developers.asana.com/docs/custom-external-data"
+    ]
+  },
+  {
+    "api": "Trello REST - Create a new card (POST /1/cards)",
+    "native_key": "no",
+    "tag_field": "desc (or name). Custom fields and pluginData are not create parameters; custom fields need a separate call after create",
+    "tag_visible_to_end_users": "yes",
+    "exact_lookup": "search (GET /1/search full-text 'query', no freshness or lag guarantee stated). Otherwise list_only by listing the cards on a list or board (GET /1/lists/{id}/cards and /1/boards/{id}/cards have no field filters)",
+    "reversible": "yes (DELETE /1/cards/{id} 'Delete a Card')",
+    "class": "A-",
+    "notes": "No idempotency mechanism appears anywhere in the Trello OpenAPI spec. A hidden tag would need a separate custom-field write after create, which is not atomic.",
+    "sources": [
+      "https://developer.atlassian.com/cloud/trello/rest/api-group-cards/",
+      "https://dac-static.atlassian.com/cloud/trello/swagger.v3.json (official OpenAPI: POST /cards, GET /search, DELETE /cards/{id}, GET /lists/{id}/cards)"
+    ]
+  },
+  {
+    "api": "Notion - Create a page (POST /v1/pages) with a data source (database) parent",
+    "native_key": "no",
+    "tag_field": "a rich_text (or other text) property in 'properties' of a data-source page. A page parented by another page can only carry 'title'",
+    "tag_visible_to_end_users": "yes (the property is part of the database schema and appears as page/database properties; the API docs offer no hidden metadata field)",
+    "exact_lookup": "exact (POST /v1/data_sources/{data_source_id}/query with filter rich_text.equals 'matches the provided string'; up to 10,000 results per query; case sensitivity not stated)",
+    "reversible": "partial (PATCH the page with in_trash=true, restorable with in_trash=false; 'The API does not support permanently deleting pages')",
+    "class": "A",
+    "notes": "This works only when the page is created in a data source whose schema has a text property reserved for the operation id. The query endpoint can return 503 on datastore timeouts.",
+    "sources": [
+      "https://developers.notion.com/reference/post-page",
+      "https://developers.notion.com/reference/query-a-data-source",
+      "https://developers.notion.com/reference/filter-data-source-entries",
+      "https://developers.notion.com/reference/archive-a-page"
+    ]
+  },
+  {
+    "api": "Confluence Cloud REST v2 - Create page (POST /wiki/api/v2/pages)",
+    "native_key": "no",
+    "tag_field": "title (the only free-form field set atomically besides body). Hidden option: content property via POST /wiki/api/v2/pages/{id}/properties, which is a separate post-create call and not atomic. Labels also need a separate call",
+    "tag_visible_to_end_users": "yes for title and body. No for content properties (API-accessible app/entity data)",
+    "exact_lookup": "exact (CQL title = \"...\" is documented as an exact match, '~' is fuzzy, and label = is exact; GET /pages and /spaces/{id}/pages take a 'title' filter whose exactness the docs do not state. Content properties are CQL-searchable only when a Connect confluenceContentProperties module indexes them. Search-index freshness is not documented)",
+    "reversible": "yes (DELETE /wiki/api/v2/pages/{id} moves the page to trash; purge is available)",
+    "class": "A",
+    "notes": "An exact lookup needs the op id in the visible title. The hidden content-property route is neither atomic with create nor queryable without an app index. The v2 spec does not say whether titles must be unique within a space, so duplicate-title rejection is unclear.",
+    "sources": [
+      "https://dac-static.atlassian.com/cloud/confluence/openapi-v2.v3.json (official v2 OpenAPI: POST /pages, GET /pages title filter, DELETE /pages/{id}, /pages/{page-id}/properties)",
+      "https://developer.atlassian.com/cloud/confluence/advanced-searching-using-cql/",
+      "https://developer.atlassian.com/cloud/confluence/confluence-entity-properties/"
+    ]
+  },
+  {
+    "api": "Bitbucket Cloud REST - Create a comment on a pull request (POST /repositories/{workspace}/{repo_slug}/pullrequests/{pull_request_id}/comments)",
+    "native_key": "no",
+    "tag_field": "content.raw (comment markdown)",
+    "tag_visible_to_end_users": "yes",
+    "exact_lookup": "exact (List PR comments supports the q filter language: content.raw = \"...\" for equality or content.raw ~ \"...\" for case-insensitive substring)",
+    "reversible": "yes (DELETE .../pullrequests/{pull_request_id}/comments/{comment_id})",
+    "class": "A",
+    "notes": "The PR comment endpoint was examined because the current Bitbucket Cloud OpenAPI spec has no /issues paths. The intro page still lists /issues among filterable endpoints, so issue-tracker availability is unclear. The comment schema has no hidden metadata field.",
+    "sources": [
+      "https://dac-static.atlassian.com/cloud/bitbucket/swagger.v3.json (official OpenAPI: POST/GET .../pullrequests/{pull_request_id}/comments, DELETE .../comments/{comment_id})",
+      "https://developer.atlassian.com/cloud/bitbucket/rest/intro/#filtering"
+    ]
+  },
+  {
+    "api": "Azure DevOps REST 7.1 - Work Items - Create (POST {org}/{project}/_apis/wit/workitems/${type})",
+    "native_key": "no",
+    "tag_field": "a custom string field (Custom.<Name>) added to an inherited process and hidden from the form layout ('Hide from layout'), set via JSON Patch /fields/Custom.<Name>. Visible alternative: System.Tags",
+    "tag_visible_to_end_users": "no if the custom field is hidden from the layout (the data stays in the store). Tags are visible on forms by default",
+    "exact_lookup": "exact (WIQL via POST _apis/wit/wiql: [Custom.<Name>] = 'value'; the docs only say '=' operators 'work as expected' and do not state case sensitivity. Tags support only Contains / Does Not Contain, and whether that matches whole tags or substrings is not stated)",
+    "reversible": "yes (DELETE .../wit/workitems/{id} moves the item to the Recycle Bin; destroy=true deletes permanently)",
+    "class": "A",
+    "notes": "The hidden custom field needs Project Collection Administrator rights on the process, done once per org. validateOnly=true is a dry run, not dedup.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/rest/api/azure/devops/wit/work-items/create?view=azure-devops-rest-7.1",
+      "https://learn.microsoft.com/en-us/rest/api/azure/devops/wit/work-items/delete?view=azure-devops-rest-7.1",
+      "https://learn.microsoft.com/en-us/azure/devops/boards/queries/wiql-syntax?view=azure-devops",
+      "https://learn.microsoft.com/en-us/azure/devops/boards/queries/add-tags-to-work-items?view=azure-devops",
+      "https://learn.microsoft.com/en-us/azure/devops/organizations/settings/work/customize-process-field?view=azure-devops"
+    ]
+  },
+  {
+    "api": "monday.com GraphQL - create_item mutation",
+    "native_key": "no",
+    "tag_field": "column_values (a Text or Long Text column reserved for the op id)",
+    "tag_visible_to_end_users": "yes (columns are part of the board; the docs offer no hidden metadata field)",
+    "exact_lookup": "exact (items_page_by_column_values: Text is a 'case-insensitive match of the entire text value', Long Text an 'exact match of the entire text value'; limit up to 500)",
+    "reversible": "yes (delete_item; archive_item)",
+    "class": "A",
+    "notes": "The board needs a dedicated text column. The docs say nothing about consistency or lag for items_page_by_column_values.",
+    "sources": [
+      "https://developer.monday.com/api-reference/reference/items",
+      "https://developer.monday.com/api-reference/reference/items-page-by-column-values"
+    ]
+  },
+  {
+    "api": "ClickUp REST v2 - Create Task (POST /api/v2/list/{list_id}/task)",
+    "native_key": "no",
+    "tag_field": "custom_fields (a Text custom field set in the create body). Alternatives: tags, description/markdown_content",
+    "tag_visible_to_end_users": "yes (custom fields show on tasks; the API docs describe no hidden variant)",
+    "exact_lookup": "exact (Get Tasks and Get Filtered Team Tasks accept a custom_fields filter; '==' is 'exact match for text Custom Fields', while '=' is a fuzzy contains)",
+    "reversible": "yes (DELETE /api/v2/task/{task_id} 'Delete a task from your Workspace')",
+    "class": "A",
+    "notes": "Use the '==' operator, because '=' on text fields is documented as a fuzzy contains match. custom_item_id is a task-type id, not an external id.",
+    "sources": [
+      "https://developer.clickup.com/reference/createtask",
+      "https://developer.clickup.com/reference/gettasks",
+      "https://developer.clickup.com/docs/taskfilters",
+      "https://developer.clickup.com/reference/deletetask"
+    ]
+  }
+]

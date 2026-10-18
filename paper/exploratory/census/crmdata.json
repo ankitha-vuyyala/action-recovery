@@ -1,0 +1,290 @@
+[
+  {
+    "api": "Salesforce REST API - create sObject record (POST /services/data/vXX.X/sobjects/{sObject}/)",
+    "native_key": "partial",
+    "native_key_detail": "The plain create (POST) documents no idempotency key, request id, or duplicate prevention. A separate operation, upsert by external ID (PATCH /sobjects/{sObject}/{externalIdField}/{value}), creates the record if the caller-chosen external ID is not found (201) and updates it if found once (200). Retrying it therefore does not create a second record. If the value matches several records it returns 300 and writes nothing. The docs state no concurrency or idempotency guarantee and no window.",
+    "tag_field": "custom field flagged as External ID (e.g. Op_Id__c)",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "Depends on the org's page layout and field-level security; the REST docs do not say.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "GET /sobjects/{sObject}/{externalIdField}/{value} (Get Records Using sObject Rows by External ID), or a SOQL WHERE clause.",
+    "reversible": "yes",
+    "reversible_detail": "DELETE /sobjects/{sObject}/{id}. The REST delete page does not mention the recycle bin or undelete.",
+    "class": "A",
+    "notes": "The safest retry path is to make the agent's create an upsert on an External ID field; plain POST creates are not deduplicated.",
+    "sources": [
+      "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/dome_sobject_create.htm",
+      "https://developer.salesforce.com/docs/platform/api-rest/guide/dome-upsert.html",
+      "https://developer.salesforce.com/docs/platform/api-rest/guide/resources-sobject-upsert-patch.html",
+      "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_sobject_upsert_get.htm",
+      "https://developer.salesforce.com/docs/platform/api-rest/guide/dome-delete-record.html"
+    ]
+  },
+  {
+    "api": "HubSpot CRM v3 - create contact (POST /crm/v3/objects/contacts)",
+    "native_key": "partial",
+    "native_key_detail": "There is no idempotency key. Email is described as the primary unique identifier for contacts, and custom properties can be set with hasUniqueValue=true (up to 10 per object), which means the same value cannot be entered on multiple records. POST /crm/v3/objects/contacts/batch/upsert with idProperty (email or a unique property) creates the record or updates the existing one. The official docs do not state what single-record create returns on a duplicate (e.g. a 409) and give no window.",
+    "tag_field": "custom property with hasUniqueValue=true (or email)",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "The properties guide does not say where custom properties appear on the record UI.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "GET /crm/v3/objects/contacts/{value}?idProperty={uniqueProperty} looks up a unique property directly. The CRM Search API (EQ filter) also works but warns that 'It may take a few moments for newly created or updated CRM objects to appear in search results.'",
+    "reversible": "yes",
+    "reversible_detail": "DELETE /crm/v3/objects/contacts/{contactId} moves the contact to the recycling bin, where it can be restored in HubSpot.",
+    "class": "A",
+    "notes": "Use idProperty lookups or batch/upsert on a unique-value property, not Search, to check for a prior write, because Search lags.",
+    "sources": [
+      "https://developers.hubspot.com/docs/api-reference/crm-contacts-v3/guide",
+      "https://developers.hubspot.com/docs/api-reference/crm-properties-v3/guide",
+      "https://developers.hubspot.com/docs/api-reference/search/guide",
+      "https://knowledge.hubspot.com/records/deduplication-of-records"
+    ]
+  },
+  {
+    "api": "Zendesk Support - create ticket (POST /api/v2/tickets)",
+    "native_key": "yes",
+    "native_key_detail": "Takes an Idempotency-Key header on ticket creation. A repeat with the same key and same body returns the cached response (header x-idempotency-lookup: hit). The same key with different parameters returns 400 'Request parameters don't match the given idempotency key'. Keys expire after two hours, after which the same key creates a new ticket.",
+    "tag_field": "external_id (also custom fields / tags)",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "The docs describe external_id only as 'An id you can use to link Zendesk Support tickets to local records' and say nothing about UI display.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "List Tickets supports ?external_id=; external ids need not be unique, so several tickets can come back.",
+    "reversible": "yes",
+    "reversible_detail": "Delete Ticket, plus List Deleted Tickets, Restore a Previously Deleted Ticket and Delete Ticket Permanently endpoints. The fetched docs did not show the retention period for deleted tickets.",
+    "class": "K",
+    "notes": "The idempotency window is only 2 hours, so a longer-delayed retry should check external_id first.",
+    "sources": [
+      "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+      "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
+    ]
+  },
+  {
+    "api": "Freshdesk - create ticket (POST /api/v2/tickets)",
+    "native_key": "no",
+    "native_key_detail": "The API docs mention no idempotency key, request id or dedup header for Create a Ticket.",
+    "tag_field": "custom_fields (e.g. a single-line-text custom field) or tags",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "Custom fields and tags are account-defined; the API docs do not say whether requesters see them.",
+    "exact_lookup": "search",
+    "exact_lookup_detail": "Filter Tickets (GET /api/v2/search/tickets?query=...) supports tag and custom fields (single line text, number, checkbox, dropdown, date). The docs warn: 'the updates will take a few minutes to get indexed, after which it will be available through API.'",
+    "reversible": "yes",
+    "reversible_detail": "Delete a Ticket plus Restore a Ticket (PUT /api/v2/tickets/[id]/restore).",
+    "class": "A-",
+    "notes": "Because indexing takes a few minutes, a check-then-retry soon after a timeout can miss the first ticket and create a duplicate.",
+    "sources": [
+      "https://developers.freshdesk.com/api/"
+    ]
+  },
+  {
+    "api": "Google Calendar API - events.insert (POST /calendars/{calendarId}/events)",
+    "native_key": "partial",
+    "native_key_detail": "The client may supply the event id (base32hex a-v0-9, 5-1024 chars, 'must be unique per calendar'), and the errors guide lists 409 'The requested identifier already exists'. However, the events reference states: 'Due to the globally distributed nature of the system, we cannot guarantee that ID collisions will be detected at event creation time.' Deduplication is therefore best-effort, not guaranteed.",
+    "tag_field": "extendedProperties.private (or the client-chosen event id itself)",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "The docs say private properties sit on one calendar's copy and shared properties are 'visible and editable by all attendees' (in the API sense); UI display is not stated. Limits: keys up to 44 chars (longer silently dropped), values up to 1024 chars (silently truncated), 300 properties / 32kB per event.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "events.list?privateExtendedProperty=name=value (exact constraint), or events.get by the client-chosen id; showDeleted includes cancelled events.",
+    "reversible": "yes",
+    "reversible_detail": "events.delete. Notification emails go out only if sendUpdates is set; the default is false, but the docs warn 'some emails might still be sent'.",
+    "class": "A",
+    "notes": "The client-chosen id gives strong practical protection, but the docs explicitly disclaim guaranteed collision detection, so it is not counted as a guaranteed native key.",
+    "sources": [
+      "https://developers.google.com/workspace/calendar/api/v3/reference/events/insert",
+      "https://developers.google.com/workspace/calendar/api/v3/reference/events",
+      "https://developers.google.com/workspace/calendar/api/guides/errors",
+      "https://developers.google.com/workspace/calendar/api/v3/reference/events/list",
+      "https://developers.google.com/workspace/calendar/api/guides/extended-properties"
+    ]
+  },
+  {
+    "api": "Microsoft Graph - create event (POST /me/events or /me/calendars/{id}/events)",
+    "native_key": "yes",
+    "native_key_detail": "event.transactionId: 'A custom identifier specified by a client app for the server to avoid redundant POST operations in case of client retries to create the same event.' It cannot be changed after creation. The docs give no dedup window, and do not say what a duplicate POST returns.",
+    "tag_field": "singleValueExtendedProperties (or open extensions)",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "The docs describe extended properties as a way for apps to store custom data and do not state Outlook UI visibility.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "GET /me/events?$filter=singleValueExtendedProperties/Any(ep: ep/id eq '{id}' and ep/value eq '{value}'); eq is supported for string values.",
+    "reversible": "partial",
+    "reversible_detail": "DELETE removes the event. But 'When you create an event that includes attendees, the server sends invitations to all attendees ... and can't be configured', and deleting a meeting sends cancellations, so the invitation emails cannot be undone.",
+    "class": "K",
+    "notes": "The transactionId dedup window is undocumented.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/graph/api/resources/event",
+      "https://learn.microsoft.com/en-us/graph/api/user-post-events",
+      "https://learn.microsoft.com/en-us/graph/api/singlevaluelegacyextendedproperty-get",
+      "https://learn.microsoft.com/en-us/graph/api/resources/extended-properties-overview",
+      "https://learn.microsoft.com/en-us/graph/api/event-delete"
+    ]
+  },
+  {
+    "api": "Airtable Web API - create records (POST /v0/{baseId}/{tableIdOrName})",
+    "native_key": "partial",
+    "native_key_detail": "The create endpoint has no idempotency or upsert option. The update-multiple-records endpoint (PATCH) with performUpsert + fieldsToMergeOn (1-3 fields that 'must uniquely identify a single record') creates the record when there are zero matches and updates it when there is one; multiple matches fail. The docs state no concurrency or idempotency guarantee and no window.",
+    "tag_field": "any user-defined field (e.g. a single-line-text 'op_id' column)",
+    "tag_visible_to_end_users": "yes",
+    "tag_visible_detail": "Fields are table columns that base collaborators see unless hidden in a view.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "List records with filterByFormula (e.g. {op_id}='...'), evaluated server-side per record.",
+    "reversible": "yes",
+    "reversible_detail": "The delete records endpoint removes the record.",
+    "class": "A",
+    "notes": "For a retry-safe create, switch to PATCH with performUpsert keyed on the op-id field.",
+    "sources": [
+      "https://airtable.com/developers/web/api/create-records",
+      "https://airtable.com/developers/web/api/update-multiple-records",
+      "https://airtable.com/developers/web/api/list-records",
+      "https://airtable.com/developers/web/api/delete-multiple-records"
+    ]
+  },
+  {
+    "api": "Google Sheets API - spreadsheets.values.append (POST /v4/spreadsheets/{id}/values/{range}:append)",
+    "native_key": "no",
+    "native_key_detail": "The append reference mentions no idempotency key or request id; each call appends after the detected table.",
+    "tag_field": "a cell value in a dedicated column of the appended row (developer metadata exists but needs a separate batchUpdate, so it is not part of the append)",
+    "tag_visible_to_end_users": "yes",
+    "tag_visible_detail": "Cell values are visible in the sheet. Developer metadata, by contrast, is not shown in the UI.",
+    "exact_lookup": "list_only",
+    "exact_lookup_detail": "The Values API has no server-side filter on cell values; the client must read the range and scan. developerMetadata.search can match exactly on key/value, but only for metadata added separately.",
+    "reversible": "partial",
+    "reversible_detail": "The appended range can be cleared, or its rows deleted, through the API. With insertDataOption=OVERWRITE (default), 'The new data overwrites existing data in the areas it is written', so anything overwritten cannot be restored from the API response.",
+    "class": "A-",
+    "notes": "A duplicated append shows up as an extra identical row, and the only way to detect it is a full read of the range.",
+    "sources": [
+      "https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets.values/append",
+      "https://developers.google.com/workspace/sheets/api/guides/metadata"
+    ]
+  },
+  {
+    "api": "Amazon S3 - PutObject (PUT /{Key})",
+    "native_key": "yes",
+    "native_key_detail": "The object key is chosen by the caller, and the conditional header If-None-Match: * 'Uploads the object only if the object key name does not already exist', otherwise 412 Precondition Failed. A concurrent conflicting operation returns 409 ConditionalRequestConflict (retry). No time window: the condition holds as long as the object exists. A plain PUT without the header silently overwrites.",
+    "tag_field": "object key itself, or x-amz-meta-* user-defined metadata (2 KB total)",
+    "tag_visible_to_end_users": "no",
+    "tag_visible_detail": "Storage service with no end-user UI by default.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "HEAD/GET on the exact key. User metadata can only be read per object; listing or searching by metadata is not documented (except through the separate S3 Metadata tables feature).",
+    "reversible": "yes",
+    "reversible_detail": "DeleteObject. In versioned buckets this adds a delete marker unless a versionId is given; an unconditional overwrite of an unversioned object is not reversible.",
+    "class": "K",
+    "notes": "Idempotency depends on the agent deriving the key deterministically from the operation and sending If-None-Match: *.",
+    "sources": [
+      "https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html",
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html",
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html"
+    ]
+  },
+  {
+    "api": "Amazon DynamoDB - PutItem",
+    "native_key": "yes",
+    "native_key_detail": "The primary key is chosen by the caller. ConditionExpression attribute_not_exists(pk) turns the put into a create-only write that raises ConditionalCheckFailedException if the item exists (ReturnValuesOnConditionCheckFailure=ALL_OLD returns the existing item). Without a condition, PutItem replaces any item with the same key. PutItem has no ClientRequestToken; TransactWriteItems does, with a 10-minute window.",
+    "tag_field": "any item attribute (or the primary key itself)",
+    "tag_visible_to_end_users": "no",
+    "tag_visible_detail": "Database service with no end-user UI.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "GetItem on the primary key (strongly consistent read available). A non-key attribute needs a GSI, which is only eventually consistent ('within a fraction of a second, under normal conditions'), or a Scan.",
+    "reversible": "yes",
+    "reversible_detail": "DeleteItem. An unconditional overwrite loses the old item unless ReturnValues=ALL_OLD captured it.",
+    "class": "K",
+    "notes": "To make the create idempotent, put the operation id in the primary key and add attribute_not_exists.",
+    "sources": [
+      "https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html",
+      "https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html",
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html"
+    ]
+  },
+  {
+    "api": "Google Cloud Pub/Sub - projects.topics.publish",
+    "native_key": "no",
+    "native_key_detail": "messageId is 'assigned by the server when the message is published' and publishers must not set it. There is no client dedup token. The exactly-once delivery docs state 'A subscription might receive multiple copies of the same message due to publish side duplicates, even with exactly-once delivery enabled', and publisher retries yield different message IDs.",
+    "tag_field": "attributes (message attributes map)",
+    "tag_visible_to_end_users": "no",
+    "tag_visible_detail": "Messaging service with no end-user UI.",
+    "exact_lookup": "none",
+    "exact_lookup_detail": "There is no API to fetch or query published messages by attribute. Attributes can only filter delivery on subscriptions.",
+    "reversible": "no",
+    "reversible_detail": "No API deletes or retracts a published message.",
+    "class": "C",
+    "notes": "A tag field exists but cannot be looked up, so the entry is classed C (the rubric has no class for tag with no lookup); consumers must dedup on their own attribute.",
+    "sources": [
+      "https://docs.cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish",
+      "https://docs.cloud.google.com/pubsub/docs/reference/rest/v1/PubsubMessage",
+      "https://docs.cloud.google.com/pubsub/docs/exactly-once-delivery"
+    ]
+  },
+  {
+    "api": "Apache Kafka - Producer API (KafkaProducer.send of a ProducerRecord)",
+    "native_key": "partial",
+    "native_key_detail": "With enable.idempotence=true, 'the producer will ensure that exactly one copy of each message is written in the stream'. The broker assigns a producer ID and deduplicates using the producer's sequence numbers, so this covers only retries inside that producer session. transactional.id provides 'reliability semantics which span multiple producer sessions' (fencing and transaction completion), not deduplication of an application-level resend. There is no caller-chosen dedup key.",
+    "tag_field": "record headers (or the record key)",
+    "tag_visible_to_end_users": "no",
+    "tag_visible_detail": "Log service with no end-user UI.",
+    "exact_lookup": "list_only",
+    "exact_lookup_detail": "There is no server-side query by header or key. A client must consume the partition (e.g. from an offset found by timestamp) and scan.",
+    "reversible": "no",
+    "reversible_detail": "No per-record delete. Admin.deleteRecords only truncates 'records whose offset is smaller than the given offset', and a tombstone (key + null value) logically deletes a key only in compacted topics.",
+    "class": "A-",
+    "notes": "If the agent process restarts and resends, the message is duplicated even with idempotence enabled.",
+    "sources": [
+      "https://kafka.apache.org/41/configuration/producer-configs/",
+      "https://kafka.apache.org/41/design/design/",
+      "https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/producer/ProducerRecord.html",
+      "https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/admin/Admin.html"
+    ]
+  },
+  {
+    "api": "Elasticsearch - index document (PUT /<index>/_doc/<_id>, PUT /<index>/_create/<_id>, POST /<index>/_doc)",
+    "native_key": "yes",
+    "native_key_detail": "The caller can choose _id. With op_type=create or the _create endpoint, 'If a document with the specified _id already exists, the indexing operation will fail' (409). if_seq_no/if_primary_term give optimistic concurrency. POST /_doc auto-generates an id and does not deduplicate, and PUT /_doc/<_id> without op_type overwrites the document.",
+    "tag_field": "_id, or any document field",
+    "tag_visible_to_end_users": "no",
+    "tag_visible_detail": "Data store with no end-user UI by default.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "GET by _id is real-time: 'By default, this API is realtime and is not affected by the refresh rate of the index'. A term query on another field is only near-real-time: 'periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds'.",
+    "reversible": "yes",
+    "reversible_detail": "DELETE /<index>/_doc/<_id>. A non-create overwrite is not reversible.",
+    "class": "K",
+    "notes": "The guarantee holds only when the agent uses a deterministic _id with op_type=create; a field lookup by search can miss writes made within the last refresh interval.",
+    "sources": [
+      "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-index",
+      "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get",
+      "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh"
+    ]
+  },
+  {
+    "api": "PagerDuty Events API v2 - trigger (POST https://events.pagerduty.com/v2/enqueue, event_action=trigger)",
+    "native_key": "yes",
+    "native_key_detail": "dedup_key (max 255 chars): later events with the same dedup_key 'will result in those events being applied to an open alert matching that dedup_key'. 'Once the alert is resolved, any further events with the same dedup_key will create a new alert'. If omitted, a unique UUID is generated and returned. So dedup lasts only while the alert is open.",
+    "tag_field": "dedup_key (also custom_details)",
+    "tag_visible_to_end_users": "unclear",
+    "tag_visible_detail": "The Events API docs do not say whether dedup_key or custom_details are shown in the web UI.",
+    "exact_lookup": "exact",
+    "exact_lookup_detail": "REST API GET /incidents?incident_key={dedup_key} returns 'incidents whose alerts have alert_key matching the given incident key'. The default lookback is one month, with a 6-month maximum range.",
+    "reversible": "partial",
+    "reversible_detail": "A resolve event with the same dedup_key resolves the alert, but the incident record and any notifications already sent remain; the Events API documents no delete.",
+    "class": "K",
+    "notes": "A retry that arrives after the alert is resolved opens a new incident.",
+    "sources": [
+      "https://docs.pagerduty.com/developer/send-alert-event",
+      "https://docs.pagerduty.com/developer/api/reference/rest/incidents/list-incidents"
+    ]
+  },
+  {
+    "api": "Amazon SQS - SendMessage",
+    "native_key": "partial",
+    "native_key_detail": "MessageDeduplicationId applies only to FIFO queues: messages sent with the same id 'are accepted successfully but aren't delivered during the 5-minute deduplication interval' (max 128 chars; ContentBasedDeduplication can use a SHA-256 hash of the body instead). It does not apply to standard queues.",
+    "tag_field": "MessageAttributes",
+    "tag_visible_to_end_users": "no",
+    "tag_visible_detail": "Queue service with no end-user UI.",
+    "exact_lookup": "none",
+    "exact_lookup_detail": "There is no API to query or fetch a sent message by id or attribute; messages can only be received.",
+    "reversible": "partial",
+    "reversible_detail": "DeleteMessage needs a ReceiptHandle from receiving the message (not the MessageId returned by send); PurgeQueue removes everything. On standard queues, 'it is possible to receive a message even after you delete it'.",
+    "class": "C",
+    "notes": "Standard queues are class C; FIFO queues with MessageDeduplicationId would be K, but only within the 5-minute window.",
+    "sources": [
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html",
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessage.html"
+    ]
+  }
+]

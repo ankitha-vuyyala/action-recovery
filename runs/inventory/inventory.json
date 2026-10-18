@@ -1,0 +1,1239 @@
+{
+  "meta": {
+    "generated": "2026-10-01T00:01:57+00:00",
+    "instructions": "docs/02_inventory_instructions.md",
+    "paid_model_calls": 0,
+    "redaction": "user name -> <user>, machine name -> <host>, e-mail -> <email>, home path -> ~",
+    "scripts": "code/inventory/",
+    "compose": "docker/inventory/"
+  },
+  "step1_system": {
+    "os": {
+      "Caption": "Microsoft Windows 11 Pro",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200",
+      "OSArchitecture": "64-bit"
+    },
+    "os_display_version": "25H2",
+    "cpu": {
+      "Name": "13th Gen Intel(R) Core(TM) i7-1360P",
+      "NumberOfCores": 12,
+      "NumberOfLogicalProcessors": 16
+    },
+    "ram_gb": {
+      "total": 15.69,
+      "free": 1.72
+    },
+    "disk_root_drive": {
+      "drive": "C:",
+      "total_gb": 997.9,
+      "free_gb": 516.6
+    },
+    "gpu": [
+      {
+        "name": "NVIDIA GeForce RTX 2050",
+        "vram": "4096 MiB",
+        "driver": "610.60"
+      }
+    ],
+    "gpu_wmi": [
+      {
+        "Name": "USB Mobile Monitor Virtual Display",
+        "DriverVersion": "2.0.0.1"
+      },
+      {
+        "Name": "NVIDIA GeForce RTX 2050",
+        "DriverVersion": "32.0.16.1060"
+      },
+      {
+        "Name": "Intel(R) Iris(R) Xe Graphics",
+        "DriverVersion": "32.0.101.7085"
+      }
+    ],
+    "wsl_status": {
+      "rc": 0,
+      "out": "Default Distribution: docker-desktop\n\nDefault Version: 2\n\n",
+      "err": "",
+      "elapsed_s": 0.139
+    },
+    "wsl_list": {
+      "rc": 0,
+      "out": " NAME              STATE           VERSION\n\n* docker-desktop    Running         2\n\n",
+      "err": "",
+      "elapsed_s": 0.086
+    },
+    "wsl_version": {
+      "rc": 0,
+      "out": "WSL version: 2.6.3.0\n\nKernel version: 6.6.87.2-1\n\nWSLg version: 1.0.71\n\nMSRDC version: 1.2.6353\n\nDirect3D version: 1.611.1-81528511\n\nDXCore version: 10.0.26100.1-240331-1435.ge-release\n\nWindows version: 10.0.26200.9550\n\n",
+      "err": "",
+      "elapsed_s": 0.089
+    },
+    "onedrive": {
+      "onedrive_env_vars_set": [
+        "ONEDRIVE"
+      ],
+      "root_inside_onedrive": false,
+      "documents_folder": "~\\Documents",
+      "root": "~\\Documents\\action-recovery"
+    }
+  },
+  "step2_tooling": {
+    "py_launcher": [
+      "-V:3.13 *        ~\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      " -V:3.11          ~\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
+    ],
+    "python_on_path": "Python 3.11.9",
+    "conda": "missing",
+    "uv": "uv 0.11.7 (9d177269e 2026-04-15 x86_64-pc-windows-msvc)",
+    "git": "git version 2.52.0.windows.1",
+    "gh": "gh version 2.85.0 (2026-01-14)",
+    "node": "v22.18.0",
+    "npm": "10.9.3",
+    "pandoc": "missing",
+    "libreoffice": "missing",
+    "ms_word": {
+      "present": true,
+      "app_paths_registry": "C:\\Program Files\\Microsoft Office\\Root\\Office16\\WINWORD.EXE",
+      "known_path_hits": [
+        "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
+      ]
+    },
+    "venv_python_requested": "3.11",
+    "venv_create": {
+      "rc": 0,
+      "out": "",
+      "err": "",
+      "elapsed_s": 26.794
+    },
+    "venv_python": "Python 3.11.9",
+    "install_results": {
+      "openai": "ok",
+      "httpx": "ok",
+      "psycopg[binary]": "ok",
+      "redis": "ok",
+      "boto3": "ok",
+      "tigerbeetle": "ok",
+      "temporalio": "ok",
+      "dbos": "ok",
+      "python-docx": "ok",
+      "docx2pdf": "ok",
+      "matplotlib": "ok",
+      "pandas": "ok",
+      "numpy": "ok",
+      "scipy": "ok",
+      "statsmodels": "ok",
+      "pyyaml": "ok",
+      "pytest": "ok"
+    },
+    "installed_versions": {
+      "openai": "3.22.1",
+      "httpx": "0.28.1",
+      "psycopg": "3.3.6",
+      "redis": "8.1.0",
+      "boto3": "1.43.106",
+      "tigerbeetle": "0.17.9",
+      "temporalio": "1.34.0",
+      "dbos": "3.2.0",
+      "python-docx": "1.2.0",
+      "docx2pdf": "0.1.8",
+      "matplotlib": "3.11.2",
+      "pandas": "3.0.6",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "statsmodels": "0.15.0",
+      "pyyaml": "6.0.3",
+      "pytest": "9.1.1",
+      "psycopg-binary": "3.3.6"
+    },
+    "failed_packages": []
+  },
+  "step3_docker": {
+    "docker_version": {
+      "client": "29.1.3",
+      "server": "29.1.3",
+      "server_os_arch": "linux/amd64",
+      "api": "1.52"
+    },
+    "compose_version": "Docker Compose version v2.40.3-desktop.1",
+    "docker_info": {
+      "OperatingSystem": "Docker Desktop",
+      "OSType": "linux",
+      "KernelVersion": "6.6.87.2-microsoft-standard-WSL2",
+      "NCPU": 16,
+      "MemTotal": 8162308096,
+      "Driver": "overlayfs",
+      "CgroupVersion": "2",
+      "CgroupDriver": "cgroupfs",
+      "ServerVersion": "29.1.3",
+      "Name": "<host-vm>",
+      "MemTotal_GB": 7.6,
+      "backend": "WSL2"
+    },
+    "hello_world": {
+      "ok": true,
+      "elapsed_s": 5.094,
+      "error": null
+    },
+    "system_df": [
+      "TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE",
+      "Images          8         5         61.67GB   45.95GB (74%)",
+      "Containers      5         0         4.579GB   4.579GB (100%)",
+      "Local Volumes   4         3         1.267GB   1.219GB (96%)",
+      "Build Cache     32        0         30.72GB   2.023GB"
+    ],
+    "ports_checked": "1025,3000,3001,3002,5432,6379,7233,8025,8233,8333,8474,9000,9001,26000-26099",
+    "ports_taken": {},
+    "ports_free_count": 113
+  },
+  "step4_services": {
+    "images_and_startup": {
+      "postgres": {
+        "image": {
+          "requested": "postgres:16",
+          "resolved_tag": "postgres:16",
+          "digest": "postgres@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54",
+          "image_id": "sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54",
+          "size_mb": 160.3,
+          "created": "2026-09-19T00:36:54.335664785Z",
+          "version_labels": {}
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 5.13,
+        "healthy": true
+      },
+      "gitea": {
+        "image": {
+          "requested": "gitea/gitea:1.24",
+          "resolved_tag": "gitea/gitea:1.24",
+          "digest": "gitea/gitea@sha256:918955f16b1e91732af6c449bb2db3a34271748dbed1ccfbae48f8a2fb5480b8",
+          "image_id": "sha256:918955f16b1e91732af6c449bb2db3a34271748dbed1ccfbae48f8a2fb5480b8",
+          "size_mb": 75.7,
+          "created": "2025-10-25T01:02:25.33121531Z",
+          "version_labels": {
+            "org.opencontainers.image.version": "1.24.7"
+          }
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 7.18,
+        "healthy": true
+      },
+      "mailpit": {
+        "image": {
+          "requested": "axllent/mailpit:latest",
+          "resolved_tag": "axllent/mailpit:latest",
+          "digest": "axllent/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d",
+          "image_id": "sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d",
+          "size_mb": 14.3,
+          "created": "2026-09-27T07:05:40.768116049Z",
+          "version_labels": {}
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 1.78,
+        "healthy": true
+      },
+      "tigerbeetle": {
+        "image": {
+          "requested": "ghcr.io/tigerbeetle/tigerbeetle:latest",
+          "resolved_tag": "ghcr.io/tigerbeetle/tigerbeetle:latest",
+          "digest": "ghcr.io/tigerbeetle/tigerbeetle@sha256:48f623f9c1e9b6cc44d77ca93634595ae99cce3246ded418763eb1a62eee45e9",
+          "image_id": "sha256:48f623f9c1e9b6cc44d77ca93634595ae99cce3246ded418763eb1a62eee45e9",
+          "size_mb": 11.2,
+          "created": "2026-07-06T17:23:56.674961549Z",
+          "version_labels": {}
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 4.57,
+        "healthy": true,
+        "logs_tail": "tigerbeetle-1  | 2026-09-30 23:30:43.304Z warning: a cluster id of 0 is reserved for testing and benchmarking, do not use in production\ntigerbeetle-1  | 2026-09-30 23:30:43.304Z warning: omit --cluster=0 to randomly generate a suitable id\ntigerbeetle-1  | \ntigerbeetle-1  | 2026-09-30 23:30:43.304Z error(io): io_uring is not available\ntigerbeetle-1  | 2026-09-30 23:30:43.304Z error(io): likely cause: the syscall is disabled by sysctl, try 'sysctl -w kernel.io_uring_disabled=0'\ntigerbeetle-1  | 2026-09-30 23:30:43.304Z error: PermissionDenied",
+        "note": "default seccomp: io_uring PermissionDenied; time_to_healthy is the seccomp=unconfined start incl. format"
+      },
+      "seaweedfs": {
+        "image": {
+          "requested": "chrislusf/seaweedfs:latest",
+          "resolved_tag": "chrislusf/seaweedfs:latest",
+          "digest": "chrislusf/seaweedfs@sha256:4e61d15fd35994cb1e43e1e553dff106794841fd9a99ade2fc8c8bfce4d7872d",
+          "image_id": "sha256:4e61d15fd35994cb1e43e1e553dff106794841fd9a99ade2fc8c8bfce4d7872d",
+          "size_mb": 193.6,
+          "created": "2026-09-28T18:41:21.744952814Z",
+          "version_labels": {
+            "org.opencontainers.image.version": "4.48"
+          }
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 5.4,
+        "healthy": true
+      },
+      "redis": {
+        "image": {
+          "requested": "redis:7",
+          "resolved_tag": "redis:7",
+          "digest": "redis@sha256:c6eabf748fc7a61dbb5a705c78bcf3d6377b1127a97d0ce965c11c44ba46896f",
+          "image_id": "sha256:c6eabf748fc7a61dbb5a705c78bcf3d6377b1127a97d0ce965c11c44ba46896f",
+          "size_mb": 43.6,
+          "created": "2026-09-19T00:38:19.910809608Z",
+          "version_labels": {}
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 1.55,
+        "healthy": true
+      },
+      "toxiproxy": {
+        "image": {
+          "requested": "ghcr.io/shopify/toxiproxy:latest",
+          "resolved_tag": "ghcr.io/shopify/toxiproxy:latest",
+          "digest": "ghcr.io/shopify/toxiproxy@sha256:9378ed52a28bc50edc1350f936f518f31fa95f0d15917d6eb40b8e376d1a214e",
+          "image_id": "sha256:9378ed52a28bc50edc1350f936f518f31fa95f0d15917d6eb40b8e376d1a214e",
+          "size_mb": 7.6,
+          "created": "2025-03-18T13:12:13.176393585Z",
+          "version_labels": {
+            "org.opencontainers.image.version": "2.12.0"
+          }
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 2.65,
+        "healthy": true
+      },
+      "temporal": {
+        "image": {
+          "requested": "temporalio/temporal:latest",
+          "resolved_tag": "temporalio/temporal:latest",
+          "digest": "temporalio/temporal@sha256:ad4c82c97bd12b417d1ea942610dbcd511afb250c4d5ed26c694009533df447e",
+          "image_id": "sha256:ad4c82c97bd12b417d1ea942610dbcd511afb250c4d5ed26c694009533df447e",
+          "size_mb": 49.8,
+          "created": "2026-09-14T22:50:56.300963959Z",
+          "version_labels": {}
+        },
+        "compose_up": {
+          "rc": 0,
+          "err_tail": null
+        },
+        "time_to_healthy_s": 2.04,
+        "healthy": true
+      },
+      "minio": {
+        "image": {
+          "requested": "minio/minio:latest",
+          "resolved_tag": null,
+          "digest": null
+        },
+        "healthy": false,
+        "pull_error": "Error response from daemon: pull access denied for minio/minio, repository does not exist or may require 'docker login'",
+        "fix_attempt": {
+          "image": "quay.io/minio/minio:latest",
+          "pull_error": "Error response from daemon: unknown: failed to resolve reference \"quay.io/minio/minio:latest\": unexpected status from HEAD request to https://quay.io/v2/minio/minio/manifests/latest: 401 UNAUTHORIZED",
+          "ok": false
+        }
+      }
+    },
+    "postgres": {
+      "server_version": "16.15 (Debian 16.15-1.pgdg13+2)",
+      "insert_select_ok": true,
+      "select_by_op_id_roundtrip": {
+        "n": 20,
+        "median_ms": 0.85,
+        "min_ms": 0.75,
+        "max_ms": 2.489
+      },
+      "insert_autocommit_roundtrip": {
+        "n": 20,
+        "median_ms": 1.941,
+        "min_ms": 1.222,
+        "max_ms": 3.263
+      }
+    },
+    "gitea": {
+      "version": "Gitea version 1.24.7 built with GNU Make 4.4.1, go1.24.9 : bindata, timetzdata, sqlite, sqlite_unlock_notify",
+      "install": "non-interactive via env (INSTALL_LOCK=true, sqlite3)",
+      "admin_create": {
+        "rc": 0,
+        "msg": "New user 'actrec-admin' has been successfully created! "
+      },
+      "token_create": {
+        "rc": 0,
+        "ok": true,
+        "err": null
+      },
+      "repo_create_status": 201,
+      "indexer_config": "[indexer]\nISSUE_INDEXER_PATH = /data/gitea/indexers/issues.bleve\n\n[session]",
+      "trials": [
+        {
+          "trial": 1,
+          "create_status": 201,
+          "issue_number": 1,
+          "body_byte_exact": true,
+          "marker_line_present": true,
+          "plain_list_has_issue_immediately": true,
+          "indexer_lag_s_global_search": 1.88,
+          "indexer_lag_s_repo_q": 1.88
+        },
+        {
+          "trial": 2,
+          "create_status": 201,
+          "issue_number": 2,
+          "body_byte_exact": true,
+          "marker_line_present": true,
+          "plain_list_has_issue_immediately": true,
+          "indexer_lag_s_global_search": 0.68,
+          "indexer_lag_s_repo_q": 0.68
+        },
+        {
+          "trial": 3,
+          "create_status": 201,
+          "issue_number": 3,
+          "body_byte_exact": true,
+          "marker_line_present": true,
+          "plain_list_has_issue_immediately": true,
+          "indexer_lag_s_global_search": 1.2,
+          "indexer_lag_s_repo_q": 1.2
+        },
+        {
+          "trial": 4,
+          "create_status": 201,
+          "issue_number": 4,
+          "body_byte_exact": true,
+          "marker_line_present": true,
+          "plain_list_has_issue_immediately": true,
+          "indexer_lag_s_global_search": 1.23,
+          "indexer_lag_s_repo_q": 0.68
+        },
+        {
+          "trial": 5,
+          "create_status": 201,
+          "issue_number": 5,
+          "body_byte_exact": true,
+          "marker_line_present": true,
+          "plain_list_has_issue_immediately": true,
+          "indexer_lag_s_global_search": 0.71,
+          "indexer_lag_s_repo_q": 0.71
+        }
+      ],
+      "indexer_lag_global_found": "5/5",
+      "indexer_lag_global_s": [
+        0.68,
+        0.71,
+        1.2,
+        1.23,
+        1.88
+      ],
+      "search_by_first_uuid_segment_finds": true,
+      "search_by_full_marker_line_finds": true,
+      "close_via_api": {
+        "status": 201,
+        "state_after": "closed"
+      },
+      "delete_via_api_admin": {
+        "status": 204,
+        "get_after_delete": 404,
+        "ok": true
+      }
+    },
+    "mailpit": {
+      "version": "v1.31.3",
+      "list_total": 3,
+      "list_ok": true,
+      "messages": [
+        {
+          "where_uuid": "header-only",
+          "smtp_send_s": 0.083,
+          "message_id_listed_exact": true,
+          "x_op_id_header_exact": true,
+          "message_id_header_exact": true,
+          "plain_search_finds": false,
+          "message_id_filter_finds": true,
+          "header_filter_status": 200,
+          "header_filter_finds": false
+        },
+        {
+          "where_uuid": "header+body",
+          "smtp_send_s": 0.039,
+          "message_id_listed_exact": true,
+          "x_op_id_header_exact": true,
+          "message_id_header_exact": true,
+          "plain_search_finds": true,
+          "message_id_filter_finds": true,
+          "header_filter_status": 200,
+          "header_filter_finds": false
+        },
+        {
+          "where_uuid": "header+subject",
+          "smtp_send_s": 0.025,
+          "message_id_listed_exact": true,
+          "x_op_id_header_exact": true,
+          "message_id_header_exact": true,
+          "plain_search_finds": true,
+          "message_id_filter_finds": true,
+          "header_filter_status": 200,
+          "header_filter_finds": false
+        }
+      ],
+      "plain_search_matches_header_values": false,
+      "search_summary": "plain search matches subject/body only (header-only uuid not found)",
+      "delete_via_api": {
+        "status": 200,
+        "total_after": 2,
+        "ok": true,
+        "note": "deletes from the capture store only; this is not 'unsending'"
+      }
+    },
+    "tigerbeetle": {
+      "attempt_default_seccomp": {
+        "compose_rc": 0,
+        "started": false,
+        "time_to_listening_s": null,
+        "log_tail": "tigerbeetle-1  | 2026-09-30 23:35:00.213Z warning: a cluster id of 0 is reserved for testing and benchmarking, do not use in production\ntigerbeetle-1  | 2026-09-30 23:35:00.213Z warning: omit --cluster=0 to randomly generate a suitable id\ntigerbeetle-1  | \ntigerbeetle-1  | 2026-09-30 23:35:00.213Z error(io): io_uring is not available\ntigerbeetle-1  | 2026-09-30 23:35:00.213Z error(io): likely cause: the syscall is disabled by sysctl, try 'sysctl -w kernel.io_uring_disabled=0'\ntigerbeetle-1  | 2026-09-30 23:35:00.213Z error: PermissionDenied"
+      },
+      "attempt_seccomp_unconfined": {
+        "compose_rc": 0,
+        "started": true,
+        "time_to_listening_s": 4.57,
+        "log_tail": "tigerbeetle-1  | 2026-09-30 23:36:34.457Z info(io): allocating 1.06298828125GiB...\ntigerbeetle-1  | 2026-09-30 23:36:35.306Z info(main): 0: formatted: cluster=0 replica_count=1\ntigerbeetle-1  | 2026-09-30 23:36:35.308Z info(io): opening \"0_0.tigerbeetle\"...\ntigerbeetle-1  | 2026-09-30 23:36:35.381Z warning(main): Grid cache size of 256MiB is small. See --cache-grid\ntigerbeetle-1  | 2026-09-30 23:36:35.496Z info(multiversioning): releases_bundled old: {  }\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(multiversioning): releases_bundled new: { 0.17.5, 0.17.6, 0.17.7, 0.17.8, 0.17.9 }\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): release=0.17.9\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): release_client_min=0.16.4\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): releases_bundled={ 0.17.5, 0.17.6, 0.17.7, 0.17.8, 0.17.9 }\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): git_commit=cc1c06a924e49b11089c521b2209d34c92caaf18\ntigerbeetle-1  | 2026-09-30 23:36:35.534Z info(journal): 0: slot_count=1024 size=1.000244140625GiB headers_size=256KiB prepares_size=1GiB\ntigerbeetle-1  | 2026-09-30 23:36:36.874Z info(replica): 0R: init: replica_count=1 quorum_view_change=1 quorum_replication=1 release=0.17.9\ntigerbeetle-1  | 2026-09-30 23:36:36.874Z info(replica): superblock release=0.17.9\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(replica): 0N: transition_to_normal_from_recovering_status: view=1 primary\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): multiversioning: upgrade polling disabled due to --development.\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): 0: Allocated 1677MiB during replica init\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): 0: Grid cache: 256MiB, LSM-tree manifests: 128MiB\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): 0: cluster=0: listening on net.SocketAddress{ .ip = 0.0.0.0, .port = 3001 }\ntigerbeetle-1  | 2026-09-30 23:36:37.036Z info(replica): 0N: state_machine_open_callback: sync_ops=0..0\ntigerbeetle-1  | 2026-09-30 23:36:37.573Z info(message_bus): 0: on_recv: from=vsr.Peer{ .unknown = void } orderly shutdown"
+      },
+      "started": true,
+      "needs_seccomp_unconfined": true,
+      "memory_allocated_log": "0: Allocated 1677MiB during replica init",
+      "checks": {
+        "create_accounts": [
+          "CREATED",
+          "CREATED"
+        ],
+        "first_request_s": 0.945,
+        "transfer_id_hex": "0x123456789abcdeffedcba98e111cf16",
+        "first_submit_status": "CREATED",
+        "second_submit_status": "EXISTS",
+        "duplicate_is_exists": true,
+        "lookup_found": true,
+        "debits_posted_a1": 10,
+        "credits_posted_a2": 10,
+        "applied_once": true,
+        "lookup_latency_median_ms": 9.109
+      }
+    },
+    "object_store_a_minio": {
+      "status": "failed: image not pullable",
+      "image": {
+        "requested": "minio/minio:latest",
+        "resolved_tag": null,
+        "digest": null
+      },
+      "healthy": false,
+      "pull_error": "Error response from daemon: pull access denied for minio/minio, repository does not exist or may require 'docker login'",
+      "fix_attempt": {
+        "image": "quay.io/minio/minio:latest",
+        "pull_error": "Error response from daemon: unknown: failed to resolve reference \"quay.io/minio/minio:latest\": unexpected status from HEAD request to https://quay.io/v2/minio/minio/manifests/latest: 401 UNAUTHORIZED",
+        "ok": false
+      }
+    },
+    "object_store_b_seaweedfs": {
+      "endpoint": "http://localhost:8333",
+      "create_bucket": "ok",
+      "put_s": 0.252,
+      "head_metadata": {
+        "op-id": "4315a4e4-4f65-4beb-9429-32200970b81f"
+      },
+      "metadata_roundtrip_ok": true,
+      "if_none_match_star": {
+        "first": "accepted",
+        "second": {
+          "http_status": 412,
+          "code": "PreconditionFailed",
+          "message": "At least one of the pre-conditions you specified did not hold"
+        },
+        "stored_body_after": "A",
+        "second_rejected_412": true,
+        "silently_overwrote": false
+      },
+      "list_by_prefix": {
+        "count": 5,
+        "expected": 5,
+        "ok": true
+      }
+    },
+    "redis": {
+      "server_version": "7.4.11",
+      "xadd_xrange_ok": true,
+      "xadd_id": "1790811416695-0",
+      "set_nx": {
+        "first": true,
+        "second": null,
+        "value_after": "1",
+        "second_rejected": true
+      },
+      "ping": {
+        "n": 20,
+        "median_ms": 0.886,
+        "min_ms": 0.757,
+        "max_ms": 1.288
+      },
+      "xadd": {
+        "n": 20,
+        "median_ms": 0.481,
+        "min_ms": 0.331,
+        "max_ms": 1.013
+      }
+    },
+    "toxiproxy": {
+      "version": "{\"version\": \"2.12.0\"}",
+      "proxies_created": {
+        "pg": 201,
+        "gitea": 201
+      },
+      "baseline": {
+        "pg_direct": {
+          "n": 20,
+          "median_ms": 0.817,
+          "min_ms": 0.652,
+          "max_ms": 4.085
+        },
+        "pg_via_proxy": {
+          "n": 20,
+          "median_ms": 1.672,
+          "min_ms": 1.39,
+          "max_ms": 4.321
+        },
+        "gitea_direct": {
+          "n": 20,
+          "median_ms": 2.682,
+          "min_ms": 1.541,
+          "max_ms": 8.154
+        },
+        "gitea_via_proxy": {
+          "n": 20,
+          "median_ms": 1.705,
+          "min_ms": 1.157,
+          "max_ms": 7.766
+        }
+      },
+      "toxics": [
+        {
+          "toxic": "latency_5s_downstream",
+          "spec": {
+            "type": "latency",
+            "stream": "downstream",
+            "attributes": {
+              "latency": 5000,
+              "jitter": 0
+            }
+          },
+          "postgres": {
+            "outcome": "success",
+            "exception": null,
+            "elapsed_s": 5.011,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": false,
+            "toxic_add_status": 200
+          },
+          "gitea": {
+            "outcome": "success",
+            "exception": null,
+            "elapsed_s": 5.635,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": false,
+            "toxic_add_status": 200
+          }
+        },
+        {
+          "toxic": "timeout_0_downstream",
+          "spec": {
+            "type": "timeout",
+            "stream": "downstream",
+            "attributes": {
+              "timeout": 0
+            }
+          },
+          "postgres": {
+            "outcome": "no response within client deadline 15s",
+            "exception": null,
+            "elapsed_s": 15.006,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": true,
+            "toxic_add_status": 200
+          },
+          "gitea": {
+            "outcome": "error",
+            "exception": {
+              "type": "httpx.ReadTimeout",
+              "message": "timed out"
+            },
+            "elapsed_s": 14.479,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": true,
+            "toxic_add_status": 200
+          }
+        },
+        {
+          "toxic": "reset_peer_downstream",
+          "spec": {
+            "type": "reset_peer",
+            "stream": "downstream",
+            "attributes": {
+              "timeout": 0
+            }
+          },
+          "postgres": {
+            "outcome": "error",
+            "exception": {
+              "type": "psycopg.OperationalError",
+              "message": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+            },
+            "elapsed_s": 0.007,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": true,
+            "toxic_add_status": 200
+          },
+          "gitea": {
+            "outcome": "error",
+            "exception": {
+              "type": "httpx.RemoteProtocolError",
+              "message": "Server disconnected without sending a response."
+            },
+            "elapsed_s": 0.478,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": true,
+            "toxic_add_status": 200
+          }
+        },
+        {
+          "toxic": "limit_data_downstream_16B",
+          "spec": {
+            "type": "limit_data",
+            "stream": "downstream",
+            "attributes": {
+              "bytes": 16
+            }
+          },
+          "postgres": {
+            "outcome": "error",
+            "exception": {
+              "type": "psycopg.OperationalError",
+              "message": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+            },
+            "elapsed_s": 0.008,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": true,
+            "toxic_add_status": 200
+          },
+          "gitea": {
+            "outcome": "error",
+            "exception": {
+              "type": "httpx.RemoteProtocolError",
+              "message": "Server disconnected without sending a response."
+            },
+            "elapsed_s": 0.458,
+            "write_reached_upstream": true,
+            "committed_but_response_lost": true,
+            "toxic_add_status": 200
+          }
+        }
+      ],
+      "toxics_producing_committed_but_response_lost": [
+        "limit_data_downstream_16B:gitea",
+        "limit_data_downstream_16B:postgres",
+        "reset_peer_downstream:gitea",
+        "reset_peer_downstream:postgres",
+        "timeout_0_downstream:gitea",
+        "timeout_0_downstream:postgres"
+      ],
+      "toxics_where_write_never_reached_upstream": []
+    },
+    "temporal": {
+      "mode": "image temporalio/temporal:latest `server start-dev`",
+      "sdk_version": "1.34.0",
+      "server_cli_version": "temporal version 1.9.1 (Server 1.32.0, UI 2.54.1)",
+      "client_connect_s": 0.157,
+      "server_version": "1.32.0",
+      "workflow_s": 1.323,
+      "final_attempt": 2,
+      "rows_afterwards": 2,
+      "at_least_once_confirmed": true
+    },
+    "dbos": {
+      "dbos_version": "3.2.0",
+      "launch_s": 1.471,
+      "final_attempt": 2,
+      "workflow_s": 0.396,
+      "rows_afterwards": 2,
+      "at_least_once_confirmed": true
+    }
+  },
+  "step5_resources": {
+    "services_running": [
+      "gitea",
+      "mailpit",
+      "postgres",
+      "redis",
+      "seaweedfs",
+      "temporal",
+      "tigerbeetle",
+      "toxiproxy"
+    ],
+    "docker_stats": [
+      {
+        "name": "actrec-inv-tigerbeetle-1",
+        "cpu": "0.62%",
+        "mem": "1.668GiB / 7.602GiB",
+        "mem_pct": "21.94%"
+      },
+      {
+        "name": "actrec-inv-temporal-1",
+        "cpu": "0.46%",
+        "mem": "90.94MiB / 7.602GiB",
+        "mem_pct": "1.17%"
+      },
+      {
+        "name": "actrec-inv-toxiproxy-1",
+        "cpu": "0.00%",
+        "mem": "5.461MiB / 7.602GiB",
+        "mem_pct": "0.07%"
+      },
+      {
+        "name": "actrec-inv-redis-1",
+        "cpu": "6.26%",
+        "mem": "3.836MiB / 7.602GiB",
+        "mem_pct": "0.05%"
+      },
+      {
+        "name": "actrec-inv-seaweedfs-1",
+        "cpu": "0.76%",
+        "mem": "74.88MiB / 7.602GiB",
+        "mem_pct": "0.96%"
+      },
+      {
+        "name": "actrec-inv-mailpit-1",
+        "cpu": "7.35%",
+        "mem": "14.09MiB / 7.602GiB",
+        "mem_pct": "0.18%"
+      },
+      {
+        "name": "actrec-inv-gitea-1",
+        "cpu": "5.17%",
+        "mem": "210.3MiB / 7.602GiB",
+        "mem_pct": "2.70%"
+      },
+      {
+        "name": "actrec-inv-postgres-1",
+        "cpu": "9.09%",
+        "mem": "63.58MiB / 7.602GiB",
+        "mem_pct": "0.82%"
+      }
+    ],
+    "docker_mem_total_used_mib": 2171.1,
+    "host_ram_gb": {
+      "total": 15.69,
+      "free": 0.97
+    },
+    "seaweedfs_version": "version 30GB 4.48 530be3e37 linux amd64",
+    "redis_image_version": "Redis server v=7.4.11 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=9e01046925f71771"
+  },
+  "step6_network": {
+    "proxy_env": "none set",
+    "hosts": {
+      "pypi.org": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          200,
+          200,
+          200
+        ],
+        "median_ms": 491.0
+      },
+      "github.com": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          200,
+          200,
+          200
+        ],
+        "median_ms": 607.3
+      },
+      "ghcr.io": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          405,
+          405,
+          405
+        ],
+        "median_ms": 896.9
+      },
+      "registry-1.docker.io": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          404,
+          404,
+          404
+        ],
+        "median_ms": 540.5
+      },
+      "api.openai.com": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          421,
+          421,
+          421
+        ],
+        "median_ms": 697.2
+      },
+      "generativelanguage.googleapis.com": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          404,
+          404,
+          404
+        ],
+        "median_ms": 827.4
+      },
+      "api.groq.com": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          404,
+          404,
+          404
+        ],
+        "median_ms": 668.5
+      },
+      "openrouter.ai": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          200,
+          200,
+          200
+        ],
+        "median_ms": 657.4
+      },
+      "huggingface.co": {
+        "dns": true,
+        "https_reachable": true,
+        "statuses": [
+          200,
+          200,
+          200
+        ],
+        "median_ms": 575.6
+      }
+    }
+  },
+  "step7_models": {
+    "env_keys": {
+      "OPENAI_API_KEY": {
+        "non_empty": true
+      },
+      "GEMINI_API_KEY": {
+        "non_empty": false
+      },
+      "GROQ_API_KEY": {
+        "non_empty": true
+      },
+      "OPENROUTER_API_KEY": {
+        "non_empty": false
+      },
+      "OLLAMA_BASE_URL": {
+        "non_empty": true
+      },
+      "MAX_SPEND_USD": {
+        "non_empty": true
+      },
+      "MAX_SPEND_PER_RUN_USD": {
+        "non_empty": true
+      },
+      "POSTGRES_PASSWORD": {
+        "non_empty": true
+      },
+      "GITEA_ADMIN_PASSWORD": {
+        "non_empty": true
+      },
+      "MINIO_ROOT_USER": {
+        "non_empty": true
+      },
+      "MINIO_ROOT_PASSWORD": {
+        "non_empty": true
+      }
+    },
+    "providers": {
+      "openai": {
+        "key_present": true,
+        "called": "https://api.openai.com/v1/models",
+        "http_status": 200,
+        "model_count": 133
+      },
+      "gemini": {
+        "key_present": false,
+        "called": false
+      },
+      "groq": {
+        "key_present": true,
+        "called": "https://api.groq.com/openai/v1/models",
+        "http_status": 200,
+        "model_count": 11
+      },
+      "openrouter": {
+        "key_present": false,
+        "called": false
+      }
+    },
+    "local": {
+      "ollama_version": "ollama version is 0.34.4",
+      "ollama_server_running": true,
+      "ollama_list": [
+        "NAME                       ID              SIZE      MODIFIED     ",
+        "qwen2.5:1.5b               65ec06548149    986 MB    2 days ago      ",
+        "qwen2.5:3b                 357c53fb659c    1.9 GB    2 days ago      ",
+        "llama3.1:8b                46e0c10c039e    4.9 GB    7 months ago    ",
+        "phi3:latest                4f2222927938    2.2 GB    9 months ago    ",
+        "llama3:8b                  365c0bd3c000    4.7 GB    9 months ago    ",
+        "llama3:latest              365c0bd3c000    4.7 GB    9 months ago    ",
+        "nomic-embed-text:latest    0a109f422b47    274 MB    9 months ago"
+      ],
+      "ollama_models": [
+        {
+          "name": "qwen2.5:1.5b",
+          "size_gb": 0.99,
+          "parameter_size": "1.5B",
+          "quantization": "Q4_K_M",
+          "family": "qwen2"
+        },
+        {
+          "name": "qwen2.5:3b",
+          "size_gb": 1.93,
+          "parameter_size": "3.1B",
+          "quantization": "Q4_K_M",
+          "family": "qwen2"
+        },
+        {
+          "name": "llama3.1:8b",
+          "size_gb": 4.92,
+          "parameter_size": "8.0B",
+          "quantization": "Q4_K_M",
+          "family": "llama"
+        },
+        {
+          "name": "phi3:latest",
+          "size_gb": 2.18,
+          "parameter_size": "3.8B",
+          "quantization": "Q4_0",
+          "family": "phi3"
+        },
+        {
+          "name": "llama3:8b",
+          "size_gb": 4.66,
+          "parameter_size": "8.0B",
+          "quantization": "Q4_0",
+          "family": "llama"
+        },
+        {
+          "name": "llama3:latest",
+          "size_gb": 4.66,
+          "parameter_size": "8.0B",
+          "quantization": "Q4_0",
+          "family": "llama"
+        },
+        {
+          "name": "nomic-embed-text:latest",
+          "size_gb": 0.27,
+          "parameter_size": "137M",
+          "quantization": "F16",
+          "family": "nomic-bert"
+        }
+      ],
+      "ollama_ps_loaded": [
+        "NAME    ID    SIZE    PROCESSOR    CONTEXT    UNTIL"
+      ],
+      "gpu_offload_note": "visible only for loaded models via `ollama ps` (PROCESSOR column); no model was loaded or pulled",
+      "lm_studio": {
+        "installed": false,
+        "paths_found": [],
+        "lms_cli": false
+      }
+    }
+  },
+  "step8_repositories": {
+    "repos": [
+      {
+        "url": "https://github.com/shushuyang231/ambiguous-tool-outcomes-benchmark",
+        "reachable": true,
+        "commit": "4b626e7cde61ec9275a30e23982d146ee6f4e65d",
+        "commit_date": "2026-08-11",
+        "top_level": [
+          ".env.example",
+          ".gitignore",
+          "ARTIFACT_CANDIDATE_MANIFEST.json",
+          "CHANGELOG.md",
+          "CITATION.cff",
+          "LICENSE",
+          "LICENSE-DATA.md",
+          "README.md",
+          "configs/",
+          "data/",
+          "paper/",
+          "prompts/",
+          "protocol/",
+          "pyproject.toml",
+          "research_sqj_v1_4.md",
+          "runs/",
+          "scripts/",
+          "src/",
+          "tests/",
+          "tools/"
+        ],
+        "license_files": [
+          "LICENSE",
+          "LICENSE-DATA.md"
+        ],
+        "license_first_line": "MIT License",
+        "size_mb_working_tree": 10.23,
+        "runtime_markers": [
+          "Python"
+        ],
+        "github_languages": {
+          "Python": 1235326,
+          "PostScript": 541932,
+          "BibTeX Style": 146013,
+          "PowerShell": 134782,
+          "TeX": 122046
+        },
+        "github_license_spdx": "MIT",
+        "stars": 0,
+        "description": "Counterfactual benchmark for LLM agent recovery from ambiguous tool outcomes"
+      },
+      {
+        "url": "https://github.com/gssanjana4/idempotencybench",
+        "reachable": true,
+        "commit": "1b9b30fd37f983d6e2eb0ebf535bfcb1086fb311",
+        "commit_date": "2026-07-25",
+        "top_level": [
+          ".gitignore",
+          "CITATION.cff",
+          "LICENSE",
+          "README.md",
+          "figures/",
+          "paper.pdf",
+          "results/",
+          "run_tests.py",
+          "src/"
+        ],
+        "license_files": [
+          "LICENSE"
+        ],
+        "license_first_line": "MIT License",
+        "size_mb_working_tree": 5.8,
+        "runtime_markers": [],
+        "github_languages": {
+          "Python": 64257
+        },
+        "github_license_spdx": "MIT",
+        "stars": 0,
+        "description": "Do LLM agents act exactly once? Benchmark measuring duplicate side effects (IVR) under retries. 320 tasks, full transcripts."
+      },
+      {
+        "url": "https://github.com/flame-stream/mcp-annotation-census",
+        "reachable": true,
+        "commit": "5c24643d447402fc7bf8096555f72859b2c126cb",
+        "commit_date": "2026-08-29",
+        "top_level": [
+          ".gitattributes",
+          ".gitignore",
+          "LICENSE",
+          "README.md",
+          "REPORT.md",
+          "audit_heuristic.py",
+          "census.py",
+          "output_full2/",
+          "requirements.txt",
+          "test_census.py"
+        ],
+        "license_files": [
+          "LICENSE"
+        ],
+        "license_first_line": "MIT License",
+        "size_mb_working_tree": 105.13,
+        "runtime_markers": [
+          "Python"
+        ],
+        "github_languages": {
+          "Python": 69121
+        },
+        "github_license_spdx": "MIT",
+        "stars": 0,
+        "description": null
+      }
+    ],
+    "limbo_search": {
+      "queries": {
+        "LIMBO benchmark exactly-once": [],
+        "\"Where Does Exactly-Once Live\"": [
+          "https://github.com/jaxblack/limbo-bench"
+        ],
+        "2609.29095": [],
+        "limbo exactly-once agents": [
+          "https://github.com/jaxblack/limbo-bench"
+        ],
+        "LIMBO in:name exactly-once in:description": [
+          "https://github.com/jaxblack/limbo-bench"
+        ]
+      },
+      "candidates": [
+        {
+          "url": "https://github.com/jaxblack/limbo-bench",
+          "description": "LIMBO: how LLM agents recover when a write's outcome is uncertain (timeouts, late commits, redelivery). Code and data for 'Where Does Exactly-Once Live?'",
+          "created_at": "2026-09-24T07:07:00Z",
+          "pushed_at": "2026-09-26T03:29:59Z",
+          "stars": 0,
+          "license_spdx": "MIT",
+          "language": "Python",
+          "readme_cites_arxiv_2609_29095": false,
+          "readme_cites_title": false,
+          "verified": false
+        }
+      ],
+      "result": "https://github.com/jaxblack/limbo-bench"
+    },
+    "note": "shallow clones in external/ (git-ignored); no code from them was executed"
+  },
+  "cleanup": {
+    "compose_down_rc": 0,
+    "compose_down_err": null,
+    "containers_left": [],
+    "volumes_left": [],
+    "networks_left": [],
+    "images_kept": [
+      "axllent/mailpit:latest",
+      "chrislusf/seaweedfs:latest",
+      "ghcr.io/shopify/toxiproxy:latest",
+      "ghcr.io/tigerbeetle/tigerbeetle:latest",
+      "gitea/gitea:1.24",
+      "hello-world:latest",
+      "postgres:16",
+      "redis:7",
+      "redis:7-alpine",
+      "temporalio/temporal:latest"
+    ],
+    "clean": true
+  }
+}

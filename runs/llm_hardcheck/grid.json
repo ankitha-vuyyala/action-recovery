@@ -1,0 +1,9 @@
+{
+ "n_total": 28,
+ "n_todo": 14,
+ "started": "2026-10-01 17:59:56",
+ "preset": "llm_hardcheck",
+ "driver": "llm:gpt-5.6-luna",
+ "repeats": 1,
+ "freeze_digest": null
+}

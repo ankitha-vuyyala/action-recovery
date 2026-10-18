@@ -1,0 +1,20 @@
+{
+  "stamp": "20260930-215512",
+  "trials": 10,
+  "deadline_s": 4.0,
+  "delay_s": 12.0,
+  "toxiproxy": "{\"version\": \"2.12.0\"}",
+  "services": [
+    "mail",
+    "s3_put"
+  ],
+  "modes": [
+    "none",
+    "lost_ack",
+    "not_exec_err",
+    "held",
+    "not_exec_to",
+    "late",
+    "redelivery"
+  ]
+}

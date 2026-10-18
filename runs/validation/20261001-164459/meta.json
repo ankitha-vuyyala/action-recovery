@@ -1,0 +1,26 @@
+{
+  "stamp": "20261001-164459",
+  "trials": 10,
+  "deadline_s": 4.0,
+  "delay_s": 12.0,
+  "toxiproxy": "{\"version\": \"2.12.0\"}",
+  "services": [
+    "gitea_issue",
+    "mail",
+    "pg_row",
+    "redis_stream",
+    "redis_counter",
+    "tb_transfer",
+    "s3_put",
+    "pg_batch"
+  ],
+  "modes": [
+    "none",
+    "lost_ack",
+    "not_exec_err",
+    "held",
+    "not_exec_to",
+    "late",
+    "redelivery"
+  ]
+}

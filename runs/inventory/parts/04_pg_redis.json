@@ -1,0 +1,41 @@
+{
+  "postgres": {
+    "server_version": "16.15 (Debian 16.15-1.pgdg13+2)",
+    "insert_select_ok": true,
+    "select_by_op_id_roundtrip": {
+      "n": 20,
+      "median_ms": 0.85,
+      "min_ms": 0.75,
+      "max_ms": 2.489
+    },
+    "insert_autocommit_roundtrip": {
+      "n": 20,
+      "median_ms": 1.941,
+      "min_ms": 1.222,
+      "max_ms": 3.263
+    }
+  },
+  "redis": {
+    "server_version": "7.4.11",
+    "xadd_xrange_ok": true,
+    "xadd_id": "1790811416695-0",
+    "set_nx": {
+      "first": true,
+      "second": null,
+      "value_after": "1",
+      "second_rejected": true
+    },
+    "ping": {
+      "n": 20,
+      "median_ms": 0.886,
+      "min_ms": 0.757,
+      "max_ms": 1.288
+    },
+    "xadd": {
+      "n": 20,
+      "median_ms": 0.481,
+      "min_ms": 0.331,
+      "max_ms": 1.013
+    }
+  }
+}

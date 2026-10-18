@@ -1,0 +1,48 @@
+{
+  "version": "v1.31.3",
+  "list_total": 3,
+  "list_ok": true,
+  "messages": [
+    {
+      "where_uuid": "header-only",
+      "smtp_send_s": 0.083,
+      "message_id_listed_exact": true,
+      "x_op_id_header_exact": true,
+      "message_id_header_exact": true,
+      "plain_search_finds": false,
+      "message_id_filter_finds": true,
+      "header_filter_status": 200,
+      "header_filter_finds": false
+    },
+    {
+      "where_uuid": "header+body",
+      "smtp_send_s": 0.039,
+      "message_id_listed_exact": true,
+      "x_op_id_header_exact": true,
+      "message_id_header_exact": true,
+      "plain_search_finds": true,
+      "message_id_filter_finds": true,
+      "header_filter_status": 200,
+      "header_filter_finds": false
+    },
+    {
+      "where_uuid": "header+subject",
+      "smtp_send_s": 0.025,
+      "message_id_listed_exact": true,
+      "x_op_id_header_exact": true,
+      "message_id_header_exact": true,
+      "plain_search_finds": true,
+      "message_id_filter_finds": true,
+      "header_filter_status": 200,
+      "header_filter_finds": false
+    }
+  ],
+  "plain_search_matches_header_values": false,
+  "search_summary": "plain search matches subject/body only (header-only uuid not found)",
+  "delete_via_api": {
+    "status": 200,
+    "total_after": 2,
+    "ok": true,
+    "note": "deletes from the capture store only; this is not 'unsending'"
+  }
+}

@@ -1,0 +1,1036 @@
+{
+  "cells": {
+    "gitea_issue|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.013,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "gitea_issue|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.013,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "gitea_issue|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:httpx.RemoteProtocolError:Server disconnected without sending a response.": 3
+      },
+      "elapsed_median_s": 0.407,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "gitea_issue|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.483,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "gitea_issue|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:httpx.RemoteProtocolError:Server disconnected without sending a response.": 3
+      },
+      "elapsed_median_s": 0.454,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "gitea_issue|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.014,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "gitea_issue|redelivery": {
+      "n": 3,
+      "expected": 2,
+      "realized": {
+        "2": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.635,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.003,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.008,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "mail|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:smtplib.SMTPDataError:(#, b'')": 3
+      },
+      "elapsed_median_s": 0.043,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.011,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "mail|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:smtplib.SMTPServerDisconnected:Connection unexpectedly closed": 3
+      },
+      "elapsed_median_s": 0.035,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.012,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|redelivery": {
+      "n": 3,
+      "expected": 2,
+      "realized": {
+        "2": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.014,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_batch|none": {
+      "n": 3,
+      "expected": 6,
+      "realized": {
+        "6": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.038,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_batch|partial": {
+      "n": 3,
+      "expected": 3,
+      "realized": {
+        "3": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:psycopg.OperationalError:consuming input failed: server closed the connection unexpectedly\n\tThis probably": 3
+      },
+      "elapsed_median_s": 0.068,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_row|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.004,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_row|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.006,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "pg_row|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:psycopg.OperationalError:consuming input failed: server closed the connection unexpectedly\n\tThis probably": 3
+      },
+      "elapsed_median_s": 0.041,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_row|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.03,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "pg_row|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:psycopg.OperationalError:consuming input failed: server closed the connection unexpectedly\n\tThis probably": 3
+      },
+      "elapsed_median_s": 0.056,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_row|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.01,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "pg_row|redelivery": {
+      "n": 3,
+      "expected": 2,
+      "realized": {
+        "2": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.038,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.007,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.01,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:redis.exceptions.ConnectionError:Connection closed by server.": 3
+      },
+      "elapsed_median_s": 0.021,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.016,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:redis.exceptions.ConnectionError:Connection closed by server.": 3
+      },
+      "elapsed_median_s": 0.031,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.004,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_counter|redelivery": {
+      "n": 3,
+      "expected": 2,
+      "realized": {
+        "2": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.021,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_stream|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.006,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_stream|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.005,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "redis_stream|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:redis.exceptions.ConnectionError:Connection closed by server.": 3
+      },
+      "elapsed_median_s": 0.021,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_stream|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.021,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "redis_stream|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:redis.exceptions.ConnectionError:Connection closed by server.": 3
+      },
+      "elapsed_median_s": 0.039,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_stream|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.007,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "redis_stream|redelivery": {
+      "n": 3,
+      "expected": 2,
+      "realized": {
+        "2": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.029,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.015,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.011,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 0.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:botocore.exceptions.ConnectionClosedError:Connection was closed before we received a valid response from endpoint URL: \"ht": 3
+      },
+      "elapsed_median_s": 0.041,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.051,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "s3_put|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 3
+      },
+      "signatures": {
+        "error:botocore.exceptions.ConnectionClosedError:Connection was closed before we received a valid response from endpoint URL: \"ht": 3
+      },
+      "elapsed_median_s": 0.037,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.005,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|redelivery": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.036,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "tb_transfer|held": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.012,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "tb_transfer|late": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.014,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "tb_transfer|lost_ack": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.012,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "tb_transfer|none": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.977,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "tb_transfer|not_exec_err": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 0.0,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.011,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "tb_transfer|not_exec_to": {
+      "n": 3,
+      "expected": 0,
+      "realized": {
+        "0": 2,
+        "1": 1
+      },
+      "as_intended_rate": 0.667,
+      "client_kinds": {
+        "timeout": 3
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 3
+      },
+      "elapsed_median_s": 4.007,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "tb_transfer|redelivery": {
+      "n": 3,
+      "expected": 1,
+      "realized": {
+        "1": 3
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 3
+      },
+      "signatures": {
+        "ok": 3
+      },
+      "elapsed_median_s": 0.995,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    }
+  },
+  "observation_equivalence": {
+    "gitea_issue|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.407,
+        "not_exec_err": 0.454
+      },
+      "equivalent": true
+    },
+    "gitea_issue|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.013,
+        "not_exec_to": 4.014,
+        "late": 4.013
+      },
+      "equivalent": true
+    },
+    "mail|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 1.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.043,
+        "not_exec_err": 0.035
+      },
+      "equivalent": false
+    },
+    "mail|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.003,
+        "not_exec_to": 4.012,
+        "late": 4.008
+      },
+      "equivalent": true
+    },
+    "pg_row|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.041,
+        "not_exec_err": 0.056
+      },
+      "equivalent": true
+    },
+    "pg_row|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.004,
+        "not_exec_to": 4.01,
+        "late": 4.006
+      },
+      "equivalent": true
+    },
+    "redis_counter|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.021,
+        "not_exec_err": 0.031
+      },
+      "equivalent": true
+    },
+    "redis_counter|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.007,
+        "not_exec_to": 4.004,
+        "late": 4.01
+      },
+      "equivalent": true
+    },
+    "redis_stream|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.021,
+        "not_exec_err": 0.039
+      },
+      "equivalent": true
+    },
+    "redis_stream|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.006,
+        "not_exec_to": 4.007,
+        "late": 4.005
+      },
+      "equivalent": true
+    },
+    "s3_put|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.041,
+        "not_exec_err": 0.037
+      },
+      "equivalent": true
+    },
+    "s3_put|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.015,
+        "not_exec_to": 4.005,
+        "late": 4.011
+      },
+      "equivalent": true
+    },
+    "tb_transfer|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 4.012,
+        "not_exec_err": 4.011
+      },
+      "equivalent": true
+    },
+    "tb_transfer|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.012,
+        "not_exec_to": 4.007,
+        "late": 4.014
+      },
+      "equivalent": true
+    }
+  },
+  "inflight_threads_left_at_end": 0
+}

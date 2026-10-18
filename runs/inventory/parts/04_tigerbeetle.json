@@ -1,0 +1,33 @@
+{
+  "attempt_default_seccomp": {
+    "compose_rc": 0,
+    "started": false,
+    "time_to_listening_s": null,
+    "log_tail": "tigerbeetle-1  | 2026-09-30 23:35:00.213Z warning: a cluster id of 0 is reserved for testing and benchmarking, do not use in production\ntigerbeetle-1  | 2026-09-30 23:35:00.213Z warning: omit --cluster=0 to randomly generate a suitable id\ntigerbeetle-1  | \ntigerbeetle-1  | 2026-09-30 23:35:00.213Z error(io): io_uring is not available\ntigerbeetle-1  | 2026-09-30 23:35:00.213Z error(io): likely cause: the syscall is disabled by sysctl, try 'sysctl -w kernel.io_uring_disabled=0'\ntigerbeetle-1  | 2026-09-30 23:35:00.213Z error: PermissionDenied"
+  },
+  "attempt_seccomp_unconfined": {
+    "compose_rc": 0,
+    "started": true,
+    "time_to_listening_s": 4.57,
+    "log_tail": "tigerbeetle-1  | 2026-09-30 23:36:34.457Z info(io): allocating 1.06298828125GiB...\ntigerbeetle-1  | 2026-09-30 23:36:35.306Z info(main): 0: formatted: cluster=0 replica_count=1\ntigerbeetle-1  | 2026-09-30 23:36:35.308Z info(io): opening \"0_0.tigerbeetle\"...\ntigerbeetle-1  | 2026-09-30 23:36:35.381Z warning(main): Grid cache size of 256MiB is small. See --cache-grid\ntigerbeetle-1  | 2026-09-30 23:36:35.496Z info(multiversioning): releases_bundled old: {  }\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(multiversioning): releases_bundled new: { 0.17.5, 0.17.6, 0.17.7, 0.17.8, 0.17.9 }\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): release=0.17.9\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): release_client_min=0.16.4\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): releases_bundled={ 0.17.5, 0.17.6, 0.17.7, 0.17.8, 0.17.9 }\ntigerbeetle-1  | 2026-09-30 23:36:35.531Z info(main): git_commit=cc1c06a924e49b11089c521b2209d34c92caaf18\ntigerbeetle-1  | 2026-09-30 23:36:35.534Z info(journal): 0: slot_count=1024 size=1.000244140625GiB headers_size=256KiB prepares_size=1GiB\ntigerbeetle-1  | 2026-09-30 23:36:36.874Z info(replica): 0R: init: replica_count=1 quorum_view_change=1 quorum_replication=1 release=0.17.9\ntigerbeetle-1  | 2026-09-30 23:36:36.874Z info(replica): superblock release=0.17.9\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(replica): 0N: transition_to_normal_from_recovering_status: view=1 primary\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): multiversioning: upgrade polling disabled due to --development.\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): 0: Allocated 1677MiB during replica init\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): 0: Grid cache: 256MiB, LSM-tree manifests: 128MiB\ntigerbeetle-1  | 2026-09-30 23:36:37.033Z info(main): 0: cluster=0: listening on net.SocketAddress{ .ip = 0.0.0.0, .port = 3001 }\ntigerbeetle-1  | 2026-09-30 23:36:37.036Z info(replica): 0N: state_machine_open_callback: sync_ops=0..0\ntigerbeetle-1  | 2026-09-30 23:36:37.573Z info(message_bus): 0: on_recv: from=vsr.Peer{ .unknown = void } orderly shutdown"
+  },
+  "started": true,
+  "needs_seccomp_unconfined": true,
+  "memory_allocated_log": "0: Allocated 1677MiB during replica init",
+  "checks": {
+    "create_accounts": [
+      "CREATED",
+      "CREATED"
+    ],
+    "first_request_s": 0.945,
+    "transfer_id_hex": "0x123456789abcdeffedcba98e111cf16",
+    "first_submit_status": "CREATED",
+    "second_submit_status": "EXISTS",
+    "duplicate_is_exists": true,
+    "lookup_found": true,
+    "debits_posted_a1": 10,
+    "credits_posted_a2": 10,
+    "applied_once": true,
+    "lookup_latency_median_ms": 9.109
+  }
+}

@@ -1,0 +1,220 @@
+[
+  {
+    "api": "Slack Web API - chat.postMessage (POST https://slack.com/api/chat.postMessage)",
+    "native_key": "no - the documented argument list (token, channel, text, blocks, attachments, metadata, thread_ts, etc.) has no idempotency key or client_msg_id; no dedup/retry semantics are documented.",
+    "tag_field": "metadata (JSON {event_type, event_payload})",
+    "tag_visible_to_end_users": "unclear - chat.postMessage docs say metadata 'is accessible to any app or user who is a member of that workspace' (i.e. readable via API), but the fetched docs do not state whether the Slack client renders it.",
+    "exact_lookup": "list_only - conversations.history (and replies) return metadata when include_all_metadata=true; only oldest/latest/limit/cursor filters are documented, no filter on metadata or event_type.",
+    "reversible": "yes - chat.delete; a bot token may delete only messages posted by that bot.",
+    "class": "A-",
+    "notes": "Agent must page through channel history in a time window and match metadata.event_payload itself; message_metadata_posted events can also be subscribed to via the app manifest's metadata_subscriptions.",
+    "sources": [
+      "https://docs.slack.dev/reference/methods/chat.postMessage",
+      "https://docs.slack.dev/reference/methods/conversations.history",
+      "https://docs.slack.dev/reference/methods/chat.delete",
+      "https://docs.slack.dev/reference/events/message_metadata_posted/",
+      "https://docs.slack.dev/messaging/message-metadata/"
+    ]
+  },
+  {
+    "api": "Discord - Create Message (POST /channels/{channel.id}/messages)",
+    "native_key": "partial - 'nonce' (<=25 chars) plus enforce_nonce=true: 'it will be checked for uniqueness in the past few minutes. If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.' Retention window is only 'the past few minutes' (unspecified), scoped to the same author; without enforce_nonce the nonce is not deduplicated.",
+    "tag_field": "nonce (Message object field 'nonce?' - 'used for validating a message was sent'; create docs say the value 'will appear in the Message Create event'. Whether it is still returned on later GETs of the message is not documented.)",
+    "tag_visible_to_end_users": "unclear - not part of rendered content, but docs say it is included in the MESSAGE_CREATE gateway event; display behaviour not stated.",
+    "exact_lookup": "list_only - Get Channel Messages supports only around/before/after/limit; Search Guild Messages filters by content/author_id/channel_id etc. (returns 202 + retry_after when not yet indexed) but has no nonce filter.",
+    "reversible": "yes - Delete Message endpoint (also Bulk Delete Messages by message id).",
+    "class": "A-",
+    "notes": "enforce_nonce gives server-side dedup only for short-lived retries (minutes); beyond that window recovery depends on listing history, and becomes class C if nonce is not persisted on fetched messages (undocumented).",
+    "sources": [
+      "https://docs.discord.com/developers/resources/message",
+      "https://discord.com/developers/docs/resources/message"
+    ]
+  },
+  {
+    "api": "Microsoft Graph - user: sendMail (POST /me/sendMail, /users/{id}/sendMail), v1.0",
+    "native_key": "no - request body is {message, saveToSentItems}; no idempotency key or transaction id documented; returns 202 Accepted with an empty body (no message id).",
+    "tag_field": "singleValueExtendedProperties on the message (custom MAPI named property) - documented on POST /me/messages (create draft) followed by POST /me/messages/{id}/send, which 'saves the message in the Sent Items folder'; sendMail docs show internetMessageHeaders (custom x- headers) but do not document extended properties in sendMail.",
+    "tag_visible_to_end_users": "unclear - extended-property docs do not say whether the property is transmitted to recipients; custom internetMessageHeaders (x-...) are sent as Internet headers (not displayed in message body, but delivered to recipients).",
+    "exact_lookup": "exact - GET /me/mailFolders/{id}/messages?$filter=singleValueExtendedProperties/Any(ep: ep/id eq '{id}' and ep/value eq '{value}') is documented (eq/ne/contains/startswith for strings). internetMessageHeaders are not filterable.",
+    "reversible": "partial - v1.0 has no recall; beta-only message: recall (POST /me/mailFolders/sentitems/messages/{id}/recall) submits an Exchange recall request, which per Exchange docs cannot recall mail sent outside Exchange Online and by default fails for read messages.",
+    "class": "A",
+    "notes": "Docs do not explicitly confirm that an extended property set on a draft is preserved on the Sent Items copy, and sendMail returns no id, so the draft+send path with a tagged property is the documented route; eventual-consistency of the $filter is not stated.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/message-send?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/resources/message?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/singlevaluelegacyextendedproperty-post-singlevalueextendedproperties?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/singlevaluelegacyextendedproperty-get?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/resources/extended-properties-overview?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/message-recall?view=graph-rest-beta",
+      "https://learn.microsoft.com/exchange/mail-flow-best-practices/work-with-cloud-based-message-recall"
+    ]
+  },
+  {
+    "api": "Microsoft Graph - Send chatMessage in a channel (POST /teams/{team-id}/channels/{channel-id}/messages), v1.0",
+    "native_key": "no - no idempotency key or request id documented. (Only in import/migration mode is createdDateTime required to be unique to the millisecond, returning 409 Conflict on duplicates; application permission Teamwork.Migrate.All is supported only for migration.)",
+    "tag_field": "none - chatMessage has no custom metadata/extended properties or client-supplied id; writable fields (body, subject, attachments, mentions, importance, summary, etc.) are all user-visible content.",
+    "tag_visible_to_end_users": "n/a (no hidden tag field; any marker would have to go in visible content)",
+    "exact_lookup": "list_only - List channel messages supports only $top and $expand ('other OData query parameters aren't currently supported'); no $filter/search on content.",
+    "reversible": "partial - softDelete (and undoSoftDelete) exists but is delegated-only (ChannelMessage.ReadWrite; application permissions not supported); no hard delete.",
+    "class": "C",
+    "notes": "Normal (non-migration) sends require delegated ChannelMessage.Send, and duplicates can only be detected by listing recent messages and comparing visible content.",
+    "sources": [
+      "https://learn.microsoft.com/en-us/graph/api/channel-post-messages?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/resources/chatmessage?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/channel-list-messages?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/chatmessage-softdelete?view=graph-rest-1.0",
+      "https://learn.microsoft.com/en-us/graph/api/chatmessage-delta?view=graph-rest-1.0"
+    ]
+  },
+  {
+    "api": "Gmail API - users.messages.send (POST https://gmail.googleapis.com/gmail/v1/users/{userId}/messages/send)",
+    "native_key": "no - request body is a Message resource (raw RFC 2822, base64url); no idempotency key, request id, or duplicate handling documented.",
+    "tag_field": "custom MIME header in the raw message (e.g. X-Op-Id: <id>), or the Message-ID header (docs do not say whether Gmail preserves or rewrites a client-supplied Message-ID).",
+    "tag_visible_to_end_users": "no - a custom header is not part of the displayed body, but it is delivered to recipients in the message headers (Gmail docs do not discuss this explicitly).",
+    "exact_lookup": "search - users.messages.list q 'supports the same query format as the Gmail search box'; Gmail search operators include rfc822msgid: (message-id header) and header: ('search for emails with a specific custom header or header value'). Indexing lag is not documented. q cannot be used with the gmail.metadata scope.",
+    "reversible": "no - no unsend/recall API; messages.trash/delete only affect the sender's own mailbox copy.",
+    "class": "A-",
+    "notes": "messages.send returns the Message id/threadId when the response is received; after a lost response, recovery relies on Gmail search over the Sent mailbox, whose index freshness is unspecified.",
+    "sources": [
+      "https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/send",
+      "https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/list",
+      "https://developers.google.com/workspace/gmail/api/guides/sending",
+      "https://support.google.com/mail/answer/7190"
+    ]
+  },
+  {
+    "api": "SendGrid v3 - Mail Send (POST https://api.sendgrid.com/v3/mail/send)",
+    "native_key": "no - no idempotency key documented; 202 Accepted response.",
+    "tag_field": "custom_args ('values that are specific to the entire send that will be carried along with the email and its activity data', <=10,000 bytes); also custom headers (except reserved ones), categories (max 10), batch_id.",
+    "tag_visible_to_end_users": "no - unique/custom arguments are not visible to email recipients (Unique Arguments doc); stored as non-PII.",
+    "exact_lookup": "exact - Email Activity Feed API (GET /v3/messages?query=...) documents an equality filter unique_args['key']=\"value\" (Event Webhook docs: 'Unique arguments and custom arguments serve the same function'). Requires the paid 'additional email activity history' add-on; indexing delay not documented.",
+    "reversible": "partial - only scheduled sends: with batch_id + send_at a batch can be paused/cancelled, but not later than 10 minutes before send_at; delivered mail cannot be recalled.",
+    "class": "A",
+    "notes": "Exact lookup depends on a paid add-on, and the docs do not explicitly state that v3 custom_args are queried under the unique_args key (they are stated to be functionally equivalent).",
+    "sources": [
+      "https://www.twilio.com/docs/sendgrid/api-reference/mail-send/mail-send",
+      "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/getting-started-email-activity-api",
+      "https://www.twilio.com/docs/sendgrid/api-reference/email-activity/filter-all-messages",
+      "https://www.twilio.com/docs/sendgrid/for-developers/sending-email/unique-arguments",
+      "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/event",
+      "https://www.twilio.com/docs/sendgrid/api-reference/cancel-scheduled-sends/cancel-or-pause-a-scheduled-send"
+    ]
+  },
+  {
+    "api": "Mailgun - Send a message (POST /v3/{domain_name}/messages)",
+    "native_key": "no - no idempotency key for message sends (o:inbox-placement-test-key dedups inbox-placement test creation only, not message delivery).",
+    "tag_field": "o:tag (up to 3 per message, <=128 chars, max 100,000 tags per domain by default); also v:<var> custom variables and h:X-<header> custom headers.",
+    "tag_visible_to_end_users": "unclear for o:tag (docs do not say whether a tag header reaches the recipient). Note v: variables are 'visible in the delivered email's X-Mailgun-Variables header' (a header, not body).",
+    "exact_lookup": "exact - Events API GET /v3/{domain}/events has a 'tags' filter ('Filter by user defined tags'); retention 'at least 3 days' (Events API page; tracking guide says 30 days paid / 2 days free). Events API is marked deprecated in favor of the Logs API (POST /v1/analytics/logs), whose filter attributes were not retrievable from the docs. No filter on v: variables or custom headers is documented. Event latency is not documented.",
+    "reversible": "partial - DELETE /v3/{domain}/envelopes deletes all scheduled and undelivered mail from the domain queue (coarse, not per message); delivered mail cannot be recalled.",
+    "class": "A",
+    "notes": "Using a unique op id per message as an o:tag consumes the per-domain tag quota (100,000 by default), and the exact filter lives in a deprecated API with short retention.",
+    "sources": [
+      "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/post-v3--domain-name--messages",
+      "https://mailgun-docs.redoc.ly/docs/mailgun/api-reference/openapi-final/tag/Messages/",
+      "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/events/get-v3-domain_name-events",
+      "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/events",
+      "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/logs/post-v1-analytics-logs",
+      "https://documentation.mailgun.com/docs/mailgun/user-manual/tracking-messages/track-tagging",
+      "https://documentation.mailgun.com/docs/mailgun/faq/tracking",
+      "https://documentation.mailgun.com/docs/mailgun/user-manual/tracking-messages/tracking-messages",
+      "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/delete-v3--domain-name--envelopes"
+    ]
+  },
+  {
+    "api": "Twilio Programmable Messaging - Create a Message (POST /2010-04-01/Accounts/{AccountSid}/Messages.json)",
+    "native_key": "no - no idempotency key documented among the Create parameters.",
+    "tag_field": "none - no documented custom-metadata parameter; a 'Tags' field appears only inside one code example with no parameter-table entry and is not among the documented Message resource properties.",
+    "tag_visible_to_end_users": "n/a (no documented tag field; Body is visible to the recipient)",
+    "exact_lookup": "list_only - Read/list Messages filters only by To, From, DateSent, DateSentBefore, DateSentAfter.",
+    "reversible": "partial - a scheduled message can be canceled (update Status=canceled); for sent messages the API offers only Body redaction (Body='') and DELETE of the Message resource; no recall of delivered SMS is documented.",
+    "class": "C",
+    "notes": "After a lost response, an agent can only list messages by To/From/date and compare Body; the undocumented 'Tags' example should not be relied on.",
+    "sources": [
+      "https://www.twilio.com/docs/messaging/api/message-resource"
+    ]
+  },
+  {
+    "api": "Postmark - Send a single email (POST https://api.postmarkapp.com/email)",
+    "native_key": "no - no idempotency key documented for /email or /email/batch.",
+    "tag_field": "Metadata (custom key/value pairs; up to 10 fields, names <=20 chars, values <=80 chars); also Tag (<=1000 chars) and custom Headers.",
+    "tag_visible_to_end_users": "no - 'Metadata added to a message will not appear on the message received by the recipient(s).'",
+    "exact_lookup": "exact - Outbound message search GET /messages/outbound supports metadata_<key>=<value> ('Filter by metadata value ... only search by a single metadata field at a time') and tag=; count+offset <= 10,000; messages retained 45 days by default (configurable 7-365). Indexing delay not documented.",
+    "reversible": "no - no recall/cancel endpoint documented for sent email.",
+    "class": "A",
+    "notes": "Metadata filter is a documented server-side filter on a non-visible field, making it the cleanest 'tag then look up' pattern among the e-mail APIs examined.",
+    "sources": [
+      "https://postmarkapp.com/developer/api/email-api",
+      "https://postmarkapp.com/developer/api/messages-api",
+      "https://postmarkapp.com/support/article/1125-custom-metadata-faq"
+    ]
+  },
+  {
+    "api": "Amazon SES v2 - SendEmail (POST /v2/email/outbound-emails)",
+    "native_key": "no - no ClientToken or idempotency parameter in SendEmail.",
+    "tag_field": "EmailTags (MessageTag name/value, ASCII letters/digits/_/-, <=256 chars each; used for event publishing); also custom Headers in Content.Simple/Template.",
+    "tag_visible_to_end_users": "no - for the header form of tags (X-SES-MESSAGE-TAGS) the docs state 'Amazon SES removes the headers before sending the email'; custom Content Headers, by contrast, are delivered.",
+    "exact_lookup": "list_only - no API filters on EmailTags. GetMessageInsights returns EmailTags but only by SES MessageId; CreateExportJob (MessageInsightsDataSource) filters only by Destination, FromEmailAddress, Isp, LastDelivery/EngagementEvent, Subject, TenantName over a date range, max 10,000 results with a random sample beyond that. Requires Virtual Deliverability Manager; messages searchable for 30 days and appear 'within a few minutes from send time'.",
+    "reversible": "no - no cancel/recall of sent email.",
+    "class": "A-",
+    "notes": "Tags are mainly delivered through event publishing (SNS/Firehose/CloudWatch) rather than queried, and the random sampling above 10,000 results makes absence checks via export unreliable, so it is borderline C.",
+    "sources": [
+      "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html",
+      "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageTag.html",
+      "https://docs.aws.amazon.com/ses/latest/dg/event-publishing-send-email.html",
+      "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetMessageInsights.html",
+      "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateExportJob.html",
+      "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageInsightsDataSource.html",
+      "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageInsightsFilters.html",
+      "https://docs.aws.amazon.com/ses/latest/dg/vdm-dashboard.html"
+    ]
+  },
+  {
+    "api": "Telegram Bot API - sendMessage (POST https://api.telegram.org/bot<token>/sendMessage)",
+    "native_key": "no - no idempotency/dedup parameter (method's argument handling in the official telegram-bot-api server reads chat_id, message_thread_id, business_connection_id, reply_parameters, disable_notification, protect_content, allow_paid_broadcast, message_effect_id, direct_messages_topic_id, suggested post info, reply_markup and text fields; none is a dedup key).",
+    "tag_field": "none - no hidden client-controlled field on Message; all inputs are rendered content or delivery options.",
+    "tag_visible_to_end_users": "n/a (no hidden tag field)",
+    "exact_lookup": "none - the Bot API has no method to fetch a chat's message history or a bot's previously sent messages; bots only receive incoming updates (getUpdates/webhook, which keep updates at most 24 hours).",
+    "reversible": "partial - deleteMessage/deleteMessages exist, subject to documented limitations (age and permission restrictions); the official doc page was too large for the fetch tool to return the deleteMessage section verbatim, so the exact limits were not re-verified here.",
+    "class": "C",
+    "notes": "Method inventory was checked against the official tdlib/telegram-bot-api server source because core.telegram.org/bots/api truncated in the fetch tool before the sendMessage and deleteMessage sections.",
+    "sources": [
+      "https://core.telegram.org/bots/api",
+      "https://github.com/tdlib/telegram-bot-api/blob/master/telegram-bot-api/Client.cpp"
+    ]
+  },
+  {
+    "api": "WhatsApp Cloud API - Send message (POST /{Version}/{Phone-Number-ID}/messages)",
+    "native_key": "no - no idempotency or dedup parameter documented.",
+    "tag_field": "biz_opaque_callback_data (arbitrary string, <=512 chars)",
+    "tag_visible_to_end_users": "no - 'Cloud API does not process this field, it just returns it as part of sent/delivered/read message webhooks' (statuses object).",
+    "exact_lookup": "none - only POST is documented on the messages endpoint; no list/retrieve of sent messages; the tag is observable only in status webhooks.",
+    "reversible": "no - no delete/revoke endpoint for sent messages is documented.",
+    "class": "C",
+    "notes": "An agent must keep its own webhook-fed log (keyed by biz_opaque_callback_data or the returned wamid) to detect a prior send after a lost response.",
+    "sources": [
+      "https://developers.facebook.com/docs/whatsapp/cloud-api/reference/messages",
+      "https://developers.facebook.com/documentation/business-messaging/whatsapp/reference/whatsapp-business-phone-number/message-api",
+      "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/reference/messages/status"
+    ]
+  },
+  {
+    "api": "Intercom - Create a message (POST https://api.intercom.io/messages; admin-initiated) / Create a conversation (POST /conversations; contact-initiated)",
+    "native_key": "no - neither endpoint documents an idempotency key.",
+    "tag_field": "none in the create request (fields: message_type, subject, body, template, from, to, cc, bcc, created_at, create_conversation_without_contact_reply; conversations: from, body, subject, attachment_urls, created_at, brand_id). Conversation custom_attributes can only be set afterwards via PUT /conversations/{id}, which is not atomic with the send.",
+    "tag_visible_to_end_users": "n/a (no tag field at create time)",
+    "exact_lookup": "search - POST /conversations/search accepts source.subject and source.body (body matched per element/word, e.g. '=' 'support' matches 'I need support'), created_at, contact_ids, tag_ids, etc.; custom_attributes are not in the accepted-fields table. Indexing delay not documented.",
+    "reversible": "partial - DELETE /conversations/{id} permanently removes the conversation from the inbox (and from reporting with retain_metrics=false); an email already delivered cannot be recalled.",
+    "class": "C",
+    "notes": "Any operation id would have to go in visible subject/body text to be searchable, so the API offers no hidden atomic tag.",
+    "sources": [
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/messages/createmessage",
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/createconversation",
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/searchconversations",
+      "https://developers.intercom.com/docs/references/2.11/rest-api/api.intercom.io/conversations/searchconversations",
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/updateconversation",
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/conversations/deleteconversation"
+    ]
+  }
+]

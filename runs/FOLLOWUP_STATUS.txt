@@ -1,0 +1,13 @@
+2026-10-04 21:07:11 follow-up start
+2026-10-04 21:07:12 follow-up freeze written at 2026-10-05T01:07:12Z UTC, digest 87ddadb5e1a2dde758ffd5773adf9549e89869fe8641ea9a9dfb4717ffaebb48, 46 files; main-study freeze archived as FREEZE_2026-10-03_amend2.json
+2026-10-04 21:07:12 freeze check OK
+2026-10-04 21:07:12 budget: ledger at start $3.3983, ceiling $13.2983 (new spending <= $9.9)
+2026-10-04 21:09:30 smoke check OK (18 episodes on the development instance)
+2026-10-05 03:14:53 followup_a: rc=0 records=2376 errors=0 (attempt 1)
+2026-10-05 04:04:10 followup_b: rc=0 records=504 errors=0 (attempt 1)
+2026-10-05 05:24:38 followup_c: rc=0 records=588 errors=0 (attempt 1)
+2026-10-05 07:33:18 plan-free Settle grids: guard rc=0; ledger $3.8545; new $0.4562
+2026-10-05 07:36:13 frontier price check: 12 episodes, $0.0248/episode, projected rest $7.94 (x1.25 margin), room $9.15
+2026-10-05 08:43:51 frontier grid: guard rc=0; records=268; ledger $9.4853
+2026-10-05 08:43:55 analysis rc=0; total new spending $6.0870
+2026-10-05 08:43:55 FOLLOW-UP DONE

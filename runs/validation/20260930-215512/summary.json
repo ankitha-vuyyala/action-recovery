@@ -1,0 +1,307 @@
+{
+  "cells": {
+    "mail|held": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 10
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 10
+      },
+      "elapsed_median_s": 4.008,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|late": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 10
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 10
+      },
+      "elapsed_median_s": 4.011,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "mail|lost_ack": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 10
+      },
+      "signatures": {
+        "error:ToolTransportError:connection closed before a complete reply was received": 10
+      },
+      "elapsed_median_s": 0.036,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|none": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 10
+      },
+      "signatures": {
+        "ok": 10
+      },
+      "elapsed_median_s": 0.02,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "mail|not_exec_err": {
+      "n": 10,
+      "expected": 0,
+      "realized": {
+        "0": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 10
+      },
+      "signatures": {
+        "error:ToolTransportError:connection closed before a complete reply was received": 10
+      },
+      "elapsed_median_s": 0.03,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|not_exec_to": {
+      "n": 10,
+      "expected": 0,
+      "realized": {
+        "0": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 10
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 10
+      },
+      "elapsed_median_s": 4.012,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "mail|redelivery": {
+      "n": 10,
+      "expected": 2,
+      "realized": {
+        "2": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 10
+      },
+      "signatures": {
+        "ok": 10
+      },
+      "elapsed_median_s": 0.015,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|held": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 10
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 10
+      },
+      "elapsed_median_s": 4.014,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|late": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 10
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 10
+      },
+      "elapsed_median_s": 4.01,
+      "late_landed_after_giveup_rate": 1.0,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|lost_ack": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 10
+      },
+      "signatures": {
+        "error:ToolTransportError:connection closed before a complete reply was received": 10
+      },
+      "elapsed_median_s": 0.083,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|none": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 10
+      },
+      "signatures": {
+        "ok": 10
+      },
+      "elapsed_median_s": 0.073,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": 1.0
+    },
+    "s3_put|not_exec_err": {
+      "n": 10,
+      "expected": 0,
+      "realized": {
+        "0": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "error": 10
+      },
+      "signatures": {
+        "error:ToolTransportError:connection closed before a complete reply was received": 10
+      },
+      "elapsed_median_s": 0.034,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|not_exec_to": {
+      "n": 10,
+      "expected": 0,
+      "realized": {
+        "0": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "timeout": 10
+      },
+      "signatures": {
+        "timeout:ToolDeadline:no response within #s": 10
+      },
+      "elapsed_median_s": 4.011,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    },
+    "s3_put|redelivery": {
+      "n": 10,
+      "expected": 1,
+      "realized": {
+        "1": 10
+      },
+      "as_intended_rate": 1.0,
+      "client_kinds": {
+        "ok": 10
+      },
+      "signatures": {
+        "ok": 10
+      },
+      "elapsed_median_s": 0.118,
+      "late_landed_after_giveup_rate": null,
+      "tag_fidelity_rate": null
+    }
+  },
+  "observation_equivalence": {
+    "mail|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "tvd_raw_library_exception": {
+        "lost_ack vs not_exec_err": 1.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.036,
+        "not_exec_err": 0.03
+      },
+      "equivalent": true
+    },
+    "mail|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "tvd_raw_library_exception": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.008,
+        "not_exec_to": 4.012,
+        "late": 4.011
+      },
+      "equivalent": true
+    },
+    "s3_put|error": {
+      "tvd_kind_exctype": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "tvd_raw_library_exception": {
+        "lost_ack vs not_exec_err": 0.0
+      },
+      "elapsed_median_s": {
+        "lost_ack": 0.083,
+        "not_exec_err": 0.034
+      },
+      "equivalent": true
+    },
+    "s3_put|deadline": {
+      "tvd_kind_exctype": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "tvd_raw_library_exception": {
+        "held vs not_exec_to": 0.0,
+        "held vs late": 0.0,
+        "not_exec_to vs late": 0.0
+      },
+      "elapsed_median_s": {
+        "held": 4.014,
+        "not_exec_to": 4.011,
+        "late": 4.01
+      },
+      "equivalent": true
+    }
+  },
+  "inflight_threads_left_at_end": 0
+}

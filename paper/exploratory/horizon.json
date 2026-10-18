@@ -1,0 +1,77 @@
+{
+ "n_waited": 408,
+ "n_timing": 168,
+ "agree": 167,
+ "n_tail": 84,
+ "n_late12": 84,
+ "n_amb": 588,
+ "c0_median_latency_s": 5.0455000000000005,
+ "curve": [
+  {
+   "delta": 5,
+   "late_tail_inconsistent": 0.6666666666666666,
+   "late12_inconsistent": 0.6666666666666666,
+   "median_latency_s": 9.9855
+  },
+  {
+   "delta": 7.5,
+   "late_tail_inconsistent": 0.5952380952380952,
+   "late12_inconsistent": 0.25,
+   "median_latency_s": 12.4855
+  },
+  {
+   "delta": 10,
+   "late_tail_inconsistent": 0.5476190476190477,
+   "late12_inconsistent": 0.25,
+   "median_latency_s": 14.9855
+  },
+  {
+   "delta": 12.5,
+   "late_tail_inconsistent": 0.5238095238095238,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 17.485500000000002
+  },
+  {
+   "delta": 15,
+   "late_tail_inconsistent": 0.4880952380952381,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 19.985500000000002
+  },
+  {
+   "delta": 20,
+   "late_tail_inconsistent": 0.4166666666666667,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 24.985500000000002
+  },
+  {
+   "delta": 30,
+   "late_tail_inconsistent": 0.32142857142857145,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 34.9855
+  },
+  {
+   "delta": 45,
+   "late_tail_inconsistent": 0.27380952380952384,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 49.9855
+  },
+  {
+   "delta": 60,
+   "late_tail_inconsistent": 0.20238095238095238,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 64.9855
+  },
+  {
+   "delta": 90,
+   "late_tail_inconsistent": 0.08333333333333333,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 94.9855
+  },
+  {
+   "delta": 120,
+   "late_tail_inconsistent": 0.0,
+   "late12_inconsistent": 0.0,
+   "median_latency_s": 124.9855
+  }
+ ]
+}

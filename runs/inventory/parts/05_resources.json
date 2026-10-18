@@ -1,0 +1,69 @@
+{
+  "services_running": [
+    "gitea",
+    "mailpit",
+    "postgres",
+    "redis",
+    "seaweedfs",
+    "temporal",
+    "tigerbeetle",
+    "toxiproxy"
+  ],
+  "docker_stats": [
+    {
+      "name": "actrec-inv-tigerbeetle-1",
+      "cpu": "0.62%",
+      "mem": "1.668GiB / 7.602GiB",
+      "mem_pct": "21.94%"
+    },
+    {
+      "name": "actrec-inv-temporal-1",
+      "cpu": "0.46%",
+      "mem": "90.94MiB / 7.602GiB",
+      "mem_pct": "1.17%"
+    },
+    {
+      "name": "actrec-inv-toxiproxy-1",
+      "cpu": "0.00%",
+      "mem": "5.461MiB / 7.602GiB",
+      "mem_pct": "0.07%"
+    },
+    {
+      "name": "actrec-inv-redis-1",
+      "cpu": "6.26%",
+      "mem": "3.836MiB / 7.602GiB",
+      "mem_pct": "0.05%"
+    },
+    {
+      "name": "actrec-inv-seaweedfs-1",
+      "cpu": "0.76%",
+      "mem": "74.88MiB / 7.602GiB",
+      "mem_pct": "0.96%"
+    },
+    {
+      "name": "actrec-inv-mailpit-1",
+      "cpu": "7.35%",
+      "mem": "14.09MiB / 7.602GiB",
+      "mem_pct": "0.18%"
+    },
+    {
+      "name": "actrec-inv-gitea-1",
+      "cpu": "5.17%",
+      "mem": "210.3MiB / 7.602GiB",
+      "mem_pct": "2.70%"
+    },
+    {
+      "name": "actrec-inv-postgres-1",
+      "cpu": "9.09%",
+      "mem": "63.58MiB / 7.602GiB",
+      "mem_pct": "0.82%"
+    }
+  ],
+  "docker_mem_total_used_mib": 2171.1,
+  "host_ram_gb": {
+    "total": 15.69,
+    "free": 0.97
+  },
+  "seaweedfs_version": "version 30GB 4.48 530be3e37 linux amd64",
+  "redis_image_version": "Redis server v=7.4.11 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=9e01046925f71771"
+}

@@ -1,0 +1,112 @@
+# Stage-2 inventory services. Run from ROOT:
+#   docker compose -p actrec-inv --env-file .env -f docker/inventory/compose.yml up -d <service>
+# Tear down (keeps images):  docker compose -p actrec-inv --env-file .env -f docker/inventory/compose.yml down -v
+# Credentials come from ROOT/.env (never committed).
+name: actrec-inv
+
+networks:
+  inv:
+    name: actrec-inv-net
+
+volumes:
+  pgdata: {}
+  giteadata: {}
+  tbdata: {}
+  miniodata: {}
+  seaweeddata: {}
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: actrec
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
+      POSTGRES_DB: actrec
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    networks: [inv]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U actrec -d actrec"]
+      interval: 1s
+      retries: 60
+
+  gitea:
+    image: gitea/gitea:1.24
+    environment:
+      GITEA__database__DB_TYPE: sqlite3
+      GITEA__security__INSTALL_LOCK: "true"
+      GITEA__server__ROOT_URL: http://localhost:3000/
+      GITEA__server__HTTP_PORT: "3000"
+      GITEA__service__DISABLE_REGISTRATION: "true"
+      GITEA__log__LEVEL: Warn
+    ports: ["3000:3000"]
+    volumes: ["giteadata:/data"]
+    networks: [inv]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/healthz >/dev/null"]
+      interval: 1s
+      retries: 120
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports: ["1025:1025", "8025:8025"]
+    networks: [inv]
+    healthcheck:
+      test: ["CMD", "/mailpit", "readyz"]
+      interval: 1s
+      retries: 60
+
+  tigerbeetle:
+    image: ghcr.io/tigerbeetle/tigerbeetle:latest
+    # Default profile: no seccomp override. The inventory script retries with
+    # compose.tb-unconfined.yml if io_uring is blocked.
+    entrypoint: ["sh", "-c"]
+    command:
+      - >-
+        [ -f /data/0_0.tigerbeetle ] ||
+        /tigerbeetle format --cluster=0 --replica=0 --replica-count=1 --development /data/0_0.tigerbeetle &&
+        exec /tigerbeetle start --addresses=0.0.0.0:3001 --cache-grid=256MiB --development /data/0_0.tigerbeetle
+    ports: ["3001:3001"]
+    volumes: ["tbdata:/data"]
+    networks: [inv]
+
+  minio:
+    image: minio/minio:latest   # not pullable any more (repository removed); kept to record the failure
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-actrec}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?set in .env}
+    ports: ["9000:9000", "9001:9001"]
+    volumes: ["miniodata:/data"]
+    networks: [inv]
+    profiles: [minio]
+
+  seaweedfs:
+    image: chrislusf/seaweedfs:latest
+    command: ["server", "-dir=/data", "-s3", "-s3.port=8333", "-master.volumeSizeLimitMB=256", "-volume.max=8"]
+    environment:
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-actrec}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:?set in .env}
+    ports: ["8333:8333"]
+    volumes: ["seaweeddata:/data"]
+    networks: [inv]
+
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+    networks: [inv]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      retries: 30
+
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:latest
+    ports: ["8474:8474", "26000-26009:26000-26009"]
+    networks: [inv]
+
+  temporal:
+    image: temporalio/temporal:latest
+    command: ["server", "start-dev", "--ip", "0.0.0.0", "--ui-port", "8233"]
+    ports: ["7233:7233", "8233:8233"]
+    networks: [inv]

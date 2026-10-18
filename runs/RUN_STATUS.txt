@@ -1,0 +1,50 @@
+2026-10-01 17:59:33 step1 tests: 57 passed in 21.56s
+2026-10-01 17:59:50 step2 stack up --engine: 8 8 gitea=running mailpit=running postgres=running redis=running seaweedfs=running temporal=running tigerbeetle=running toxiproxy=running
+2026-10-01 18:02:47 step3 llm_hardcheck S re-run (14 invalidated): 28 records, 0 errors, stops null, all S collateral 0.0; grid $0.0356 (ledger total $0.1603); S episodes with 'refused' output: 1 of 14 -> GATE OK
+2026-10-01 18:37:05 step4 harness_check: 372 records, 0 errors, fault-free all 0.0 -> GATE OK
+2026-10-01 18:37:09 step5 pip freeze -> requirements.txt (66 lines)
+2026-10-01 18:37:19 step6 freeze: 43 files, digest 51df7cbdbebd7571708bd34590e61bca416c439b1df0fdadaedb8eb20c105f56; freeze --check OK -> GATE OK
+2026-10-01 20:05:04 step7 note: guard stopped test_llm_luna (model error: PermissionError on runs/.cost.lock, lock race); stopped record archived, retry 1 after 5 min
+2026-10-01 20:10:27 step7 driver stopped for amendment 1 (test_llm_luna at 620 finished, 1 stopped record archived)
+2026-10-01 20:10:27 amendment 1 applied; new digest a674ca5aedfc713ed766ebff3da952e97d5fc3176b8738b8e34d978fd4651ea4 (58 tests passed; old freeze kept as FREEZE_2026-10-01_v1.json)
+2026-10-02 00:50:54 step7 LLM main run done (guard rc 0; 1 lock-race model-error stop before amendment 1, archived and re-run): test_llm_luna 1340 rec/0 err $1.0860, test_llm_41mini 670/0 $1.0447, test_llm_nano 670/0 $0.4183; ledger total $2.7093
+2026-10-03 00:45:12 step8 test_scripted done: pass1 2026-10-02 00:50:55 -> 2026-10-03 00:44:18 (4 workers), pass2 re-ran 2 transient errors (ReadTimeout; Temporal connect reset) -> 00:44:56; 17820 records, 0 errors in current records, 2 lines in episodes_errored.jsonl
+2026-10-03 00:45:13 step9 freeze OK (digest a674ca5aedfc713ed766ebff3da952e97d5fc3176b8738b8e34d978fd4651ea4)
+2026-10-03 00:46:37 step9 stack down (containers left: 0)
+2026-10-03 step10 analysis done: confirmatory.py, llm_behaviour.py, summarize_grid.py x6 (all exit 0)
+==== FINAL REPORT (step 11) ====
+grid             | records | errors (episodes_errored.jsonl lines) | US$ (ledger by run) | start            | end
+test_scripted    | 17820   | 2 (transient; re-run OK in pass 2)    | 0.0000              | 2026-10-02 00:51 | 2026-10-03 00:44
+test_llm_luna    | 1340    | 1 (lock-race stop, re-run OK)         | 1.0860              | 2026-10-01 18:38 | 2026-10-02 00:50
+test_llm_41mini  | 670     | 0                                     | 1.0447              | 2026-10-01 20:21 | 2026-10-01 21:48
+test_llm_nano    | 670     | 0                                     | 0.4183              | 2026-10-01 21:49 | 2026-10-01 23:08
+llm_hardcheck    | 28      | 0                                     | 0.0356 (both runs)  | 2026-10-01 16:40 | 2026-10-01 18:02
+harness_check    | 372     | 0                                     | 0.0000              | 2026-10-01 18:02 | 2026-10-01 18:36
+current records of every grid: 0 errors. Ledger total: US$ 2.7093 (cap check: < 5.75).
+Freeze digest (amendment 1): a674ca5aedfc713ed766ebff3da952e97d5fc3176b8738b8e34d978fd4651ea4 (43 files; v1 kept as FREEZE_2026-10-01_v1.json, digest 51df7cbd...5f56)
+Step-3 notes (llm_hardcheck, dev): S rows "Ambiguous worlds by mode": crash_after n3 incons 0.0 dup 0.0 coll 0.0; late_tail n3 incons 33.3 dup 100.0 coll 0.0; lost_ack n8 incons 0.0 dup 0.0 coll 0.0. S rows "Read-model variants": agg_shared n1 0.0/0.0; lagged n2 0.0/0.0; lookalike n2 0.0/0.0 (incons/coll). S episodes with a "refused" function_call_output: 1 of 14.
+Notes: step 7 guard stopped once on a 'model error' that was a Windows lock-file race (PermissionError on runs/.cost.lock); fixed by amendment 1 (llm_client.py). Step 8: 3 test_scripted records have claimed=no_report without an error field (count only). Protocol: before step 10 the console showed the two pass-2 progress lines of test_scripted (per-episode inconsistent/dups); no test_* summary or table was opened before step 10.
+results ready in results\
+2026-10-03 01:03:42 [amendment 2] step1 tests: 59 passed in 21.38s
+2026-10-03 01:03:49 [amendment 2] step2 results copied to results_v2 (both kept)
+2026-10-03 01:06:54 [amendment 2] step3 scan_tb (before): test_scripted {'timeout': 810, 'CREATED': 5886, 'EXISTS': 360, None: 135};test_llm_luna {'EXISTS_WITH_DIFFERENT_DEBIT_ACCOUNT_ID': 374, 'CREATED': 85, 'timeout': 120, 'EXISTS': 12};test_llm_41mini {'CREATED': 188, 'timeout': 60, 'EXISTS': 9};test_llm_nano {'EXISTS_WITH_DIFFERENT_DEBIT_ACCOUNT_ID': 160, 'CREATED': 44, 'timeout': 60, 'EXISTS': 6}
+2026-10-03 01:07:00 [amendment 2] step4 old freeze -> FREEZE_2026-10-03_v2.json; freeze OK (digest dd8b4adba1316d95394ca5d600e12882159fd0adb118e9e8df3d2f9101ae3c5a)
+2026-10-03 01:07:28 [amendment 2] step5 stack up --engine: 8 8 gitea=running mailpit=running postgres=running redis=running seaweedfs=running temporal=running tigerbeetle=running toxiproxy=running
+2026-10-03 01:07:35 [amendment 2] step6 test_llm_luna: invalidated 270 finished episodes matching {'template': 'T2|T8'}; they will be re-run
+2026-10-03 01:07:36 [amendment 2] step6 test_llm_41mini: invalidated 135 finished episodes matching {'template': 'T2|T8'}; they will be re-run
+2026-10-03 01:07:38 [amendment 2] step6 test_llm_nano: invalidated 135 finished episodes matching {'template': 'T2|T8'}; they will be re-run
+2026-10-03 02:46:10 [amendment 2] step7 guarded re-run done (guard rc 0, no stops): luna 1340/0 err, 41mini 670/0, nano 670/0; ledger total $3.3983
+2026-10-03 02:46:59 [amendment 2] step8 test_scripted resume: 3 episodes re-run (earlier no_report records), 17820 records, 0 errors
+2026-10-03 02:47:00 [amendment 2] step9 freeze OK (digest dd8b4adba1316d95394ca5d600e12882159fd0adb118e9e8df3d2f9101ae3c5a)
+2026-10-03 02:47:13 [amendment 2] step9 stack down (containers left: 0)
+2026-10-03 02:48:12 [amendment 2] step10 analysis done (all exit 0); scan_tb (after): test_llm_luna {'CREATED': 351, 'EXISTS': 52, 'timeout': 120};test_llm_41mini {'CREATED': 190, 'timeout': 60, 'EXISTS': 8};test_llm_nano {'CREATED': 168, 'EXISTS': 30, 'timeout': 60}
+==== FINAL REPORT (amendment 2) ====
+grid            | records | errors (current) | errored-archive lines | invalidated | US$ total (this round)
+test_scripted   | 17820   | 0                | 5 (2 transient + 3 no_report, re-run) | 0   | 0.0000 (0.0000)
+test_llm_luna   | 1340    | 0                | 6 (1 lock-race + 5 no_report, re-run)  | 270 | 1.4138 (0.3278)
+test_llm_41mini | 670     | 0                | 2 (no_report, re-run)                 | 135 | 1.2820 (0.2373)
+test_llm_nano   | 670     | 0                | 1 (no_report, re-run)                 | 135 | 0.5422 (0.1239)
+Ledger total: US$ 3.3983 (this round US$ 0.6890). New freeze digest: dd8b4adba1316d95394ca5d600e12882159fd0adb118e9e8df3d2f9101ae3c5a (v2 kept as FREEZE_2026-10-03_v2.json)
+scan_tb before: test_scripted {timeout 810, CREATED 5886, EXISTS 360, None 135}; test_llm_luna {EXISTS_WITH_DIFFERENT_DEBIT_ACCOUNT_ID 374, CREATED 85, timeout 120, EXISTS 12}; test_llm_41mini {CREATED 188, timeout 60, EXISTS 9}; test_llm_nano {EXISTS_WITH_DIFFERENT_DEBIT_ACCOUNT_ID 160, CREATED 44, timeout 60, EXISTS 6}
+scan_tb after:  test_llm_luna {CREATED 351, EXISTS 52, timeout 120}; test_llm_41mini {CREATED 190, timeout 60, EXISTS 8}; test_llm_nano {CREATED 168, EXISTS 30, timeout 60}
+results ready in results\ (previous results kept in results_v2\)

@@ -1,0 +1,878 @@
+{
+ "table.map": {
+  "value": "| Contract cell (focal write) | worlds | C0 | C3 | C4 | C5 | C6 | Gw | C8 | S | O |\n|---|---|---|---|---|---|---|---|---|---|---|\n| K, keyed | 108 | 58.3 | 8.3 | 0.0 | 41.7 | 8.3 | 8.3 | 58.3 | 0.0 | 2.8 |\n| A, reversible, exact read | 387 | 66.7 | 66.4 | 66.7 | 45.0 | 45.2 | 29.2 | 60.2 | 4.9 | 10.9 |\n| A, reversible, lagged read | 48 | 50.0 | 50.0 | 50.0 | 37.5 | 25.0 | 0.0 | 62.5 | 0.0 | 0.0 |\n| A, reversible, look-alikes | 168 | 50.0 | 50.0 | 50.0 | 57.1 | 57.1 | 57.1 | 67.9 | 0.0 | 0.0 |\n| A, irreversible (mail) | 234 | 61.5 | 61.5 | 61.5 | 46.2 | 45.7 | 36.3 | 71.8 | 12.8 | 7.7 |\n| C, content only, irreversible | 39 | 61.5 | 61.5 | 61.5 | 46.2 | 46.2 | 35.9 | 61.5 | 28.2 | 7.7 |\n| U, exclusive aggregate | 81 | 66.7 | 66.7 | 66.7 | 44.4 | 44.4 | 44.4 | 66.7 | 3.7 | 11.1 |\n| U, shared aggregate | 36 | 50.0 | 50.0 | 50.0 | 50.0 | 50.0 | 50.0 | 50.0 | 50.0 | 0.0 |",
+  "source": "runs/test_scripted/episodes.jsonl: inconsistency % by contract cell and condition (class label unified)"
+ },
+ "cen.n": {
+  "value": 52,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K": {
+  "value": 14,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.frac": {
+  "value": 0.2692307692307692,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A": {
+  "value": 21,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A.frac": {
+  "value": 0.40384615384615385,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A-": {
+  "value": 10,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A-.frac": {
+  "value": 0.19230769230769232,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.C": {
+  "value": 7,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.C.frac": {
+  "value": 0.1346153846153846,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless": {
+  "value": 38,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless.frac": {
+  "value": 0.7307692307692307,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless.tag": {
+  "value": 31,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless.tag.frac": {
+  "value": 0.8157894736842105,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless.exact.frac": {
+  "value": 0.5526315789473685,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless.C.frac": {
+  "value": 0.18421052631578946,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.strict.C": {
+  "value": 9,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.strict.C.frac": {
+  "value": 0.23684210526315788,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.near_key": {
+  "value": 11,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.short": {
+  "value": 4,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.undoc": {
+  "value": 3,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.nolookup": {
+  "value": 6,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.payments": {
+  "value": 8,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.payments": {
+  "value": 12,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.payments.nolookup": {
+  "value": 6,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.tag.hidden": {
+  "value": 9,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.tag.visible": {
+  "value": 10,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.tag.unclear": {
+  "value": 12,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.keyless.anyfield": {
+  "value": 34,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.K.payments.listscan": {
+  "value": 5,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A.rev_full": {
+  "value": 14,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A.rev_partial": {
+  "value": 2,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.strict.A": {
+  "value": 19,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A.reversible": {
+  "value": 16,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.A.irreversible": {
+  "value": 5,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.verify.n": {
+  "value": 12,
+  "source": "exploratory/census/verify_result.json"
+ },
+ "cen.verify.class_ok": {
+  "value": 12,
+  "source": "exploratory/census/verify_result.json"
+ },
+ "cen.verify.fact_errors": {
+  "value": 1,
+  "source": "exploratory/census/verify_result.json"
+ },
+ "cen.payments.K": {
+  "value": 8,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.payments.A": {
+  "value": 3,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.payments.A-": {
+  "value": 1,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.payments.C": {
+  "value": 0,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.devtools.K": {
+  "value": 0,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.devtools.A": {
+  "value": 10,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.devtools.A-": {
+  "value": 2,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.devtools.C": {
+  "value": 0,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.messaging.K": {
+  "value": 0,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.messaging.A": {
+  "value": 4,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.messaging.A-": {
+  "value": 4,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.messaging.C": {
+  "value": 5,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.crmdata.K": {
+  "value": 6,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.crmdata.A": {
+  "value": 4,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.crmdata.A-": {
+  "value": 3,
+  "source": "exploratory/census/census.csv"
+ },
+ "cen.crmdata.C": {
+  "value": 2,
+  "source": "exploratory/census/census.csv"
+ },
+ "table.census": {
+  "value": "| API (operation) | Class | Server-side key (retention) | Tag field | Hidden | Lookup by tag | Undo |\n|---|---|---|---|---|---|---|\n| Stripe (create PaymentIntent) | K | native (24 h) | metadata | yes | search (<1 min lag) | yes |\n| PayPal Orders v2 (create order) | K | native (6 h) | purchase_units.custom_id | yes | list scan | partial |\n| Adyen Checkout (/payments) | K | native (7–14 d) | reference / metadata | unclear | none | yes |\n| Square (CreatePayment) | K | native (undocumented) | reference_id | unclear | list scan | yes |\n| Braintree (transaction sale) | A | partial (30 s duplicate check) | order_id | unclear | exact | yes |\n| Shopify Admin (orderCreate) | A | none | metafields | yes | exact | yes |\n| WooCommerce (create order) | A− | none | meta_data | unclear | list scan | yes |\n| Razorpay (create order) | A | partial (unique receipt rejected) | receipt | unclear | exact | no |\n| Wise (create transfer) | K | native (undocumented) | customerTransactionId | no | list scan | partial |\n| Checkout.com (request payment) | K | native (72 h) | reference / metadata | unclear | exact | yes |\n| Mollie (create payment) | K | native (1 h) | metadata | unclear | list scan | yes |\n| GoCardless (create payment) | K | native (≥ 30 d) | metadata | unclear | list scan | partial |\n| GitHub (create issue) | A | none | label (exact) / body (search only) | no | exact | partial |\n| GitLab (create issue) | A | none | labels | no | exact | yes |\n| Jira Cloud (create issue) | A− | none | issue property / labels | yes | search (index lag) | yes |\n| Linear (issueCreate) | A | partial (client-chosen id) | id (UUID) | unclear | exact | yes |\n| Asana (create task) | A | none | external.gid | yes | exact | yes |\n| Trello (create card) | A− | none | desc | no | search | yes |\n| Notion (create page in database) | A | none | text property | no | exact | partial |\n| Confluence Cloud (create page) | A | partial (unique title per space) | title | no | exact | yes |\n| Bitbucket Cloud (create PR comment) | A | none | content.raw | no | exact | yes |\n| Azure DevOps (create work item) | A | none | hidden custom field | yes | exact | yes |\n| monday.com (create_item) | A | none | text column | no | exact | yes |\n| ClickUp (create task) | A | none | text custom field | no | exact | yes |\n| Slack (chat.postMessage) | A− | none | metadata | unclear | list scan | yes |\n| Discord (create message) | A− | partial (nonce for minutes) | nonce | unclear | list scan | yes |\n| Microsoft Graph mail (sendMail) | A | none | extended property | unclear | exact | no |\n| Microsoft Teams (Graph) (channel message) | C | none | none | n/a | list scan | partial |\n| Gmail (messages.send) | A− | none | custom header | yes | search | no |\n| SendGrid (mail send) | A | none | custom_args | yes | exact (paid add-on) | no |\n| Mailgun (send message) | A | none | o:tag | unclear | exact (events) | no |\n| Twilio SMS (create message) | C | none | none | n/a | list scan | no |\n| Postmark (send email) | A | none | Metadata | yes | exact | no |\n| Amazon SES v2 (SendEmail) | A− | none | EmailTags | yes | list scan (sampled) | no |\n| Telegram Bot (sendMessage) | C | none | none | n/a | none | partial |\n| WhatsApp Cloud (send message) | C | none | biz_opaque_callback_data (webhook only) | yes | none | no |\n| Intercom (create message) | C | none | none | n/a | search (content) | partial |\n| Salesforce (create record) | A | partial (upsert by external id) | External ID field | unclear | exact | yes |\n| HubSpot (create contact) | A | partial (unique property) | unique property | unclear | exact | yes |\n| Zendesk (create ticket) | K | native (2 h) | external_id | unclear | exact | yes |\n| Freshdesk (create ticket) | A− | none | custom field / tag | unclear | search (minutes lag) | yes |\n| Google Calendar (events.insert) | A | partial (client id; collisions not guaranteed) | extendedProperties.private / id | unclear | exact | yes |\n| Microsoft Graph calendar (create event) | K | native (undocumented) | extended property | unclear | exact | partial |\n| Airtable (create records) | A | partial (upsert on merge fields) | text field | no | exact | yes |\n| Google Sheets (values.append) | A− | none | cell value | no | list scan | partial |\n| Amazon S3 (PutObject (If-None-Match)) | K | conditional create (no expiry) | object key | yes | exact | yes |\n| Amazon DynamoDB (PutItem (attribute_not_exists)) | K | conditional create (no expiry) | primary key | yes | exact | yes |\n| Google Cloud Pub/Sub (publish) | C | none | attributes (no lookup) | yes | none | no |\n| Apache Kafka (producer send) | A− | partial (producer session only) | record header | yes | list scan | no |\n| Elasticsearch (index (op_type=create)) | K | conditional create (no expiry) | _id | yes | exact | yes |\n| PagerDuty Events v2 (trigger) | K | native (while alert open) | dedup_key | unclear | exact | partial |\n| Amazon SQS (SendMessage) | C | partial (FIFO 5 min) | attributes (no lookup) | yes | none | partial |",
+  "source": "exploratory/census/census.csv"
+ },
+ "hz.n_timing": {
+  "value": 168,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.agree": {
+  "value": 167,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.agree.frac": {
+  "value": 0.9940476190476191,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.n_tail": {
+  "value": 84,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.c0_latency": {
+  "value": 5.0455000000000005,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.5.tail": {
+  "value": 0.6666666666666666,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.5.late12": {
+  "value": 0.6666666666666666,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.5.lat": {
+  "value": 9.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.7_5.tail": {
+  "value": 0.5952380952380952,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.7_5.late12": {
+  "value": 0.25,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.7_5.lat": {
+  "value": 12.4855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.10.tail": {
+  "value": 0.5476190476190477,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.10.late12": {
+  "value": 0.25,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.10.lat": {
+  "value": 14.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.12_5.tail": {
+  "value": 0.5238095238095238,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.12_5.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.12_5.lat": {
+  "value": 17.485500000000002,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.15.tail": {
+  "value": 0.4880952380952381,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.15.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.15.lat": {
+  "value": 19.985500000000002,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.20.tail": {
+  "value": 0.4166666666666667,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.20.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.20.lat": {
+  "value": 24.985500000000002,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.30.tail": {
+  "value": 0.32142857142857145,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.30.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.30.lat": {
+  "value": 34.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.45.tail": {
+  "value": 0.27380952380952384,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.45.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.45.lat": {
+  "value": 49.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.60.tail": {
+  "value": 0.20238095238095238,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.60.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.60.lat": {
+  "value": 64.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.90.tail": {
+  "value": 0.08333333333333333,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.90.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.90.lat": {
+  "value": 94.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.120.tail": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.120.late12": {
+  "value": 0.0,
+  "source": "exploratory/horizon.json"
+ },
+ "hz.120.lat": {
+  "value": 124.9855,
+  "source": "exploratory/horizon.json"
+ },
+ "rb.crash_after.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.C6": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.Gw": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.S-h": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.S-j": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.S-t": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_after.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.C0": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.C4": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.C6": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.Gw": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.S-h": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.S-t": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.crash_before.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.C6": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.Gw": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.S-h": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.S-t": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.held.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.C6": {
+  "value": 0.625,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.Gw": {
+  "value": 0.0625,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.S-h": {
+  "value": 0.9895833333333334,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.S-c": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.S-t": {
+  "value": 0.0625,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.C6": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.Gw": {
+  "value": 0.5476190476190477,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.S-h": {
+  "value": 0.9523809523809523,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.S-c": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.S-j": {
+  "value": 0.4523809523809524,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.S-t": {
+  "value": 0.4523809523809524,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.S": {
+  "value": 0.4523809523809524,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.late_tail.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.C6": {
+  "value": 0.07291666666666667,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.Gw": {
+  "value": 0.0625,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.S-h": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.S-t": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lost_ack.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.C0": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.C4": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.C6": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.Gw": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.S-h": {
+  "value": 0.010416666666666666,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.S-t": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_err.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.C0": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.C4": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.C6": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.Gw": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.S-h": {
+  "value": 0.041666666666666664,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.S-t": {
+  "value": 0.4375,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.not_exec_to.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.C6": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.Gw": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.S-h": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.S-c": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.S-t": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.partial.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.C0": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.C4": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.C6": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.Gw": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.S-h": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.S-c": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.S-j": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.S-t": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.S": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.redelivery.O": {
+  "value": 1.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.C0": {
+  "value": 0.5752688172043011,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.C4": {
+  "value": 0.5752688172043011,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.C6": {
+  "value": 0.4265232974910394,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.Gw": {
+  "value": 0.2939068100358423,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.S-h": {
+  "value": 0.25089605734767023,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.S-c": {
+  "value": 0.24731182795698925,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.S-j": {
+  "value": 0.11469534050179211,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.S-t": {
+  "value": 0.27060931899641577,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.S": {
+  "value": 0.034050179211469536,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core.O": {
+  "value": 0.0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.core_n": {
+  "value": 558,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_h1.diff": {
+  "value": -0.3150912106135987,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_h1.lo": {
+  "value": -0.3316582914572864,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_h1.hi": {
+  "value": -0.29559748427672955,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_h1.templates": {
+  "value": 8,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_h1.pairs": {
+  "value": 603,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_h1.templates_where_S_not_better": {
+  "value": 0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_core.diff": {
+  "value": -0.25985663082437277,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_core.lo": {
+  "value": -0.2727272727272727,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_core.hi": {
+  "value": -0.2429078014184397,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_core.templates": {
+  "value": 8,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_core.pairs": {
+  "value": 558,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.tclust_core.templates_where_S_not_better": {
+  "value": 0,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lt_fail_rev": {
+  "value": 22,
+  "source": "exploratory/robustness.json"
+ },
+ "rb.lt_fail_irr": {
+  "value": 14,
+  "source": "exploratory/robustness.json"
+ },
+ "table.h1modes": {
+  "value": "| Fault mode | worlds | C0 | C4 | C6 | Gw | S−h | S−c | S−j | S−t | S | O |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| lost_ack | 96 | 100.0 | 100.0 | 7.3 | 6.3 | 0.0 | 0.0 | 0.0 | 43.8 | 0.0 | 0.0 |\n| not_exec_err | 96 | 0.0 | 0.0 | 43.8 | 43.8 | 1.0 | 0.0 | 0.0 | 43.8 | 0.0 | 0.0 |\n| held | 42 | 100.0 | 100.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |\n| not_exec_to | 96 | 0.0 | 0.0 | 43.8 | 43.8 | 4.2 | 0.0 | 0.0 | 43.8 | 0.0 | 0.0 |\n| late | 96 | 100.0 | 100.0 | 62.5 | 6.3 | 99.0 | 100.0 | 0.0 | 6.3 | 0.0 | 0.0 |\n| late_tail | 42 | 100.0 | 100.0 | 100.0 | 54.8 | 95.2 | 100.0 | 45.2 | 45.2 | 45.2 | 0.0 |\n| crash_after | 45 | 100.0 | 100.0 | 100.0 | 100.0 | 0.0 | 0.0 | 100.0 | 0.0 | 0.0 | 0.0 |\n| crash_before | 45 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |\n| redelivery | 42 | 100.0 | 100.0 | 100.0 | 100.0 | 0.0 | 100.0 | 0.0 | 0.0 | 0.0 | 100.0 |\n| partial | 3 | 100.0 | 100.0 | 100.0 | 100.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |\n| all but redelivery and partial | 558 | 57.5 | 57.5 | 42.7 | 29.4 | 25.1 | 24.7 | 11.5 | 27.1 | 3.4 | 0.0 |",
+  "source": "exploratory/robustness.json"
+ }
+}

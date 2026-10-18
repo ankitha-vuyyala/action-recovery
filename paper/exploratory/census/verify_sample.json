@@ -1,0 +1,175 @@
+[
+ {
+  "api": "GoCardless - Create a payment (POST /payments)",
+  "native_key": "yes - Idempotency-Key header on resource creation. Keys are \"honoured for at least 30 days\", and reuse after success returns 409 idempotent_creation_conflict with links.conflicting_resource_id pointing to the existing payment.",
+  "tag_field": "metadata (up to 3 keys; key names up to 50 chars, values up to 500 chars)",
+  "exact_lookup": "list_only - List payments filters by created_at, currency, charge_date, customer, creditor, subscription, mandate, status, scheme and sort fields; there is no filter on metadata or reference",
+  "reversible": "partial",
+  "class": "K",
+  "sources": [
+   "https://docs.gocardless.com/docs/api-reference/limits",
+   "https://docs.gocardless.com/docs/api-reference/payment",
+   "https://docs.gocardless.com/docs/api-reference/refund"
+  ]
+ },
+ {
+  "api": "Square Payments API - CreatePayment (POST /v2/payments)",
+  "native_key": "yes - idempotency_key is a required body field (1-45 chars). Reusing a key with a changed request returns an error. The retention window is not documented.",
+  "tag_field": "reference_id (max 40 chars; \"ID that associates the payment with an entity in another system\"); note (max 500 chars) is an alternative. The Payment object has no metadata map.",
+  "exact_lookup": "list_only - ListPayments filters only by time range, location, total, last_4, card_brand, offline flags and updated_at; there is no filter on reference_id or note and no SearchPayments endpoint",
+  "reversible": "yes",
+  "class": "K",
+  "sources": [
+   "https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency",
+   "https://developer.squareup.com/reference/square/payments-api/create-payment",
+   "https://developer.squareup.com/reference/square/objects/Payment",
+   "https://developer.squareup.com/reference/square/payments-api/list-payments",
+   "https://developer.squareup.com/reference/square/payments-api/cancel-payment-by-idempotency-key",
+   "https://developer.squareup.com/reference/square/refunds-api/refund-payment"
+  ]
+ },
+ {
+  "api": "Apache Kafka - Producer API (KafkaProducer.send of a ProducerRecord)",
+  "native_key": "partial",
+  "tag_field": "record headers (or the record key)",
+  "exact_lookup": "list_only",
+  "reversible": "no",
+  "class": "A-",
+  "sources": [
+   "https://kafka.apache.org/41/configuration/producer-configs/",
+   "https://kafka.apache.org/41/design/design/",
+   "https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/producer/ProducerRecord.html",
+   "https://kafka.apache.org/41/javadoc/org/apache/kafka/clients/admin/Admin.html"
+  ]
+ },
+ {
+  "api": "Confluence Cloud REST v2 - Create page (POST /wiki/api/v2/pages)",
+  "native_key": "no",
+  "tag_field": "title (the only free-form field set atomically besides body). Hidden option: content property via POST /wiki/api/v2/pages/{id}/properties, which is a separate post-create call and not atomic. Labels also need a separate call",
+  "exact_lookup": "exact (CQL title = \"...\" is documented as an exact match, '~' is fuzzy, and label = is exact; GET /pages and /spaces/{id}/pages take a 'title' filter whose exactness the docs do not state. Content properties are CQL-searchable only when a Connect confluenceContentProperties module indexes them. Search-index freshness is not documented)",
+  "reversible": "yes (DELETE /wiki/api/v2/pages/{id} moves the page to trash; purge is available)",
+  "class": "A",
+  "sources": [
+   "https://dac-static.atlassian.com/cloud/confluence/openapi-v2.v3.json (official v2 OpenAPI: POST /pages, GET /pages title filter, DELETE /pages/{id}, /pages/{page-id}/properties)",
+   "https://developer.atlassian.com/cloud/confluence/advanced-searching-using-cql/",
+   "https://developer.atlassian.com/cloud/confluence/confluence-entity-properties/"
+  ]
+ },
+ {
+  "api": "Discord - Create Message (POST /channels/{channel.id}/messages)",
+  "native_key": "partial - 'nonce' (<=25 chars) plus enforce_nonce=true: 'it will be checked for uniqueness in the past few minutes. If another message was created by the same author with the same nonce, that message will be returned and no new message will be created.' Retention window is only 'the past few minutes' (unspecified), scoped to the same author; without enforce_nonce the nonce is not deduplicated.",
+  "tag_field": "nonce (Message object field 'nonce?' - 'used for validating a message was sent'; create docs say the value 'will appear in the Message Create event'. Whether it is still returned on later GETs of the message is not documented.)",
+  "exact_lookup": "list_only - Get Channel Messages supports only around/before/after/limit; Search Guild Messages filters by content/author_id/channel_id etc. (returns 202 + retry_after when not yet indexed) but has no nonce filter.",
+  "reversible": "yes - Delete Message endpoint (also Bulk Delete Messages by message id).",
+  "class": "A-",
+  "sources": [
+   "https://docs.discord.com/developers/resources/message",
+   "https://discord.com/developers/docs/resources/message"
+  ]
+ },
+ {
+  "api": "Trello REST - Create a new card (POST /1/cards)",
+  "native_key": "no",
+  "tag_field": "desc (or name). Custom fields and pluginData are not create parameters; custom fields need a separate call after create",
+  "exact_lookup": "search (GET /1/search full-text 'query', no freshness or lag guarantee stated). Otherwise list_only by listing the cards on a list or board (GET /1/lists/{id}/cards and /1/boards/{id}/cards have no field filters)",
+  "reversible": "yes (DELETE /1/cards/{id} 'Delete a Card')",
+  "class": "A-",
+  "sources": [
+   "https://developer.atlassian.com/cloud/trello/rest/api-group-cards/",
+   "https://dac-static.atlassian.com/cloud/trello/swagger.v3.json (official OpenAPI: POST /cards, GET /search, DELETE /cards/{id}, GET /lists/{id}/cards)"
+  ]
+ },
+ {
+  "api": "Amazon SES v2 - SendEmail (POST /v2/email/outbound-emails)",
+  "native_key": "no - no ClientToken or idempotency parameter in SendEmail.",
+  "tag_field": "EmailTags (MessageTag name/value, ASCII letters/digits/_/-, <=256 chars each; used for event publishing); also custom Headers in Content.Simple/Template.",
+  "exact_lookup": "list_only - no API filters on EmailTags. GetMessageInsights returns EmailTags but only by SES MessageId; CreateExportJob (MessageInsightsDataSource) filters only by Destination, FromEmailAddress, Isp, LastDelivery/EngagementEvent, Subject, TenantName over a date range, max 10,000 results with a random sample beyond that. Requires Virtual Deliverability Manager; messages searchable for 30 days and appear 'within a few minutes from send time'.",
+  "reversible": "no - no cancel/recall of sent email.",
+  "class": "A-",
+  "sources": [
+   "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_SendEmail.html",
+   "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageTag.html",
+   "https://docs.aws.amazon.com/ses/latest/dg/event-publishing-send-email.html",
+   "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_GetMessageInsights.html",
+   "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_CreateExportJob.html",
+   "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageInsightsDataSource.html",
+   "https://docs.aws.amazon.com/ses/latest/APIReference-V2/API_MessageInsightsFilters.html",
+   "https://docs.aws.amazon.com/ses/latest/dg/vdm-dashboard.html"
+  ]
+ },
+ {
+  "api": "GitHub REST - Create an issue (POST /repos/{owner}/{repo}/issues)",
+  "native_key": "no",
+  "tag_field": "labels (array of label names); alternatives: body (markdown text), issue_field_values (org-owned repos with issue fields enabled only)",
+  "exact_lookup": "exact (List repository issues takes a 'labels' filter of comma-separated label names; issue_field_values also has a field_slug:value filter. Body text can only be found through Search issues, which is keyword search)",
+  "reversible": "partial (REST can only close an issue: PATCH state=closed, state_reason=not_planned/duplicate. Deleting needs the GraphQL deleteIssue mutation)",
+  "class": "A",
+  "sources": [
+   "https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28",
+   "https://docs.github.com/en/rest/issues/labels?apiVersion=2022-11-28",
+   "https://docs.github.com/en/graphql/reference/issues",
+   "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.json (official OpenAPI: POST/GET /repos/{owner}/{repo}/issues, GET /search/issues, PATCH issue)"
+  ]
+ },
+ {
+  "api": "Microsoft Graph - create event (POST /me/events or /me/calendars/{id}/events)",
+  "native_key": "yes",
+  "tag_field": "singleValueExtendedProperties (or open extensions)",
+  "exact_lookup": "exact",
+  "reversible": "partial",
+  "class": "K",
+  "sources": [
+   "https://learn.microsoft.com/en-us/graph/api/resources/event",
+   "https://learn.microsoft.com/en-us/graph/api/user-post-events",
+   "https://learn.microsoft.com/en-us/graph/api/singlevaluelegacyextendedproperty-get",
+   "https://learn.microsoft.com/en-us/graph/api/resources/extended-properties-overview",
+   "https://learn.microsoft.com/en-us/graph/api/event-delete"
+  ]
+ },
+ {
+  "api": "Wise - Create a transfer (POST /v1/transfers)",
+  "native_key": "yes - customerTransactionId (UUID, required) is \"Required to perform idempotency check to avoid duplicate transfers in case of network failures or timeouts\". Retries that reuse it are treated as repeat messages and do not create a new transfer. The retention window is not documented.",
+  "tag_field": "details.reference (\"Payment reference text\"); customerTransactionId is itself stored on the transfer",
+  "exact_lookup": "list_only - GET /v1/transfers filters only by profile, status, sourceCurrency, targetCurrency, createdDateStart/End, limit and offset; there is no filter on customerTransactionId or reference",
+  "reversible": "partial",
+  "class": "K",
+  "sources": [
+   "https://docs.wise.com/api-reference/standard-transfer/transfercreate",
+   "https://docs.wise.com/api-reference/transfer/transfer",
+   "https://docs.wise.com/api-reference/standard-transfer/transferlist",
+   "https://docs.wise.com/api-reference/transfer/transfercancel",
+   "https://github.com/transferwise/api-docs/blob/master/source/includes/reference/_transfers.md"
+  ]
+ },
+ {
+  "api": "Mailgun - Send a message (POST /v3/{domain_name}/messages)",
+  "native_key": "no - no idempotency key for message sends (o:inbox-placement-test-key dedups inbox-placement test creation only, not message delivery).",
+  "tag_field": "o:tag (up to 3 per message, <=128 chars, max 100,000 tags per domain by default); also v:<var> custom variables and h:X-<header> custom headers.",
+  "exact_lookup": "exact - Events API GET /v3/{domain}/events has a 'tags' filter ('Filter by user defined tags'); retention 'at least 3 days' (Events API page; tracking guide says 30 days paid / 2 days free). Events API is marked deprecated in favor of the Logs API (POST /v1/analytics/logs), whose filter attributes were not retrievable from the docs. No filter on v: variables or custom headers is documented. Event latency is not documented.",
+  "reversible": "partial - DELETE /v3/{domain}/envelopes deletes all scheduled and undelivered mail from the domain queue (coarse, not per message); delivered mail cannot be recalled.",
+  "class": "A",
+  "sources": [
+   "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/post-v3--domain-name--messages",
+   "https://mailgun-docs.redoc.ly/docs/mailgun/api-reference/openapi-final/tag/Messages/",
+   "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/events/get-v3-domain_name-events",
+   "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/events",
+   "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/logs/post-v1-analytics-logs",
+   "https://documentation.mailgun.com/docs/mailgun/user-manual/tracking-messages/track-tagging",
+   "https://documentation.mailgun.com/docs/mailgun/faq/tracking",
+   "https://documentation.mailgun.com/docs/mailgun/user-manual/tracking-messages/tracking-messages",
+   "https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/delete-v3--domain-name--envelopes"
+  ]
+ },
+ {
+  "api": "Checkout.com - Request a payment or payout (POST /payments)",
+  "native_key": "yes - Cko-Idempotency-Key header, supported on /payments, /payment-contexts, captures, refunds, voids, cancellations, authorizations and /transfers. Keys expire after 72 hours by default (sandbox and production). Only successful responses are replayed, and a concurrent request with the same key gets 409.",
+  "tag_field": "reference (e.g. order number; length limits vary by scheme, e.g. Amex 30); metadata (up to 20 fields, 255 chars each, \"for reporting purposes\") is the hidden-style alternative",
+  "exact_lookup": "exact - GET /payments?reference=<value> (\"Get payment lists\") returns payments with that reference, newest first, but only for payments initiated from June 2022 onward. There is no documented lookup by metadata.",
+  "reversible": "yes",
+  "class": "K",
+  "sources": [
+   "https://www.checkout.com/docs/developer-resources/api/idempotency",
+   "https://api-reference.checkout.com/tag/Payments"
+  ]
+ }
+]

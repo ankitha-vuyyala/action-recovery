@@ -1,0 +1,4 @@
+# Override: run TigerBeetle with seccomp disabled (io_uring is blocked by the default Docker seccomp profile on some engines).
+services:
+  tigerbeetle:
+    security_opt: ["seccomp=unconfined"]

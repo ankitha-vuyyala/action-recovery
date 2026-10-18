@@ -1,0 +1,25 @@
+{
+  "endpoint": "http://localhost:8333",
+  "create_bucket": "ok",
+  "put_s": 0.252,
+  "head_metadata": {
+    "op-id": "4315a4e4-4f65-4beb-9429-32200970b81f"
+  },
+  "metadata_roundtrip_ok": true,
+  "if_none_match_star": {
+    "first": "accepted",
+    "second": {
+      "http_status": 412,
+      "code": "PreconditionFailed",
+      "message": "At least one of the pre-conditions you specified did not hold"
+    },
+    "stored_body_after": "A",
+    "second_rejected_412": true,
+    "silently_overwrote": false
+  },
+  "list_by_prefix": {
+    "count": 5,
+    "expected": 5,
+    "ok": true
+  }
+}

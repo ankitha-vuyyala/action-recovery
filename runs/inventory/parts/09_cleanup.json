@@ -1,0 +1,20 @@
+{
+  "compose_down_rc": 0,
+  "compose_down_err": null,
+  "containers_left": [],
+  "volumes_left": [],
+  "networks_left": [],
+  "images_kept": [
+    "axllent/mailpit:latest",
+    "chrislusf/seaweedfs:latest",
+    "ghcr.io/shopify/toxiproxy:latest",
+    "ghcr.io/tigerbeetle/tigerbeetle:latest",
+    "gitea/gitea:1.24",
+    "hello-world:latest",
+    "postgres:16",
+    "redis:7",
+    "redis:7-alpine",
+    "temporalio/temporal:latest"
+  ],
+  "clean": true
+}

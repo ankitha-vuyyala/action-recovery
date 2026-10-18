@@ -1,0 +1,95 @@
+{
+  "proxy_env": "none set",
+  "hosts": {
+    "pypi.org": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        200,
+        200,
+        200
+      ],
+      "median_ms": 491.0
+    },
+    "github.com": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        200,
+        200,
+        200
+      ],
+      "median_ms": 607.3
+    },
+    "ghcr.io": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        405,
+        405,
+        405
+      ],
+      "median_ms": 896.9
+    },
+    "registry-1.docker.io": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        404,
+        404,
+        404
+      ],
+      "median_ms": 540.5
+    },
+    "api.openai.com": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        421,
+        421,
+        421
+      ],
+      "median_ms": 697.2
+    },
+    "generativelanguage.googleapis.com": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        404,
+        404,
+        404
+      ],
+      "median_ms": 827.4
+    },
+    "api.groq.com": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        404,
+        404,
+        404
+      ],
+      "median_ms": 668.5
+    },
+    "openrouter.ai": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        200,
+        200,
+        200
+      ],
+      "median_ms": 657.4
+    },
+    "huggingface.co": {
+      "dns": true,
+      "https_reachable": true,
+      "statuses": [
+        200,
+        200,
+        200
+      ],
+      "median_ms": 575.6
+    }
+  }
+}

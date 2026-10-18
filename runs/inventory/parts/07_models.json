@@ -1,0 +1,133 @@
+{
+  "env_keys": {
+    "OPENAI_API_KEY": {
+      "non_empty": true
+    },
+    "GEMINI_API_KEY": {
+      "non_empty": false
+    },
+    "GROQ_API_KEY": {
+      "non_empty": true
+    },
+    "OPENROUTER_API_KEY": {
+      "non_empty": false
+    },
+    "OLLAMA_BASE_URL": {
+      "non_empty": true
+    },
+    "MAX_SPEND_USD": {
+      "non_empty": true
+    },
+    "MAX_SPEND_PER_RUN_USD": {
+      "non_empty": true
+    },
+    "POSTGRES_PASSWORD": {
+      "non_empty": true
+    },
+    "GITEA_ADMIN_PASSWORD": {
+      "non_empty": true
+    },
+    "MINIO_ROOT_USER": {
+      "non_empty": true
+    },
+    "MINIO_ROOT_PASSWORD": {
+      "non_empty": true
+    }
+  },
+  "providers": {
+    "openai": {
+      "key_present": true,
+      "called": "https://api.openai.com/v1/models",
+      "http_status": 200,
+      "model_count": 133
+    },
+    "gemini": {
+      "key_present": false,
+      "called": false
+    },
+    "groq": {
+      "key_present": true,
+      "called": "https://api.groq.com/openai/v1/models",
+      "http_status": 200,
+      "model_count": 11
+    },
+    "openrouter": {
+      "key_present": false,
+      "called": false
+    }
+  },
+  "local": {
+    "ollama_version": "ollama version is 0.34.4",
+    "ollama_server_running": true,
+    "ollama_list": [
+      "NAME                       ID              SIZE      MODIFIED     ",
+      "qwen2.5:1.5b               65ec06548149    986 MB    2 days ago      ",
+      "qwen2.5:3b                 357c53fb659c    1.9 GB    2 days ago      ",
+      "llama3.1:8b                46e0c10c039e    4.9 GB    7 months ago    ",
+      "phi3:latest                4f2222927938    2.2 GB    9 months ago    ",
+      "llama3:8b                  365c0bd3c000    4.7 GB    9 months ago    ",
+      "llama3:latest              365c0bd3c000    4.7 GB    9 months ago    ",
+      "nomic-embed-text:latest    0a109f422b47    274 MB    9 months ago"
+    ],
+    "ollama_models": [
+      {
+        "name": "qwen2.5:1.5b",
+        "size_gb": 0.99,
+        "parameter_size": "1.5B",
+        "quantization": "Q4_K_M",
+        "family": "qwen2"
+      },
+      {
+        "name": "qwen2.5:3b",
+        "size_gb": 1.93,
+        "parameter_size": "3.1B",
+        "quantization": "Q4_K_M",
+        "family": "qwen2"
+      },
+      {
+        "name": "llama3.1:8b",
+        "size_gb": 4.92,
+        "parameter_size": "8.0B",
+        "quantization": "Q4_K_M",
+        "family": "llama"
+      },
+      {
+        "name": "phi3:latest",
+        "size_gb": 2.18,
+        "parameter_size": "3.8B",
+        "quantization": "Q4_0",
+        "family": "phi3"
+      },
+      {
+        "name": "llama3:8b",
+        "size_gb": 4.66,
+        "parameter_size": "8.0B",
+        "quantization": "Q4_0",
+        "family": "llama"
+      },
+      {
+        "name": "llama3:latest",
+        "size_gb": 4.66,
+        "parameter_size": "8.0B",
+        "quantization": "Q4_0",
+        "family": "llama"
+      },
+      {
+        "name": "nomic-embed-text:latest",
+        "size_gb": 0.27,
+        "parameter_size": "137M",
+        "quantization": "F16",
+        "family": "nomic-bert"
+      }
+    ],
+    "ollama_ps_loaded": [
+      "NAME    ID    SIZE    PROCESSOR    CONTEXT    UNTIL"
+    ],
+    "gpu_offload_note": "visible only for loaded models via `ollama ps` (PROCESSOR column); no model was loaded or pulled",
+    "lm_studio": {
+      "installed": false,
+      "paths_found": [],
+      "lms_cli": false
+    }
+  }
+}

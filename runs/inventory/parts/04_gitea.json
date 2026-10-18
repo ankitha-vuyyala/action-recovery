@@ -1,0 +1,86 @@
+{
+  "version": "Gitea version 1.24.7 built with GNU Make 4.4.1, go1.24.9 : bindata, timetzdata, sqlite, sqlite_unlock_notify",
+  "install": "non-interactive via env (INSTALL_LOCK=true, sqlite3)",
+  "admin_create": {
+    "rc": 0,
+    "msg": "New user 'actrec-admin' has been successfully created! "
+  },
+  "token_create": {
+    "rc": 0,
+    "ok": true,
+    "err": null
+  },
+  "repo_create_status": 201,
+  "indexer_config": "[indexer]\nISSUE_INDEXER_PATH = /data/gitea/indexers/issues.bleve\n\n[session]",
+  "trials": [
+    {
+      "trial": 1,
+      "create_status": 201,
+      "issue_number": 1,
+      "body_byte_exact": true,
+      "marker_line_present": true,
+      "plain_list_has_issue_immediately": true,
+      "indexer_lag_s_global_search": 1.88,
+      "indexer_lag_s_repo_q": 1.88
+    },
+    {
+      "trial": 2,
+      "create_status": 201,
+      "issue_number": 2,
+      "body_byte_exact": true,
+      "marker_line_present": true,
+      "plain_list_has_issue_immediately": true,
+      "indexer_lag_s_global_search": 0.68,
+      "indexer_lag_s_repo_q": 0.68
+    },
+    {
+      "trial": 3,
+      "create_status": 201,
+      "issue_number": 3,
+      "body_byte_exact": true,
+      "marker_line_present": true,
+      "plain_list_has_issue_immediately": true,
+      "indexer_lag_s_global_search": 1.2,
+      "indexer_lag_s_repo_q": 1.2
+    },
+    {
+      "trial": 4,
+      "create_status": 201,
+      "issue_number": 4,
+      "body_byte_exact": true,
+      "marker_line_present": true,
+      "plain_list_has_issue_immediately": true,
+      "indexer_lag_s_global_search": 1.23,
+      "indexer_lag_s_repo_q": 0.68
+    },
+    {
+      "trial": 5,
+      "create_status": 201,
+      "issue_number": 5,
+      "body_byte_exact": true,
+      "marker_line_present": true,
+      "plain_list_has_issue_immediately": true,
+      "indexer_lag_s_global_search": 0.71,
+      "indexer_lag_s_repo_q": 0.71
+    }
+  ],
+  "indexer_lag_global_found": "5/5",
+  "indexer_lag_global_s": [
+    0.68,
+    0.71,
+    1.2,
+    1.23,
+    1.88
+  ],
+  "search_by_first_uuid_segment_finds": true,
+  "search_by_full_marker_line_finds": true,
+  "close_via_api": {
+    "status": 201,
+    "state_after": "closed"
+  },
+  "delete_via_api_admin": {
+    "status": 204,
+    "get_after_delete": 404,
+    "ok": true
+  }
+}

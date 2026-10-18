@@ -1,0 +1,159 @@
+{
+  "postgres": {
+    "image": {
+      "requested": "postgres:16",
+      "resolved_tag": "postgres:16",
+      "digest": "postgres@sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54",
+      "image_id": "sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54",
+      "size_mb": 160.3,
+      "created": "2026-09-19T00:36:54.335664785Z",
+      "version_labels": {}
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 5.13,
+    "healthy": true
+  },
+  "gitea": {
+    "image": {
+      "requested": "gitea/gitea:1.24",
+      "resolved_tag": "gitea/gitea:1.24",
+      "digest": "gitea/gitea@sha256:918955f16b1e91732af6c449bb2db3a34271748dbed1ccfbae48f8a2fb5480b8",
+      "image_id": "sha256:918955f16b1e91732af6c449bb2db3a34271748dbed1ccfbae48f8a2fb5480b8",
+      "size_mb": 75.7,
+      "created": "2025-10-25T01:02:25.33121531Z",
+      "version_labels": {
+        "org.opencontainers.image.version": "1.24.7"
+      }
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 7.18,
+    "healthy": true
+  },
+  "mailpit": {
+    "image": {
+      "requested": "axllent/mailpit:latest",
+      "resolved_tag": "axllent/mailpit:latest",
+      "digest": "axllent/mailpit@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d",
+      "image_id": "sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d",
+      "size_mb": 14.3,
+      "created": "2026-09-27T07:05:40.768116049Z",
+      "version_labels": {}
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 1.78,
+    "healthy": true
+  },
+  "tigerbeetle": {
+    "image": {
+      "requested": "ghcr.io/tigerbeetle/tigerbeetle:latest",
+      "resolved_tag": "ghcr.io/tigerbeetle/tigerbeetle:latest",
+      "digest": "ghcr.io/tigerbeetle/tigerbeetle@sha256:48f623f9c1e9b6cc44d77ca93634595ae99cce3246ded418763eb1a62eee45e9",
+      "image_id": "sha256:48f623f9c1e9b6cc44d77ca93634595ae99cce3246ded418763eb1a62eee45e9",
+      "size_mb": 11.2,
+      "created": "2026-07-06T17:23:56.674961549Z",
+      "version_labels": {}
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": null,
+    "healthy": false,
+    "logs_tail": "tigerbeetle-1  | 2026-09-30 23:30:43.304Z warning: a cluster id of 0 is reserved for testing and benchmarking, do not use in production\ntigerbeetle-1  | 2026-09-30 23:30:43.304Z warning: omit --cluster=0 to randomly generate a suitable id\ntigerbeetle-1  | \ntigerbeetle-1  | 2026-09-30 23:30:43.304Z error(io): io_uring is not available\ntigerbeetle-1  | 2026-09-30 23:30:43.304Z error(io): likely cause: the syscall is disabled by sysctl, try 'sysctl -w kernel.io_uring_disabled=0'\ntigerbeetle-1  | 2026-09-30 23:30:43.304Z error: PermissionDenied"
+  },
+  "seaweedfs": {
+    "image": {
+      "requested": "chrislusf/seaweedfs:latest",
+      "resolved_tag": "chrislusf/seaweedfs:latest",
+      "digest": "chrislusf/seaweedfs@sha256:4e61d15fd35994cb1e43e1e553dff106794841fd9a99ade2fc8c8bfce4d7872d",
+      "image_id": "sha256:4e61d15fd35994cb1e43e1e553dff106794841fd9a99ade2fc8c8bfce4d7872d",
+      "size_mb": 193.6,
+      "created": "2026-09-28T18:41:21.744952814Z",
+      "version_labels": {
+        "org.opencontainers.image.version": "4.48"
+      }
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 5.4,
+    "healthy": true
+  },
+  "redis": {
+    "image": {
+      "requested": "redis:7",
+      "resolved_tag": "redis:7",
+      "digest": "redis@sha256:c6eabf748fc7a61dbb5a705c78bcf3d6377b1127a97d0ce965c11c44ba46896f",
+      "image_id": "sha256:c6eabf748fc7a61dbb5a705c78bcf3d6377b1127a97d0ce965c11c44ba46896f",
+      "size_mb": 43.6,
+      "created": "2026-09-19T00:38:19.910809608Z",
+      "version_labels": {}
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 1.55,
+    "healthy": true
+  },
+  "toxiproxy": {
+    "image": {
+      "requested": "ghcr.io/shopify/toxiproxy:latest",
+      "resolved_tag": "ghcr.io/shopify/toxiproxy:latest",
+      "digest": "ghcr.io/shopify/toxiproxy@sha256:9378ed52a28bc50edc1350f936f518f31fa95f0d15917d6eb40b8e376d1a214e",
+      "image_id": "sha256:9378ed52a28bc50edc1350f936f518f31fa95f0d15917d6eb40b8e376d1a214e",
+      "size_mb": 7.6,
+      "created": "2025-03-18T13:12:13.176393585Z",
+      "version_labels": {
+        "org.opencontainers.image.version": "2.12.0"
+      }
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 2.65,
+    "healthy": true
+  },
+  "temporal": {
+    "image": {
+      "requested": "temporalio/temporal:latest",
+      "resolved_tag": "temporalio/temporal:latest",
+      "digest": "temporalio/temporal@sha256:ad4c82c97bd12b417d1ea942610dbcd511afb250c4d5ed26c694009533df447e",
+      "image_id": "sha256:ad4c82c97bd12b417d1ea942610dbcd511afb250c4d5ed26c694009533df447e",
+      "size_mb": 49.8,
+      "created": "2026-09-14T22:50:56.300963959Z",
+      "version_labels": {}
+    },
+    "compose_up": {
+      "rc": 0,
+      "err_tail": null
+    },
+    "time_to_healthy_s": 2.04,
+    "healthy": true
+  },
+  "minio": {
+    "image": {
+      "requested": "minio/minio:latest",
+      "resolved_tag": null,
+      "digest": null
+    },
+    "healthy": false,
+    "pull_error": "Error response from daemon: pull access denied for minio/minio, repository does not exist or may require 'docker login'",
+    "fix_attempt": {
+      "image": "quay.io/minio/minio:latest",
+      "pull_error": "Error response from daemon: unknown: failed to resolve reference \"quay.io/minio/minio:latest\": unexpected status from HEAD request to https://quay.io/v2/minio/minio/manifests/latest: 401 UNAUTHORIZED",
+      "ok": false
+    }
+  }
+}

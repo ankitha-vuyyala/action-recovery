@@ -1,0 +1,143 @@
+{
+  "repos": [
+    {
+      "url": "https://github.com/shushuyang231/ambiguous-tool-outcomes-benchmark",
+      "reachable": true,
+      "commit": "4b626e7cde61ec9275a30e23982d146ee6f4e65d",
+      "commit_date": "2026-08-11",
+      "top_level": [
+        ".env.example",
+        ".gitignore",
+        "ARTIFACT_CANDIDATE_MANIFEST.json",
+        "CHANGELOG.md",
+        "CITATION.cff",
+        "LICENSE",
+        "LICENSE-DATA.md",
+        "README.md",
+        "configs/",
+        "data/",
+        "paper/",
+        "prompts/",
+        "protocol/",
+        "pyproject.toml",
+        "research_sqj_v1_4.md",
+        "runs/",
+        "scripts/",
+        "src/",
+        "tests/",
+        "tools/"
+      ],
+      "license_files": [
+        "LICENSE",
+        "LICENSE-DATA.md"
+      ],
+      "license_first_line": "MIT License",
+      "size_mb_working_tree": 10.23,
+      "runtime_markers": [
+        "Python"
+      ],
+      "github_languages": {
+        "Python": 1235326,
+        "PostScript": 541932,
+        "BibTeX Style": 146013,
+        "PowerShell": 134782,
+        "TeX": 122046
+      },
+      "github_license_spdx": "MIT",
+      "stars": 0,
+      "description": "Counterfactual benchmark for LLM agent recovery from ambiguous tool outcomes"
+    },
+    {
+      "url": "https://github.com/gssanjana4/idempotencybench",
+      "reachable": true,
+      "commit": "1b9b30fd37f983d6e2eb0ebf535bfcb1086fb311",
+      "commit_date": "2026-07-25",
+      "top_level": [
+        ".gitignore",
+        "CITATION.cff",
+        "LICENSE",
+        "README.md",
+        "figures/",
+        "paper.pdf",
+        "results/",
+        "run_tests.py",
+        "src/"
+      ],
+      "license_files": [
+        "LICENSE"
+      ],
+      "license_first_line": "MIT License",
+      "size_mb_working_tree": 5.8,
+      "runtime_markers": [],
+      "github_languages": {
+        "Python": 64257
+      },
+      "github_license_spdx": "MIT",
+      "stars": 0,
+      "description": "Do LLM agents act exactly once? Benchmark measuring duplicate side effects (IVR) under retries. 320 tasks, full transcripts."
+    },
+    {
+      "url": "https://github.com/flame-stream/mcp-annotation-census",
+      "reachable": true,
+      "commit": "5c24643d447402fc7bf8096555f72859b2c126cb",
+      "commit_date": "2026-08-29",
+      "top_level": [
+        ".gitattributes",
+        ".gitignore",
+        "LICENSE",
+        "README.md",
+        "REPORT.md",
+        "audit_heuristic.py",
+        "census.py",
+        "output_full2/",
+        "requirements.txt",
+        "test_census.py"
+      ],
+      "license_files": [
+        "LICENSE"
+      ],
+      "license_first_line": "MIT License",
+      "size_mb_working_tree": 105.13,
+      "runtime_markers": [
+        "Python"
+      ],
+      "github_languages": {
+        "Python": 69121
+      },
+      "github_license_spdx": "MIT",
+      "stars": 0,
+      "description": null
+    }
+  ],
+  "limbo_search": {
+    "queries": {
+      "LIMBO benchmark exactly-once": [],
+      "\"Where Does Exactly-Once Live\"": [
+        "https://github.com/jaxblack/limbo-bench"
+      ],
+      "2609.29095": [],
+      "limbo exactly-once agents": [
+        "https://github.com/jaxblack/limbo-bench"
+      ],
+      "LIMBO in:name exactly-once in:description": [
+        "https://github.com/jaxblack/limbo-bench"
+      ]
+    },
+    "candidates": [
+      {
+        "url": "https://github.com/jaxblack/limbo-bench",
+        "description": "LIMBO: how LLM agents recover when a write's outcome is uncertain (timeouts, late commits, redelivery). Code and data for 'Where Does Exactly-Once Live?'",
+        "created_at": "2026-09-24T07:07:00Z",
+        "pushed_at": "2026-09-26T03:29:59Z",
+        "stars": 0,
+        "license_spdx": "MIT",
+        "language": "Python",
+        "readme_cites_arxiv_2609_29095": false,
+        "readme_cites_title": false,
+        "verified": false
+      }
+    ],
+    "result": "https://github.com/jaxblack/limbo-bench"
+  },
+  "note": "shallow clones in external/ (git-ignored); no code from them was executed"
+}
